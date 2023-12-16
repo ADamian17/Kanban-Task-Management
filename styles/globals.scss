@@ -1,0 +1,95 @@
+:root {
+  --black: hsl(237, 100%, 4%);
+  --white: hsl(0, 0%, 100%);
+
+  --main-Purple: hsl(242, 48%, 58%);
+  --main-purple-hover: hsl(243, 100%, 82%);
+
+  --dark-grey: hsl(235, 12%, 19%);
+  --medium-grey: hsl(216, 15%, 57%);
+
+  --very-dark-grey-dark-bg: hsl(235, 16%, 15%);
+  --light-grey-light-bg: hsl(220, 69%, 97%);
+
+  --lines-dark: hsl(236, 11%, 27%);
+  --lines-light: hsl(221, 69%, 94%);
+
+  --red: hsl(0, 78%, 63%);
+  --red-hover: hsl(0, 100%, 80%);
+}
+
+* {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px
+  transition:
+    background-color 0.2s,
+    color 0.3s;
+}
+
+html.light {
+  background-color: var(--light-grey-light-bg);
+  color-scheme: light;
+  color: #000000;
+}
+
+html.dark {
+  color-scheme: dark;
+  background-color: var(--very-dark-grey-dark-bg);
+  color: #ffffff;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: Plus Jakarta Sans;
+  font-size: 1.6rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  color: var(--black, #000112);
+}
+
+h1 {
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  /* Heading (XL) */
+  font-size: 2.4rem;
+  font-style: normal;
+  line-height: normal;
+}
+
+h2 {
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  /* Heading (L) */
+  font-family: Plus Jakarta Sans;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+h3 {
+  color: var(--Black, #000112);
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  /* Heading (M) */
+  font-family: Plus Jakarta Sans;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}

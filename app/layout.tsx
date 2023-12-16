@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+import { plusJakartaSans } from '@/assets/fonts'
+
+import '@/styles/globals.scss'
+import HandleTheme from '@/components/HandleTheme'
 
 export const metadata: Metadata = {
   title: 'Kanban',
@@ -16,7 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={plusJakartaSans.className}>
+        <HandleTheme />
+        {children}
+      </body>
     </html>
   )
 }

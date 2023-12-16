@@ -1,0 +1,26 @@
+.btn {
+  background-color: var(--primary-white);
+  border-radius: 24px;
+  padding: 8px;
+  color: var(--White, #fff);
+  text-align: center;
+  font-family: Plus Jakarta Sans;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 23px;
+
+  &.lg {
+    padding: 15px;
+    color: var(--White, #fff);
+    text-align: center;
+    font-feature-settings:
+      "clig" off,
+      "liga" off;
+    font-family: Plus Jakarta Sans;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}
