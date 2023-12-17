@@ -2,8 +2,10 @@ import React from 'react';
 import Image from 'next/image';
 
 import Button from '@/components/UI/Button'
+const MobileSelectBoard = dynamic(() => import('@/components/MobileSelectBoard'), { ssr: false });
 
 import styles from "./Dashboard.module.scss";
+import dynamic from 'next/dynamic';
 
 type DashboardLayoutProps = {
   children: React.ReactNode
@@ -25,9 +27,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           <figcaption className={styles.headline}>
             <h2>Platform Launch</h2>
 
-            <svg>
-              <use href="/icons/icons-defs.svg#chevron-down"></use>
-            </svg>
+            <MobileSelectBoard />
           </figcaption>
         </figure>
 

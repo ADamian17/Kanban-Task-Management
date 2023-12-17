@@ -16,6 +16,11 @@
 
   --red: hsl(0, 78%, 63%);
   --red-hover: hsl(0, 100%, 80%);
+
+  /* Theme */
+  --default-bg: initial;
+  --accent-bg: initial;
+  --logo-headline-txt-color: initial;
 }
 
 * {
@@ -29,18 +34,25 @@ html {
   transition:
     background-color 0.2s,
     color 0.3s;
+  background-color: var(--default-bg);
 }
 
 html.light {
-  background-color: var(--light-grey-light-bg);
+  --accent-bg: var(--white);
+  --default-bg: var(--light-grey-light-bg);
+  --logo-headline-txt-color: var(--black);
+
   color-scheme: light;
-  color: #000000;
+  color: var(--black);
 }
 
 html.dark {
+  --accent-bg: var(--dark-grey, hsl(235, 12%, 19%));
+  --default-bg: var(--very-dark-grey-dark-bg);
+  --logo-headline-txt-color: var(--white);
+
   color-scheme: dark;
-  background-color: var(--very-dark-grey-dark-bg);
-  color: #ffffff;
+  color: var(--white);
 }
 
 body {

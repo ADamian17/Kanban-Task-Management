@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import useThemeStore from "@/state/useThemeStore";
 
 const HandleTheme: React.FC = (props) => {
-  const { setTheme, theme, toggleTheme } = useThemeStore(state => state)
+  const { setTheme, theme } = useThemeStore(state => state)
 
   useEffect(() => {
     setTheme()

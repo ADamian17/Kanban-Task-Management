@@ -4,7 +4,7 @@
   align-items: center;
   padding: 0 1.6rem;
   column-gap: 1.6rem;
-  background-color: var(--dark-grey, hsl(235, 12%, 19%));
+  background-color: var(--accent-bg);
 
   .logo {
     align-items: center;
@@ -16,12 +16,12 @@
       align-items: center;
 
       h2 {
-        color: var(--white);
+        color: var(--logo-headline-txt-color);
         margin-right: 0.8rem;
       }
 
       svg {
-        width: 0.9rem;
+        width: 1rem;
         height: 0.7rem;
       }
     }

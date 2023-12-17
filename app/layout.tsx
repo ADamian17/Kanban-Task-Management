@@ -20,6 +20,8 @@ export default function RootLayout({
       <body className={plusJakartaSans.variable}>
         <HandleTheme />
         {children}
+
+        <div id="modal" />
       </body>
     </html>
   )
