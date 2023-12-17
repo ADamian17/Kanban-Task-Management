@@ -1,0 +1,50 @@
+.dashboardHeader {
+  height: 6.4rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1.6rem;
+  column-gap: 1.6rem;
+  background-color: var(--dark-grey, hsl(235, 12%, 19%));
+
+  .logo {
+    align-items: center;
+    column-gap: 1.6rem;
+    display: flex;
+
+    .headline {
+      display: flex;
+      align-items: center;
+
+      h2 {
+        color: var(--white);
+        margin-right: 0.8rem;
+      }
+
+      svg {
+        width: 0.9rem;
+        height: 0.7rem;
+      }
+    }
+  }
+
+  .cta {
+    margin-left: auto;
+    width: 4.8rem;
+    height: 3.2rem;
+    line-height: normal;
+
+    svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    span {
+      display: none;
+    }
+  }
+
+  .kebabMenu {
+    width: 0.3692rem;
+    height: 1.6rem;
+  }
+}

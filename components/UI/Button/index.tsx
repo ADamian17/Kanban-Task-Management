@@ -1,13 +1,14 @@
-import { ReactNode, FC, DetailedHTMLProps, ButtonHTMLAttributes } from "react";
+import { ReactNode, FC, ComponentProps } from "react";
 
 import styles from "./Button.module.scss";
 
 type ButtonType = {
   children: ReactNode
-} & DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
+  variant?: "primary" | "secondary" | "destructive"
+};
 
-const Button: FC<ButtonType> = ({ children, ...rest }) => {
-  return <button {...rest}>{children}</button>
+const Button: FC<ButtonType & ComponentProps<"button">> = ({ children, className, variant = "primary", ...rest }) => {
+  return <button className={`${styles.btn} ${variant && styles[variant]} ${className}`} {...rest}>{children}</button>
 };
 
 export default Button;

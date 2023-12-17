@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={plusJakartaSans.className}>
+      <body className={plusJakartaSans.variable}>
         <HandleTheme />
         {children}
       </body>

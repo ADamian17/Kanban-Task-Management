@@ -1,26 +1,57 @@
+@use "breakpoints" as *;
+
 .btn {
-  background-color: var(--primary-white);
-  border-radius: 24px;
-  padding: 8px;
-  color: var(--White, #fff);
-  text-align: center;
-  font-family: Plus Jakarta Sans;
+  --_btn-bg-hover: initial;
+  --_btn-bg: initial;
+  --_btn-txt-color: initial;
+
+  align-items: center;
+  background-color: var(--_btn-bg);
+  border-radius: 2rem;
+  border: none;
+  color: var(--_btn-txt-color);
+  display: flex;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
   font-size: 13px;
   font-style: normal;
   font-weight: 700;
+  justify-content: center;
   line-height: 23px;
+  padding: 0.8rem;
+  text-align: center;
 
-  &.lg {
-    padding: 15px;
-    color: var(--White, #fff);
-    text-align: center;
-    font-feature-settings:
-      "clig" off,
-      "liga" off;
-    font-family: Plus Jakarta Sans;
+  &.primary {
+    --_btn-bg-hover: var(--main-purple-hover, hsl(243, 100%, 82%));
+    --_btn-bg: var(--main-Purple, hsl(242, 48%, 58%));
+    --_btn-txt-color: var(--white, hsl(0, 0%, 100%));
+  }
+
+  &.secondary {
+    --_btn-bg-hover: hsla(242, 48%, 58%, 0.25);
+    --_btn-bg: var(--light-grey-light-bg, hsl(220, 69%, 97%));
+    --_btn-txt-color: var(--main-Purple, hsl(242, 48%, 58%));
+  }
+
+  &.destructive {
+    --_btn-bg-hover: var(--red-hover, hsl(0, 100%, 80%));
+    --_btn-bg: var(--red, hsl(0, 78%, 63%));
+    --_btn-txt-color: var(--white, hsl(0, 0%, 100%));
+  }
+
+  &:disabled {
+    opacity: 0.25;
+  }
+
+  &:hover {
+    background-color: var(--_btn-bg-hover);
+  }
+
+  @include media-query("lg") {
     font-size: 15px;
     font-style: normal;
-    font-weight: 700;
     line-height: normal;
+    padding: 15px;
   }
 }

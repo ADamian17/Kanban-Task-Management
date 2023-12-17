@@ -1,9 +1,10 @@
 import Button from "@/components/UI/Button";
+import DashboardLayout from "@/layouts/Dashboard";
 
 export default function Home() {
   return (
-    <div>
-      <Button>Button Primary (L)</Button>
-    </div>
+    <DashboardLayout>
+      main
+    </DashboardLayout>
   )
 }
