@@ -20,27 +20,21 @@
     height: 1.5rem;
   }
 
-  .toggleContainer {
-    display: inline-block;
+  .toggleSwitch {
+    -webkit-tap-highlight-color: transparent;
+    align-items: center;
+    background-color: var(--main-Purple, hsl(242, 48%, 58%));
+    border-radius: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    height: 2rem;
+    padding: 0.3rem;
     position: relative;
-    user-select: none;
+    transition: background-color 0.3s ease;
+    width: 4rem;
 
-    .toggleCheckbox {
-      display: none;
-    }
-
-    .toggleSwitch {
-      -webkit-tap-highlight-color: transparent;
-      align-items: center;
-      background-color: var(--main-Purple, hsl(242, 48%, 58%));
-      border-radius: 1.5rem;
-      cursor: pointer;
-      display: flex;
-      height: 2rem;
-      padding: 0.3rem;
-      position: relative;
-      transition: background-color 0.3s ease;
-      width: 4rem;
+    &.dark {
+      justify-content: flex-end;
     }
 
     .toggleHandle {
@@ -49,11 +43,6 @@
       background-color: var(--white);
       border-radius: 50%;
       transition: justify-content 0.3s ease;
-      justify-self: flex-start;
-    }
-
-    .toggleCheckbox:checked + .toggleSwitch {
-      justify-content: flex-end;
     }
   }
 }

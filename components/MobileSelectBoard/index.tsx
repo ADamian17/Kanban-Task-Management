@@ -20,7 +20,7 @@ const MobileSelectBoard: React.FC<MobileSelectBoardType & ComponentProps<"svg">>
   }
 
   const handleClose: React.MouseEventHandler<HTMLDialogElement> = (e) => {
-    console.log(e.target);
+    if ((e.target as HTMLElement).id === "toggle-theme-switch") return;
 
     const rect = (e.target as HTMLElement).getBoundingClientRect();
     const isInDialog = (
@@ -39,6 +39,48 @@ const MobileSelectBoard: React.FC<MobileSelectBoardType & ComponentProps<"svg">>
   const modal = (
     <dialog ref={modalRef} className={`${styles.modal} ${show && styles.show}`} onClick={handleClose}>
       <p className={styles.modalHeadline}>all boards (3)</p>
+
+      <ul className={styles.boardList}>
+        <li className={styles.boardItem}>
+          <h3 className={`${styles.copy} ${styles.active}`}>
+            <svg>
+              <use href={`/icons/icons-defs.svg#board`}></use>
+            </svg>
+
+            Platform Launch
+          </h3>
+        </li>
+
+        <li className={styles.boardItem}>
+          <h3 className={`${styles.copy}`}>
+            <svg>
+              <use href={`/icons/icons-defs.svg#board`}></use>
+            </svg>
+
+            Marketing Plan
+          </h3>
+        </li>
+
+        <li className={styles.boardItem}>
+          <h3 className={`${styles.copy}`}>
+            <svg>
+              <use href={`/icons/icons-defs.svg#board`}></use>
+            </svg>
+
+            Roadmap
+          </h3>
+        </li>
+
+        <li className={styles.boardItem}>
+          <h3 className={`${styles.copy} ${styles.withPurpleText}`}>
+            <svg>
+              <use href={`/icons/icons-defs.svg#board`}></use>
+            </svg>
+
+            + Create New Board
+          </h3>
+        </li>
+      </ul>
 
       <ThemeButtonToggle />
     </dialog>

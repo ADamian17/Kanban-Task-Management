@@ -3,6 +3,38 @@
   height: 0.7rem;
 }
 
+.boardList {
+  list-style: none;
+
+  .boardItem {
+    padding-right: 2.4rem;
+
+    .copy {
+      align-items: center;
+      color: var(--medium-grey, hsl(216, 15%, 57%));
+      column-gap: 1.2rem;
+      display: flex;
+      padding: 1.4rem 0;
+      padding-left: 2.4rem;
+
+      &.active {
+        background-color: var(--main-Purple, hsl(242, 48%, 58%));
+        border-radius: 0rem 10rem 10rem 0rem;
+        color: var(--white);
+      }
+
+      &.withPurpleText {
+        color: var(--main-Purple, hsl(242, 48%, 58%));
+      }
+
+      svg {
+        width: 1.6rem;
+        height: 1.6rem;
+      }
+    }
+  }
+}
+
 .modal {
   background-color: var(--accent-bg);
   border-radius: 0.8rem;
@@ -18,6 +50,7 @@
 
   &.show {
     display: grid;
+    row-gap: 1.6rem;
   }
 
   .modalHeadline {
@@ -29,7 +62,7 @@
     letter-spacing: 0.24rem;
     text-transform: uppercase;
     padding: 0 2.4rem;
-    margin-bottom: 1.9rem;
+    margin-bottom: 0.3rem;
   }
 
   &::backdrop {
