@@ -1,8 +1,9 @@
 "use client"
 import React from "react";
 
-import styles from "./ThemeButtonToggle.module.scss";
 import useThemeStore from "@/state/useThemeStore";
+
+import styles from "./ThemeButtonToggle.module.scss";
 
 type ThemeButtonToggleType = {};
 
