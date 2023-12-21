@@ -6,6 +6,7 @@ const MobileSelectBoard = dynamic(() => import('@/components/MobileSelectBoard')
 
 import styles from "./Dashboard.module.scss";
 import dynamic from 'next/dynamic';
+import LogoDesktop from '@/components/LogoDesktop';
 
 type DashboardLayoutProps = {
   children: React.ReactNode
@@ -15,6 +16,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <main>
       <header className={styles.dashboardHeader}>
+        <LogoDesktop />
 
         <figure className={styles.logo}>
           <Image
@@ -44,7 +46,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </svg>
       </header>
 
-      <section>{children}</section>
+      <section>
+        {children}
+      </section>
     </main>
   )
 }

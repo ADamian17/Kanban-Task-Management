@@ -7,7 +7,7 @@ type UseThemeStore = {
 };
 
 const useThemeStore = create<UseThemeStore>((set) => ({
-  theme: null,
+  theme: "light",
   setTheme: () => {
     const savedTheme = window.localStorage.getItem(
       "theme",

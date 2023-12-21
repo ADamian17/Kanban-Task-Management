@@ -1,5 +1,7 @@
+@use "breakpoints" as *;
+
 .dashboardHeader {
-  height: 6.4rem;
+  min-height: 6.4rem;
   display: flex;
   align-items: center;
   padding: 0 1.6rem;
@@ -46,5 +48,14 @@
   .kebabMenu {
     width: 0.3692rem;
     height: 1.6rem;
+  }
+
+  @include media-query("md") {
+    .logo {
+      img,
+      .headline svg {
+        display: none;
+      }
+    }
   }
 }
