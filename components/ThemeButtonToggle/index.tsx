@@ -20,8 +20,8 @@ const ThemeButtonToggle: React.FC<ThemeButtonToggleType> = (props) => {
         <use href="/icons/icons-defs.svg#sun"></use>
       </svg>
 
-      <div className={`${styles.toggleSwitch} ${theme && styles[theme]}`}>
-        <div className={styles.toggleHandle} onClick={handleClick} />
+      <div className={`${styles.toggleSwitch} ${theme && styles[theme]}`} onClick={handleClick}>
+        <div className={styles.toggleHandle} />
       </div>
 
       <svg className={styles.moon}>
