@@ -1,29 +1,68 @@
 @use "breakpoints" as *;
 
 .sideBar {
-  display: none;
   background-color: var(--accent-bg);
-  grid-column: 1 / span 1;
-  border-right: 0.1rem solid var(--line-accent);
   border-bottom: 0.1rem solid var(--line-accent);
+  border-right: 0.1rem solid var(--line-accent);
+  display: none;
+  grid-column: 1 / span 1;
 
   @include media-query("md") {
     display: grid;
 
     .sideBarMenu {
       display: none;
+      padding: 3.1rem 0 4.7rem;
+      flex-direction: column;
+    }
+
+    .sideBarMenuItems {
+      margin-bottom: auto;
+    }
+
+    .hideSidebarButton {
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      display: flex;
+      gap: 1rem;
+      margin-top: 3rem;
+      outline: none;
+      padding-left: 2.4rem;
+      width: fit-content;
+
+      h3 {
+        color: var(--medium-grey);
+      }
+
+      svg {
+        height: 1.6rem;
+        width: 1.8rem;
+      }
     }
 
     &.isOpen {
+      transition: 300ms;
+      animation: openSidebar 0.2s ease-out;
       border-bottom: 0;
-      grid-row: 1 / span 2;
       display: grid;
+      grid-row: 1 / span 2;
       grid-template-rows: 8rem 1fr;
       width: 26rem;
 
       .sideBarMenu {
-        display: inline-block;
+        display: flex;
       }
+    }
+  }
+
+  @keyframes openSidebar {
+    from {
+      width: 20.2rem;
+    }
+
+    to {
+      width: 26rem;
     }
   }
 }

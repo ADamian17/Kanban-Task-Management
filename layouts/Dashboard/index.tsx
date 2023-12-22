@@ -1,20 +1,25 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
-import Button from '@/components/UI/Button'
 const MobileSelectBoard = dynamic(() => import('@/components/MobileSelectBoard'), { ssr: false });
 
-import styles from "./Dashboard.module.scss";
-import dynamic from 'next/dynamic';
-import LogoDesktop from '@/components/LogoDesktop';
+import { getBoards } from '@/utils/getBoards';
+import Button from '@/components/UI/Button'
 import DashboardSidebar from '../DashboardSidebar';
 import SidebarDesktopToggleButton from '@/components/SidebarDesktopToggleButton';
+
+import styles from "./Dashboard.module.scss";
 
 type DashboardLayoutProps = {
   children: React.ReactNode
 }
 
-export default function DashboardLayout({ children }: DashboardLayoutProps) {
+export default async function DashboardLayout({ children }: DashboardLayoutProps) {
+  const data = await getBoards()
+
+  console.log({ data });
+
   return (
     <main className={styles.dashboard}>
       <DashboardSidebar>
@@ -51,7 +56,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       </header>
 
       <section>
-        section
+        {children}
       </section>
 
       <SidebarDesktopToggleButton />

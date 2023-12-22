@@ -4,7 +4,7 @@ const config: CodegenConfig = {
   overwrite: true,
   config: {
     useIndexSignature: true,
-    contextType: "./schema/index#InternalContext",
+    contextType: ".#InternalContext",
   },
   schema: "./schema/schema.graphql",
   generates: {
