@@ -1,9 +1,7 @@
-import { Resolvers } from "./resolvers-types";
-
-export const resolvers: Resolvers = {
+export const resolvers = {
   Query: {
-    boards: (_, __, { db }) => db.board.findMany(),
-    board: (_, args, { db }) =>
+    boards: (_: any, __: any, { db }: { db: any }) => db.board.findMany(),
+    board: (_: any, args: any, { db }: { db: any }) =>
       db.board.findUniqueOrThrow({
         where: {
           name: args.name,
