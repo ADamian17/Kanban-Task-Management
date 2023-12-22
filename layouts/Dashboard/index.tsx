@@ -16,9 +16,7 @@ type DashboardLayoutProps = {
 }
 
 export default async function DashboardLayout({ children }: DashboardLayoutProps) {
-  const data = await getBoards()
-
-  console.log({ data });
+  // const data = await getBoards()
 
   return (
     <main className={styles.dashboard}>

@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { ApolloServer } from "@apollo/server";
+import { ApolloServer, BaseContext } from "@apollo/server";
 import { startServerAndCreateNextHandler } from "@as-integrations/next";
 
 import { resolvers } from "@/schema/resolvers";
@@ -8,7 +8,7 @@ import { PrismaClient } from "@prisma/client";
 
 const db = new PrismaClient();
 
-const server = new ApolloServer({
+const server = new ApolloServer<{ db?: PrismaClient }>({
   typeDefs,
   resolvers,
 });
