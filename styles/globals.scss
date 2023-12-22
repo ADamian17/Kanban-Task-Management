@@ -18,9 +18,11 @@
   --red-hover: hsl(0, 100%, 80%);
 
   /* Theme */
-  --default-bg: initial;
-  --accent-bg: initial;
-  --logo-headline-txt-color: initial;
+  --accent-bg: var(--white);
+  --default-bg: var(--light-grey-light-bg);
+  --logo-headline-txt-color: var(--black);
+  --line-accent: var(--lines-light);
+  --text-color: var(--black);
 }
 
 * {
@@ -38,21 +40,17 @@ html {
 }
 
 html.light {
-  --accent-bg: var(--white);
-  --default-bg: var(--light-grey-light-bg);
-  --logo-headline-txt-color: var(--black);
-
   color-scheme: light;
-  color: var(--black);
 }
 
 html.dark {
   --accent-bg: var(--dark-grey, hsl(235, 12%, 19%));
   --default-bg: var(--very-dark-grey-dark-bg);
   --logo-headline-txt-color: var(--white);
+  --line-accent: var(--lines-dark);
+  --text-color: var(--white);
 
   color-scheme: dark;
-  color: var(--white);
 }
 
 body {

@@ -1,5 +1,29 @@
 @use "breakpoints" as *;
 
+.dashboard {
+  @include media-query("md") {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: 8rem 1fr;
+    min-height: 100dvh;
+
+    .sideBar {
+      background-color: var(--accent-bg);
+      grid-column: 1 / span 1;
+      border-right: 0.1rem solid var(--line-accent);
+      border-bottom: 0.1rem solid var(--line-accent);
+
+      &.isOpen {
+        border-bottom: 0;
+        grid-row: 1 / span 2;
+        display: grid;
+        grid-template-rows: 8rem 1fr;
+        width: 26rem;
+      }
+    }
+  }
+}
+
 .dashboardHeader {
   min-height: 6.4rem;
   display: flex;
@@ -7,6 +31,7 @@
   padding: 0 1.6rem;
   column-gap: 1.6rem;
   background-color: var(--accent-bg);
+  max-width: 100%;
 
   .logo {
     align-items: center;
@@ -51,6 +76,8 @@
   }
 
   @include media-query("md") {
+    border-bottom: 0.1rem solid var(--line-accent);
+
     .logo {
       img,
       .headline svg {

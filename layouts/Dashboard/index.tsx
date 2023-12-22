@@ -14,10 +14,16 @@ type DashboardLayoutProps = {
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
-    <main>
-      <header className={styles.dashboardHeader}>
+    <main className={styles.dashboard}>
+      <aside className={`${styles.sideBar} ${styles.isOpen}`}>
         <LogoDesktop />
 
+        <section>
+          links
+        </section>
+      </aside>
+
+      <header className={styles.dashboardHeader}>
         <figure className={styles.logo}>
           <Image
             src="/icons/kanban-mobile.svg"
@@ -47,8 +53,14 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       </header>
 
       <section>
-        {children}
+        section
       </section>
+
+      {/* 
+
+      <section>
+        {children}
+      </section> */}
     </main>
   )
 }

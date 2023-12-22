@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type UseThemeStore = {
+export type UseThemeStore = {
   theme: "light" | "dark" | null;
   setTheme: () => void;
   toggleTheme: (theme: UseThemeStore["theme"]) => void;

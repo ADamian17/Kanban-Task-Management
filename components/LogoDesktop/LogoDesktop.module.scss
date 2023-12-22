@@ -1,10 +1,20 @@
+@use "breakpoints" as *;
+
 .container {
-  border-right: 0.1rem solid var(--lines-dark);
   height: 100%;
-  padding: 2.8rem 0;
-  padding-right: 2.4rem;
+  padding: 2.8rem 2.4rem;
+  display: none;
+  max-width: 100%;
+
+  // &.isOpen {
+  //   width: 26rem;
+  // }
 
   img {
     display: block;
+  }
+
+  @include media-query("md") {
+    display: inline-block;
   }
 }
