@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "prisma generate && next build",
+    "codegen": "graphql-codegen --config codegen.ts",
     "dev": "yarn codegen && next dev",
     "lint": "next lint",
+    "postinstall": "prisma generate",
     "start": "next start",
     "test:watch": "jest --watch",
-    "test": "jest",
-    "codegen": "graphql-codegen --config codegen.ts"
+    "test": "jest"
   },
   "dependencies": {
     "@apollo/client": "^3.8.8",
