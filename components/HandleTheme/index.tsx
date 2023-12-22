@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect } from "react";
 
-import useThemeStore, { UseThemeStore } from "@/state/useThemeStore";
+import useThemeStore from "@/state/useThemeStore";
 
 const HandleTheme: React.FC = (props) => {
   const { setTheme, theme, toggleTheme } = useThemeStore(state => state)

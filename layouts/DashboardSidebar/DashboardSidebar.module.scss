@@ -1,0 +1,29 @@
+@use "breakpoints" as *;
+
+.sideBar {
+  display: none;
+  background-color: var(--accent-bg);
+  grid-column: 1 / span 1;
+  border-right: 0.1rem solid var(--line-accent);
+  border-bottom: 0.1rem solid var(--line-accent);
+
+  @include media-query("md") {
+    display: grid;
+
+    .sideBarMenu {
+      display: none;
+    }
+
+    &.isOpen {
+      border-bottom: 0;
+      grid-row: 1 / span 2;
+      display: grid;
+      grid-template-rows: 8rem 1fr;
+      width: 26rem;
+
+      .sideBarMenu {
+        display: inline-block;
+      }
+    }
+  }
+}

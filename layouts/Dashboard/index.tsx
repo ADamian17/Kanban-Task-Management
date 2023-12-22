@@ -7,6 +7,8 @@ const MobileSelectBoard = dynamic(() => import('@/components/MobileSelectBoard')
 import styles from "./Dashboard.module.scss";
 import dynamic from 'next/dynamic';
 import LogoDesktop from '@/components/LogoDesktop';
+import DashboardSidebar from '../DashboardSidebar';
+import SidebarDesktopToggleButton from '@/components/SidebarDesktopToggleButton';
 
 type DashboardLayoutProps = {
   children: React.ReactNode
@@ -15,13 +17,9 @@ type DashboardLayoutProps = {
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <main className={styles.dashboard}>
-      <aside className={`${styles.sideBar} ${styles.isOpen}`}>
-        <LogoDesktop />
-
-        <section>
-          links
-        </section>
-      </aside>
+      <DashboardSidebar>
+        links
+      </DashboardSidebar>
 
       <header className={styles.dashboardHeader}>
         <figure className={styles.logo}>
@@ -56,11 +54,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         section
       </section>
 
-      {/* 
-
-      <section>
-        {children}
-      </section> */}
+      <SidebarDesktopToggleButton />
     </main>
   )
 }
