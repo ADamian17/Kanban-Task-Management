@@ -4,6 +4,7 @@ import { plusJakartaSans } from '@/assets/fonts'
 
 import '@/styles/globals.scss'
 import HandleTheme from '@/components/HandleTheme'
+import DashboardLayout from '@/layouts/Dashboard'
 
 export const metadata: Metadata = {
   title: 'Kanban',
@@ -20,7 +21,9 @@ export default function RootLayout({
       <body className={plusJakartaSans.variable}>
         <HandleTheme />
 
-        {children}
+        <DashboardLayout>
+          {children}
+        </DashboardLayout>
 
         <div id="modal" />
       </body>

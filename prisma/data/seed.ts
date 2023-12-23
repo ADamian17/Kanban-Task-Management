@@ -4,6 +4,7 @@ const db = new prisma.PrismaClient();
 const boardsData = [
   {
     name: "Platform Launch",
+    uri: "/platform-launch/",
     columns: {
       create: [
         {

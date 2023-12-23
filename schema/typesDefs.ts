@@ -5,6 +5,7 @@ export const typeDefs = gql`
     columns: [Column]!
     id: Int!
     name: String!
+    uri: String!
   }
 
   type Column {
@@ -25,7 +26,7 @@ export const typeDefs = gql`
   }
 
   type Query {
-    board(name: String!): Board!
+    board(name: String, uri: String): Board!
     boards: [Board]!
     subtask(id: Int!): Subtask!
     subtasks: [Subtask]!

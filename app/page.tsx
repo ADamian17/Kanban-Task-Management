@@ -1,11 +1,23 @@
-import Button from "@/components/UI/Button";
-import DashboardLayout from "@/layouts/Dashboard";
-import Link from "next/link";
+import { redirect } from 'next/navigation'
 
-export default function Home() {
+import { getBoards } from "@/utils/getBoards";
+
+export default async function Home({
+  params,
+}: {
+  params: {
+    page: string[]
+  }
+}) {
+  const data = await getBoards()
+
+  if (!params?.page && data?.boards?.length > 0) {
+    redirect(data?.boards[0].uri)
+  }
+
   return (
-    <DashboardLayout>
-      home
-    </DashboardLayout>
+    <>
+      Empty Home Page
+    </>
   )
 }

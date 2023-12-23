@@ -13,6 +13,7 @@ datasource db {
 model Board {
   id      Int      @id @default(autoincrement())
   name    String   @unique
+  uri     String?  @unique
   columns Column[]
 }
 

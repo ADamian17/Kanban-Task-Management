@@ -10,6 +10,7 @@ import DashboardSidebar from '../DashboardSidebar';
 import SidebarDesktopToggleButton from '@/components/SidebarDesktopToggleButton';
 
 import styles from "./Dashboard.module.scss";
+import BoardsMenu from '@/components/BoardsMenu';
 
 type DashboardLayoutProps = {
   children: React.ReactNode
@@ -21,7 +22,7 @@ export default async function DashboardLayout({ children }: DashboardLayoutProps
   return (
     <main className={styles.dashboard}>
       <DashboardSidebar>
-        links
+        <BoardsMenu />
       </DashboardSidebar>
 
       <header className={styles.dashboardHeader}>

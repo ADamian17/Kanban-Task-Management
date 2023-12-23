@@ -1,0 +1,50 @@
+.boardContainer {
+  .headline {
+    color: var(--medium-grey, #828fa3);
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.24rem;
+    text-transform: uppercase;
+    padding: 0 2.4rem;
+    margin-bottom: 1.9rem;
+  }
+
+  .boardList {
+    list-style: none;
+
+    .boardItem {
+      padding-right: 2.4rem;
+
+      .link {
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .copy {
+        align-items: center;
+        color: var(--medium-grey, hsl(216, 15%, 57%));
+        column-gap: 1.2rem;
+        display: flex;
+        padding: 1.4rem 0;
+        padding-left: 2.4rem;
+
+        &.active {
+          background-color: var(--main-Purple, hsl(242, 48%, 58%));
+          border-radius: 0rem 10rem 10rem 0rem;
+          color: var(--white);
+        }
+
+        &.withPurpleText {
+          color: var(--main-Purple, hsl(242, 48%, 58%));
+        }
+
+        svg {
+          width: 1.6rem;
+          height: 1.6rem;
+        }
+      }
+    }
+  }
+}
