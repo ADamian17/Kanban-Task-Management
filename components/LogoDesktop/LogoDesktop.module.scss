@@ -6,15 +6,15 @@
   display: none;
   max-width: 100%;
 
-  // &.isOpen {
-  //   width: 26rem;
-  // }
-
   img {
     display: block;
   }
 
   @include media-query("md") {
     display: inline-block;
+  }
+
+  @include media-query("xl") {
+    width: 28.9rem;
   }
 }

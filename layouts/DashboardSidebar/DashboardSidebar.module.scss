@@ -1,6 +1,9 @@
 @use "breakpoints" as *;
 
 .sideBar {
+  --default-close-w: 20.2rem;
+  --default-open-w: 26rem;
+
   background-color: var(--accent-bg);
   border-bottom: 0.1rem solid var(--line-accent);
   border-right: 0.1rem solid var(--line-accent);
@@ -48,7 +51,7 @@
       display: grid;
       grid-row: 1 / span 2;
       grid-template-rows: 8rem 1fr;
-      width: 26rem;
+      width: var(--default-open-w);
 
       .sideBarMenu {
         display: flex;
@@ -56,13 +59,22 @@
     }
   }
 
+  @include media-query("xl") {
+    --default-open-w: 30rem;
+    --default-close-w: 28.9rem;
+
+    &.isOpen {
+      width: var(--default-open-w);
+    }
+  }
+
   @keyframes openSidebar {
     from {
-      width: 20.2rem;
+      width: var(--default-close-w);
     }
 
     to {
-      width: 26rem;
+      width: var(--default-open-w);
     }
   }
 }

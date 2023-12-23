@@ -1,3 +1,5 @@
+@use "breakpoints" as *;
+
 .container {
   align-items: center;
   background-color: var(--default-bg);
@@ -44,5 +46,9 @@
       border-radius: 50%;
       transition: justify-content 0.3s ease;
     }
+  }
+
+  @include media-query("xl") {
+    width: 25.1rem;
   }
 }
