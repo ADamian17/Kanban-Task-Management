@@ -96,7 +96,7 @@ const MobileSelectBoard: React.FC<MobileSelectBoardType & ComponentProps<"svg">>
         <use href={`/icons/icons-defs.svg#chevron-${icon}`}></use>
       </svg>
       {
-        createPortal(
+        show && createPortal(
           modal,
           document.getElementById("modal") as HTMLElement
         )
