@@ -1,7 +1,8 @@
 import Image from "next/image";
 
-import MobileSelectBoard from "@/components/MobileSelectBoard";
 import Button from "@/components/UI/Button";
+import KebabDropdown from "@/components/UI/Dropdowns/KebabDropdown";
+import MobileSelectBoard from "@/components/MobileSelectBoard";
 
 import styles from "./DashboardHeader.module.scss";
 
@@ -31,9 +32,9 @@ const DashboardHeader = ({ boardName = "" }: { boardName: string }) => {
         <span>Add new Task</span>
       </Button>
 
-      <svg className={styles.kebabMenu}>
-        <use href="/icons/icons-defs.svg#kebab-menu"></use>
-      </svg>
+      <KebabDropdown>
+        he
+      </KebabDropdown>
     </header>
   );
 }

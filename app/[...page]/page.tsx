@@ -20,6 +20,12 @@ export default async function BoardDetailPage({
       <DashboardHeader boardName={data?.board.name} />
 
       <section>
+        {!data?.board?.columns.length && (
+          <div>
+            This board is empty. Create a new column to get started.
+          </div>
+        )}
+
         {data?.board?.columns && data?.board?.columns.map(column => (
           <div key={column?.id + "-" + column.name}>
             {column.name}
