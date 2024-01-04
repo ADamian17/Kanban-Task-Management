@@ -2,16 +2,16 @@
 import React from 'react';
 
 import LogoDesktop from '@/components/LogoDesktop';
+import ThemeButtonToggle from '@/components/ThemeButtonToggle';
+import useSidebarStore from '@/state/useSidebarStore';
 
 import styles from "./DashboardSidebar.module.scss";
-import useSidebarStore from '@/state/useSidebarStore';
-import ThemeButtonToggle from '@/components/ThemeButtonToggle';
 
 type DashboardLayoutProps = {
   children: React.ReactNode
 }
 
-export default function DashboardSidebar({ children }: DashboardLayoutProps) {
+const DashboardSidebar = ({ children }: DashboardLayoutProps) => {
   const { isOpen, setIsOpen } = useSidebarStore(state => state);
 
   const handleClose = () => {
@@ -39,3 +39,5 @@ export default function DashboardSidebar({ children }: DashboardLayoutProps) {
     </aside>
   )
 }
+
+export default DashboardSidebar;

@@ -18,6 +18,7 @@ const LogoDesktop: React.FC<LogoDesktopType> = (props) => {
         width={153}
         height={26}
         alt='kanban icon'
+        priority={true}
       />
     </div>
   )

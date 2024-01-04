@@ -11,54 +11,22 @@ import SidebarDesktopToggleButton from '@/components/SidebarDesktopToggleButton'
 
 import styles from "./Dashboard.module.scss";
 import BoardsMenu from '@/components/BoardsMenu';
+import DashboardHeader from '../DashboardHeader';
 
 type DashboardLayoutProps = {
   children: React.ReactNode
 }
 
-export default async function DashboardLayout({ children }: DashboardLayoutProps) {
-  // const data = await getBoards()
+const DashboardLayout = async ({ children }: DashboardLayoutProps) => (
+  <main className={styles.dashboard}>
+    <DashboardSidebar>
+      <BoardsMenu />
+    </DashboardSidebar>
 
-  return (
-    <main className={styles.dashboard}>
-      <DashboardSidebar>
-        <BoardsMenu />
-      </DashboardSidebar>
+    {children}
 
-      <header className={styles.dashboardHeader}>
-        <figure className={styles.logo}>
-          <Image
-            src="/icons/kanban-mobile.svg"
-            width="24"
-            height="25"
-            alt='kanban icon'
-          />
+    <SidebarDesktopToggleButton />
+  </main>
+)
 
-          <figcaption className={styles.headline}>
-            <h2>Platform Launch</h2>
-
-            <MobileSelectBoard />
-          </figcaption>
-        </figure>
-
-        <Button className={styles.cta} disabled>
-          <svg>
-            <use href="/icons/icons-defs.svg#plus"></use>
-          </svg>
-
-          <span>Add new Task</span>
-        </Button>
-
-        <svg className={styles.kebabMenu}>
-          <use href="/icons/icons-defs.svg#kebab-menu"></use>
-        </svg>
-      </header>
-
-      <section>
-        {children}
-      </section>
-
-      <SidebarDesktopToggleButton />
-    </main>
-  )
-}
+export default DashboardLayout

@@ -11,22 +11,22 @@ export const metadata: Metadata = {
   description: 'Welcome to Kanban, your all-in-one task manager tool designed to revolutionize the way you organize, prioritize, and accomplish your daily tasks. Say goodbye to scattered to-do lists and hello to seamless productivity.',
 }
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: {
   children: React.ReactNode
-}) {
-  return (
-    <html lang="en">
-      <body className={plusJakartaSans.variable}>
-        <HandleTheme />
+}) => (
+  <html lang="en">
+    <body className={plusJakartaSans.variable}>
+      <HandleTheme />
 
-        <DashboardLayout>
-          {children}
-        </DashboardLayout>
+      <DashboardLayout>
+        {children}
+      </DashboardLayout>
 
-        <div id="modal" />
-      </body>
-    </html>
-  )
-}
+      <div id="modal" />
+    </body>
+  </html>
+)
+
+export default RootLayout

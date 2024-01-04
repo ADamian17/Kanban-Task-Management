@@ -1,6 +1,8 @@
 import { getBoards } from "@/utils/getBoards";
-import styles from "./BoardsMenu.module.scss"
 import BoardsMenuItem from "./BoardsMenuItem";
+import Modal from "../UI/Modal";
+
+import styles from "./BoardsMenu.module.scss"
 
 const BoardsMenu = async () => {
   const data = await getBoards()
@@ -22,13 +24,21 @@ const BoardsMenu = async () => {
         {boardList}
 
         <li className={styles.boardItem}>
-          <h3 className={`${styles.copy} ${styles.withPurpleText}`}>
-            <svg>
-              <use href={`/icons/icons-defs.svg#board`}></use>
-            </svg>
+          <Modal>
+            <Modal.Trigger>
+              <h3 className={`${styles.copy} ${styles.withPurpleText}`}>
+                <svg>
+                  <use href={`/icons/icons-defs.svg#board`}></use>
+                </svg>
 
-            + Create New Board
-          </h3>
+                + Create New Board
+              </h3>
+            </Modal.Trigger>
+
+            <Modal.Content>
+              hello
+            </Modal.Content>
+          </Modal>
         </li>
       </ul>
     </div>
