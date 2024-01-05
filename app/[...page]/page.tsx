@@ -1,8 +1,6 @@
-import { redirect } from 'next/navigation'
-
-import { getBoards } from "@/utils/getBoards";
 import { getBoard } from '@/utils/getBoard';
 import DashboardHeader from '@/layouts/DashboardHeader';
+import InitializeBoardStore from '@/components/InitializeBoardStore';
 
 type BoardDetailPageType = {
   params: {
@@ -17,6 +15,8 @@ export default async function BoardDetailPage({
 
   return (
     <>
+      <InitializeBoardStore boardId={data?.board.id} boardName={data?.board.name} />
+
       <DashboardHeader boardName={data?.board.name} />
 
       <section>

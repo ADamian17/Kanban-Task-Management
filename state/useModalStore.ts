@@ -1,3 +1,5 @@
+import { create } from "zustand";
+
 import AddBoard from "@/components/ModalsContent/AddBoard";
 import AddTask from "@/components/ModalsContent/AddTask";
 import DeleteBoard from "@/components/ModalsContent/DeleteBoard";
@@ -6,7 +8,6 @@ import EditBoard from "@/components/ModalsContent/EditBoard";
 import EditTask from "@/components/ModalsContent/EditTask";
 import SelectBoard from "@/components/ModalsContent/SelectBoard";
 import ViewTask from "@/components/ModalsContent/ViewTask";
-import { create } from "zustand";
 
 type UseModalState = {
   modals: Record<string, React.FC>;
