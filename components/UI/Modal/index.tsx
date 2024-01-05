@@ -1,22 +1,24 @@
-import { ModalProvider } from "./ModalProvider";
-import ModalTrigger from "./ModalTrigger";
+import { ComponentPropsWithRef } from "react";
+
+import ModalContent from "./ModalContent";
 
 import styles from "./Modal.module.scss";
-import ModalContent from "./ModalContent";
 
 type ModalType = {
   children: React.ReactNode
-};
+} & ComponentPropsWithRef<"div">;
 
-const Modal = ({ children }: ModalType) => {
+const Modal = ({ children, onClick, ref, ...rest }: ModalType) => {
   return (
-    <ModalProvider>
+    <div
+      className={`${styles.modal}`}
+      onClick={onClick}
+      ref={ref}
+      {...rest}
+    >
       {children}
-    </ModalProvider>
+    </div>
   )
-};
-
-Modal.Trigger = ModalTrigger
-Modal.Content = ModalContent
+}
 
 export default Modal;

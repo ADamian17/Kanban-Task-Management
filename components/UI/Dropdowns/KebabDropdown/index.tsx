@@ -2,13 +2,21 @@
 import { ElementRef, useRef } from "react";
 import Dropdown from "../Dropdown";
 import styles from "./KebabDropdown.module.scss";
+import ModalTrigger from "../../Modal/ModalTrigger";
+import { ModalTriggerType } from "@/state/useModalStore";
 
-type KebabDropdownProps = {
-  children: React.ReactNode
-  className?: string
+type KebabDropdownItem = {
+  label: string,
+  isDelete: boolean,
+  modalTrigger: ModalTriggerType;
 }
 
-const KebabDropdown = ({ children, className }: KebabDropdownProps) => {
+type KebabDropdownProps = {
+  className?: string
+  menuItems: KebabDropdownItem[]
+}
+
+const KebabDropdown = ({ className, menuItems }: KebabDropdownProps) => {
   const btnRef = useRef<ElementRef<"button">>(null)
 
   return (
@@ -20,7 +28,19 @@ const KebabDropdown = ({ children, className }: KebabDropdownProps) => {
       </Dropdown.Button>
 
       <Dropdown.Menu>
-        {children}
+        <ul className={styles.kebabMenuItems}>
+          {
+            menuItems && menuItems.map((menuItem, idx) => (
+              <li
+                key={menuItem.label + "-" + idx}
+              >
+                <ModalTrigger modalTrigger={menuItem.modalTrigger} className={`${styles.menuItem} ${menuItem.isDelete && styles.redTxt}`}>
+                  {menuItem?.label}
+                </ModalTrigger>
+              </li>
+            ))
+          }
+        </ul>
       </Dropdown.Menu>
     </Dropdown>
   )

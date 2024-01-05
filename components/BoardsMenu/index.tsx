@@ -1,3 +1,4 @@
+"use server"
 import { getBoards } from "@/utils/getBoards";
 import BoardsMenuItem from "./BoardsMenuItem";
 import Modal from "../UI/Modal";
@@ -24,7 +25,7 @@ const BoardsMenu = async () => {
         {boardList}
 
         <li className={styles.boardItem}>
-          <Modal>
+          {/* <Modal>
             <Modal.Trigger>
               <h3 className={`${styles.copy} ${styles.withPurpleText}`}>
                 <svg>
@@ -38,7 +39,7 @@ const BoardsMenu = async () => {
             <Modal.Content>
               hello
             </Modal.Content>
-          </Modal>
+          </Modal> */}
         </li>
       </ul>
     </div>

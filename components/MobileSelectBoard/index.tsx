@@ -6,6 +6,7 @@ import ThemeButtonToggle from "../ThemeButtonToggle";
 import styles from "./MobileSelectBoard.module.scss";
 import BoardsMenu from "../BoardsMenu";
 import ModalTriggerWithChevron from "../ModalTriggerWithChevron";
+import ModalContent from "../UI/Modal/ModalContent";
 
 type MobileSelectBoardType = {} & ComponentProps<"div">;
 
@@ -15,11 +16,11 @@ const MobileSelectBoard: React.FC<MobileSelectBoardType> = ({ className, onClick
     <Modal>
       <ModalTriggerWithChevron />
 
-      <Modal.Content position="top" className={styles.modal}>
+      <ModalContent position="top" className={styles.modal}>
         <BoardsMenu />
 
         <ThemeButtonToggle />
-      </Modal.Content>
+      </ModalContent>
     </Modal>
   )
 };

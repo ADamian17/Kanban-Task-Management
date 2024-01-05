@@ -16,19 +16,19 @@
   display: grid;
   padding: 8rem 1.6rem;
 
-  &.top {
-    place-items: start center;
-  }
-
-  &.center {
-    place-items: center;
-  }
-
   .modalContent {
     background-color: var(--accent-bg);
     max-width: 48rem;
     width: 100%;
     padding: 3.2rem;
     border-radius: 0.6rem;
+
+    &.top {
+      place-self: start center;
+    }
+
+    &.center {
+      place-self: center;
+    }
   }
 }

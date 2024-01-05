@@ -5,6 +5,7 @@ import { plusJakartaSans } from '@/assets/fonts'
 import '@/styles/globals.scss'
 import HandleTheme from '@/components/HandleTheme'
 import DashboardLayout from '@/layouts/Dashboard'
+import ModalContainer from '@/containers/ModalContainer'
 
 export const metadata: Metadata = {
   title: 'Kanban',
@@ -24,7 +25,7 @@ const RootLayout = ({
         {children}
       </DashboardLayout>
 
-      <div id="modal" />
+      <ModalContainer />
     </body>
   </html>
 )

@@ -5,8 +5,15 @@ import KebabDropdown from "@/components/UI/Dropdowns/KebabDropdown";
 import MobileSelectBoard from "@/components/MobileSelectBoard";
 
 import styles from "./DashboardHeader.module.scss";
+import { KebabMenuItem } from "@/utils/kebabMenuItem";
+import ModalTriggerWithChevron from "@/components/ModalTriggerWithChevron";
 
 const DashboardHeader = ({ boardName = "" }: { boardName: string }) => {
+  const kebabMenuItems = [
+    { ...new KebabMenuItem("edit board") },
+    { ...new KebabMenuItem("delete board", true) },
+  ];
+
   return (
     <header className={styles.dashboardHeader}>
       <figure className={styles.logo}>
@@ -20,7 +27,7 @@ const DashboardHeader = ({ boardName = "" }: { boardName: string }) => {
         <figcaption className={styles.headline}>
           <h2>{boardName}</h2>
 
-          <MobileSelectBoard />
+          <ModalTriggerWithChevron />
         </figcaption>
       </figure>
 
@@ -32,9 +39,7 @@ const DashboardHeader = ({ boardName = "" }: { boardName: string }) => {
         <span>Add new Task</span>
       </Button>
 
-      <KebabDropdown>
-        he
-      </KebabDropdown>
+      <KebabDropdown menuItems={kebabMenuItems} />
     </header>
   );
 }
