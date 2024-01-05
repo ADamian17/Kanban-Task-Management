@@ -10,18 +10,9 @@ type ModalContainerType = {};
 const ModalContainer: React.FC<ModalContainerType> = (props) => {
   const { modals, modalTrigger, closeModal } = useModalStore(state => state);
   const ModalContent = modalTrigger && modals[modalTrigger]
-  const modalRef = useRef(null)
-
-  const handleClick: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    console.log((e.target as HTMLElement).id);
-
-    if ((e.target as HTMLElement).id !== "modal-content") {
-      closeModal()
-    }
-  }
 
   return (ModalContent &&
-    <Modal onClick={handleClick} ref={modalRef.current}>
+    <Modal>
       <ModalContent />
     </Modal>
   )

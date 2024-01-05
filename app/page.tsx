@@ -1,8 +1,10 @@
 import { redirect } from 'next/navigation'
+import dynamic from 'next/dynamic'
 
 import { getBoards } from "@/utils/getBoards";
-import AddModalEmptyBoards from '@/components/AddModalEmptyBoards';
 import DashboardHeader from '@/layouts/DashboardHeader';
+
+const AddModalEmptyBoards = dynamic(() => import('@/components/AddModalEmptyBoards'), { ssr: false })
 
 export default async function Home({
   params,

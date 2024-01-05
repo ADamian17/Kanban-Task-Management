@@ -1,0 +1,46 @@
+.textFieldWrapper {
+  display: grid;
+  align-items: center;
+
+  &.error {
+    .input,
+    .input:active,
+    .input:focus {
+      border: 1px solid var(--red);
+    }
+
+    &::after {
+      display: initial;
+    }
+  }
+
+  .input {
+    background-color: transparent;
+    border-radius: 0.4rem;
+    border: 1px solid rgba(130, 143, 163, 0.25);
+    padding: 0.8rem 1.6rem;
+
+    &:active,
+    &:focus {
+      border: 1px solid var(--main-Purple);
+      outline: none;
+    }
+  }
+
+  &::after {
+    color: var(--red);
+    content: "Can't be empty";
+    display: none;
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 2.3rem;
+    padding-right: 1.6rem;
+    text-align: right;
+  }
+
+  &::after,
+  .input {
+    grid-row: 1;
+    grid-column: 1;
+  }
+}

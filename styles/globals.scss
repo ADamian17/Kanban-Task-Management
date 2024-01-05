@@ -29,6 +29,9 @@
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
 }
 
 html {
