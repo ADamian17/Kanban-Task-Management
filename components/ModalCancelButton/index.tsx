@@ -1,8 +1,7 @@
 "use client"
-
 import useModalStore from "@/state/useModalStore";
+import Button from "../UI/Button";
 
-import Button from "../../Button";
 
 const ModalCancelButton = () => {
   const { closeModal } = useModalStore(state => state);

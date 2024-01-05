@@ -1,6 +1,8 @@
 import { redirect } from 'next/navigation'
 
 import { getBoards } from "@/utils/getBoards";
+import AddModalEmptyBoards from '@/components/AddModalEmptyBoards';
+import DashboardHeader from '@/layouts/DashboardHeader';
 
 export default async function Home({
   params,
@@ -17,7 +19,8 @@ export default async function Home({
 
   return (
     <>
-      Empty Home Page
+      <AddModalEmptyBoards />
+      <DashboardHeader boardName={""} />
     </>
   )
 }
