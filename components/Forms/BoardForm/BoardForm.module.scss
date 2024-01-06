@@ -1,8 +1,9 @@
-.addBoardContent {
+.boardForm {
   display: grid;
   row-gap: 2.4rem;
 
   .headline {
     color: var(--white);
+    text-transform: capitalize;
   }
 }

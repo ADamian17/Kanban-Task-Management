@@ -12,7 +12,7 @@ const ModalContainer: React.FC<ModalContainerType> = (props) => {
   const ModalContent = modalTrigger && modals[modalTrigger]
 
   return (ModalContent &&
-    <Modal>
+    <Modal onClick={closeModal}>
       <ModalContent />
     </Modal>
   )

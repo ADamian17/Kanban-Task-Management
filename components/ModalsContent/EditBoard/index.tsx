@@ -1,11 +1,12 @@
-import React from "react";
+import BoardForm from "@/components/Forms/BoardForm";
+import ModalContent from "@/components/UI/Modal/ModalContent";
 
-import styles from "./EditBoard.module.scss";
-
-type EditBoardType = {};
-
-const EditBoard: React.FC<EditBoardType> = (props) => {
- return <div>EditBoard</div>
+const EditBoard = () => {
+  return (
+    <ModalContent>
+      <BoardForm headline="edit board" />
+    </ModalContent>
+  )
 };
 
 export default EditBoard;

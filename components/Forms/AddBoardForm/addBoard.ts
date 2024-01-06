@@ -1,10 +1,14 @@
 "use server";
 
-export const addBoard = (formData: FormData) => {
-  const name = formData.get("boardName");
+type AddBoardProps = {
+  boardName: string;
+  columns: Array<{ name: string }>;
+};
 
+export const addBoard = (boardData: AddBoardProps) => {
   const data = {
-    name,
+    name: boardData.boardName,
+    columns: boardData.columns,
   };
 
   console.log(data);

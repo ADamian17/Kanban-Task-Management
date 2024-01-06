@@ -14,10 +14,6 @@ const TextField = ({ value, onChange, error, onSetError, onSetValue, ...rest }: 
   const [internalValue, setInternalValue] = useState(value || "");
   const [internalError, setInternalError] = useState(false);
 
-  useEffect(() => {
-    setInternalError(error || false)
-  }, [error])
-
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { value } = e.target
 

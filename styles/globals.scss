@@ -108,3 +108,11 @@ h3 {
 ul {
   list-style: none;
 }
+
+button {
+  border: none;
+  outline: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+}

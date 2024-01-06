@@ -1,15 +1,10 @@
-import AddBoardForm from "@/components/Forms/AddBoardForm";
+import BoardForm from "@/components/Forms/BoardForm";
 import ModalContent from "@/components/UI/Modal/ModalContent";
-
-import styles from "./AddBoard.module.scss";
-
 
 const AddBoard = () => {
   return (
-    <ModalContent className={styles.addBoardContent}>
-      <h2 className={styles.headline}>Add New Board</h2>
-
-      <AddBoardForm />
+    <ModalContent>
+      <BoardForm headline="Add New Board" />
     </ModalContent>
   )
 };

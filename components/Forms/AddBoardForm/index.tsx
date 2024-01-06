@@ -2,17 +2,19 @@
 import { useState } from "react";
 
 import Button from "@/components/UI/Button";
-import DynamicInputs from "@/components/DynamicInputs";
+import DynamicInputs, { ColumnState } from "@/components/DynamicInputs";
 import TextField from "@/components/UI/TextField";
 import TextFieldGroup from "@/components/UI/TextFieldGroup";
 
 import { addBoard } from "./addBoard";
 
 const AddBoardForm = () => {
+  const [columns, setColumns] = useState<{ name: string }[]>([]);
   const [boardName, setBoardName] = useState({
     value: "",
     error: false
   });
+
 
   const onSetValue = (value: string) => {
     setBoardName(prev => ({ ...prev, value }))
@@ -22,15 +24,21 @@ const AddBoardForm = () => {
     setBoardName(prev => ({ ...prev, error }))
   }
 
-  const handleSubmit = () => {
-    if (boardName.value.trim() === "") {
-      setBoardName(prev => ({ ...prev, error: true }))
-      return
-    };
+  const handleSubmit = async () => {
+    if (boardName.value.trim() === "" || columns.some(col => col.name.trim() === "")) return;
 
-    const formData = new FormData()
-    formData.append("boardName", boardName.value)
-    addBoard(formData)
+    const data = {
+      boardName: boardName.value,
+      columns
+    }
+
+    addBoard(data)
+  }
+
+  const onInputIncrease = (inputs: ColumnState[]) => {
+    const formatedColumns = inputs.map(input => ({
+      name: input.value
+    }))
   }
 
   return (
@@ -47,7 +55,10 @@ const AddBoardForm = () => {
         />
       </TextFieldGroup>
 
-      <DynamicInputs buttonTxt="+ Add New Column">
+      <DynamicInputs
+        buttonTxt="+ Add New Column"
+        onInputIncrease={onInputIncrease}
+      >
         <Button onClick={handleSubmit}>Create New Board</Button>
       </DynamicInputs>
     </>

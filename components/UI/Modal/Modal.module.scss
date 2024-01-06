@@ -6,7 +6,6 @@
 }
 
 .modal {
-  background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
   left: 0;
   position: fixed;
@@ -15,6 +14,16 @@
   z-index: 5;
   display: grid;
   padding: 8rem 1.6rem;
+
+  .modalBackdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
 
   .modalContent {
     background-color: var(--accent-bg);

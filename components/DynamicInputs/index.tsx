@@ -9,16 +9,18 @@ import TextField from "../UI/TextField";
 type DynamicInputsType = {
   children: React.ReactNode
   buttonTxt: string;
+  onInputIncrease: (inputs: ColumnState[]) => void
 };
 
-type ColumnState = {
+export type ColumnState = {
   value: string
   error: boolean
 }
 
 const DynamicInputs: React.FC<DynamicInputsType> = ({
   children,
-  buttonTxt
+  buttonTxt,
+  onInputIncrease
 }) => {
   const [colsNum, setColsNum] = useState(0)
   const [columns, setColumns] = useState<Map<string, ColumnState>>(new Map())
@@ -32,6 +34,7 @@ const DynamicInputs: React.FC<DynamicInputsType> = ({
         error: false
       })
 
+      onInputIncrease(Array.from(prev.values()))
       return prev
     })
   }
@@ -46,6 +49,7 @@ const DynamicInputs: React.FC<DynamicInputsType> = ({
     setColumns(prev => {
       prev.delete((e.target as HTMLElement).id)
 
+      onInputIncrease(Array.from(prev.values()))
       return prev
     })
   }
@@ -62,6 +66,8 @@ const DynamicInputs: React.FC<DynamicInputsType> = ({
       updateValue.value = value
       prev.set(name, updateValue)
 
+      onInputIncrease(Array.from(prev.values()))
+
       return prev
     })
   }
@@ -77,6 +83,8 @@ const DynamicInputs: React.FC<DynamicInputsType> = ({
 
       updateValue.error = error
       prev.set(name, updateValue)
+
+      onInputIncrease(Array.from(prev.values()))
 
       return prev
     })
@@ -96,7 +104,11 @@ const DynamicInputs: React.FC<DynamicInputsType> = ({
                 placeholder="e.g. todo"
                 value={colData.value}
               />
-              <button id={colName} onClick={removeCol}>remove</button>
+              <button id={colName} onClick={removeCol} className={styles.icon}>
+                <svg>
+                  <use href="/icons/icons-defs.svg#cross"></use>
+                </svg>
+              </button>
             </div>
           ))
         }

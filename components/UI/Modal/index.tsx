@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef } from "react";
+import { ComponentProps } from "react";
 
 import ModalContent from "./ModalContent";
 
@@ -6,16 +6,18 @@ import styles from "./Modal.module.scss";
 
 type ModalType = {
   children: React.ReactNode
-} & ComponentPropsWithRef<"div">;
+} & ComponentProps<"div">;
 
-const Modal = ({ children, onClick, ref, ...rest }: ModalType) => {
+const Modal = ({ children, onClick, ...rest }: ModalType) => {
   return (
     <div
       className={`${styles.modal}`}
-      onClick={onClick}
-      ref={ref}
       {...rest}
     >
+      <div className={`${styles.modalBackdrop}`}
+        onClick={onClick}
+      />
+
       {children}
     </div>
   )
