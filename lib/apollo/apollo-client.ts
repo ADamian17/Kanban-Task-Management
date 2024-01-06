@@ -1,5 +1,14 @@
-import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
+import {
+  ApolloClient,
+  createHttpLink,
+  InMemoryCache,
+  from,
+} from "@apollo/client";
+import { onError } from "@apollo/client/link/error";
+
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (networkError) console.log(`[Network error]: ${networkError}`);
+});
 
 const httpLink = createHttpLink({
   uri: process.env.NEXT_PUBLIC_GQL_ENDPOINT,
@@ -7,7 +16,7 @@ const httpLink = createHttpLink({
 
 const createApolloClient = () => {
   return new ApolloClient({
-    link: httpLink,
+    link: from([errorLink, httpLink]),
     cache: new InMemoryCache(),
   });
 };

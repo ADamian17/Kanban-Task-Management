@@ -3,6 +3,7 @@ import gql from "graphql-tag";
 
 import createApolloClient from "@/lib/apollo/apollo-client";
 import { Board } from "@/types";
+import { notFound } from "next/navigation";
 
 export const getBoard = async (
   uri: string,
@@ -11,7 +12,7 @@ export const getBoard = async (
 }> => {
   const client = createApolloClient();
 
-  const { data } = await client.query({
+  const { data, errors } = await client.query({
     query: gql`
       query BoardQuery($uri: String!) {
         board(uri: $uri) {
@@ -39,7 +40,16 @@ export const getBoard = async (
     variables: {
       uri,
     },
+    errorPolicy: "all",
   });
+
+  if (errors && errors.length > 0) {
+    errors.forEach((error) => {
+      if (error.message === "No Board found") {
+        notFound();
+      }
+    });
+  }
 
   return data;
 };

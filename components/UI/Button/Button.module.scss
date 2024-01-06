@@ -46,6 +46,7 @@
 
   &:hover {
     background-color: var(--_btn-bg-hover);
+    cursor: pointer;
   }
 
   @include media-query("lg") {

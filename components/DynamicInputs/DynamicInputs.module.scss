@@ -1,0 +1,14 @@
+.wrapper {
+  display: grid;
+  row-gap: 1.2rem;
+
+  .inputWrapper {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    column-gap: 1.6rem;
+  }
+
+  .btn {
+    margin-bottom: 1.2rem;
+  }
+}
