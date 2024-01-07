@@ -19,6 +19,7 @@ const TextFieldWithCross = ({
   inputIconClickHandler,
   onSetError,
   onSetValue,
+  placeholder,
   value,
 }: TextFieldWithCrossProps) => {
   const [internalVal, setInternalVal] = useState(value || "")
@@ -44,6 +45,7 @@ const TextFieldWithCross = ({
         onBlur={handleBlur}
         onChange={handleChange}
         value={internalVal}
+        placeholder={placeholder}
       />
 
       <svg
