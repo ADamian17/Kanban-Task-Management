@@ -4,7 +4,10 @@ import ModalContent from "@/components/UI/Modal/ModalContent";
 const AddBoard = () => {
   return (
     <ModalContent>
-      <BoardForm headline="Add New Board" />
+      <BoardForm
+        headline="Add New Board"
+        submitBtnTxt="create new board"
+      />
     </ModalContent>
   )
 };

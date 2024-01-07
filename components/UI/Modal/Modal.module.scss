@@ -1,3 +1,5 @@
+@use "breakpoints" as *;
+
 .modalTrigger {
   background-color: transparent;
   border: none;
@@ -6,23 +8,22 @@
 }
 
 .modal {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr 1.6rem;
   height: 100%;
   left: 0;
+  min-height: 100vh;
+  overflow-y: scroll;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 5;
-  display: grid;
-  padding: 8rem 1.6rem;
 
   .modalBackdrop {
     background-color: rgba(0, 0, 0, 0.5);
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
     z-index: -1;
+    grid-column: 1 / -1;
+    grid-row: 1;
   }
 
   .modalContent {
@@ -30,8 +31,10 @@
     max-width: 48rem;
     width: 100%;
     padding: 2.4rem;
-    // padding: 3.2rem;
     border-radius: 0.6rem;
+    margin: 8rem 0;
+    grid-column: 2 / 2;
+    grid-row: 1;
 
     &.top {
       place-self: start center;
@@ -39,6 +42,12 @@
 
     &.center {
       place-self: center;
+    }
+  }
+
+  @include media-query("md") {
+    .modalContent {
+      padding: 3.2rem;
     }
   }
 }
