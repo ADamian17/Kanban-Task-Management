@@ -6,11 +6,12 @@ import { useBoardFormStore } from "@/state/useBoardFormStore";
 
 const BoardColumnsFields = () => {
   const {
-    onSetError,
-    onSetValue,
-  } = useBoardFormCtx();
-
-  const { columns, addColumn, removeColumn } = useBoardFormStore()
+    columns,
+    addColumn,
+    removeColumn,
+    onSetColumnValue,
+    onSetColumnError
+  } = useBoardFormStore();
 
   return (
     <TextFieldGroup label="board Columns">
@@ -19,8 +20,8 @@ const BoardColumnsFields = () => {
         inputs={columns}
         onAddInput={addColumn}
         onRemoveInput={removeColumn}
-        onSetError={onSetError}
-        onSetValue={onSetValue}
+        onSetError={onSetColumnError}
+        onSetValue={onSetColumnValue}
         placeholderTxt="e.g Todo"
       />
     </TextFieldGroup>
