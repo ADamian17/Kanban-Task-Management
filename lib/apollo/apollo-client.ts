@@ -1,14 +1,11 @@
-import {
-  ApolloClient,
-  createHttpLink,
-  InMemoryCache,
-  from,
-} from "@apollo/client";
-import { onError } from "@apollo/client/link/error";
+import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client";
+import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 
-const errorLink = onError(({ graphQLErrors, networkError }) => {
-  if (networkError) console.log(`[Network error]: ${networkError}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  // Adds messages only in a dev environment
+  loadDevMessages();
+  loadErrorMessages();
+}
 
 const httpLink = createHttpLink({
   uri: process.env.NEXT_PUBLIC_GQL_ENDPOINT,
@@ -16,9 +13,11 @@ const httpLink = createHttpLink({
 
 const createApolloClient = () => {
   return new ApolloClient({
-    link: from([errorLink, httpLink]),
+    link: httpLink,
     cache: new InMemoryCache(),
   });
 };
 
 export default createApolloClient;
+
+export const apolloClient = createApolloClient();

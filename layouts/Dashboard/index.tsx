@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const MobileSelectBoard = dynamic(() => import('@/components/MobileSelectBoard'), { ssr: false });
 
-import { getBoards } from '@/utils/getBoards';
+import { getBoards } from '@/utils/board/getBoards';
 import Button from '@/components/UI/Button'
 import DashboardSidebar from '../DashboardSidebar';
 import SidebarDesktopToggleButton from '@/components/SidebarDesktopToggleButton';

@@ -1,11 +1,9 @@
 "use client"
 import React from 'react'
-
 import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
 import styles from "./BoardsMenu.module.scss"
-import Link from 'next/link'
-import { setUrl } from '@/utils/setUrl'
 
 type BoardsMenuItemType = {
   name: string

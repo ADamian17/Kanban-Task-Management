@@ -2,17 +2,22 @@ import { StateCreator } from "zustand";
 
 import { InputProps } from "@/components/DynamicInputs";
 
-export type ColumnsSlice = {
+type ColumnsState = {
   mappedColumns: Record<string, InputProps>;
   columns: InputProps[];
+};
+
+type ColumnsActions = {
   addColumn: () => void;
   removeColumn: (id: string) => void;
   onSetColumnError: (id: string, error: boolean) => void;
   onSetColumnValue: (id: string, value: string) => void;
-  setResetColumnsName: () => void;
+  resetColumnsName: () => void;
 };
 
-const initialState = {
+export type ColumnsSlice = ColumnsActions & ColumnsState;
+
+const initialState: ColumnsState = {
   mappedColumns: {},
   columns: [],
 };
@@ -86,5 +91,5 @@ export const createColumnsSlice: StateCreator<ColumnsSlice> = (set, get) => ({
       columns: updatedColumns,
     });
   },
-  setResetColumnsName: () => set(initialState),
+  resetColumnsName: () => set(initialState),
 });

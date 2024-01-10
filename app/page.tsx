@@ -1,9 +1,10 @@
 import { redirect } from 'next/navigation'
 import dynamic from 'next/dynamic'
 
-import { getBoards } from "@/utils/getBoards";
+import { getBoards } from "@/utils/board/getBoards";
 import DashboardHeader from '@/layouts/DashboardHeader';
 import ModalTrigger from '@/components/UI/Modal/ModalTrigger';
+import Link from 'next/link';
 
 const AddModalEmptyBoards = dynamic(() => import('@/components/AddModalEmptyBoards'), { ssr: false })
 
@@ -27,9 +28,9 @@ export default async function Home({
       <div>
         Create a Board to get started.
 
-        <ModalTrigger modalTrigger={'add-board'}>
+        <Link href="/add-board">
           + Add New Board
-        </ModalTrigger>
+        </Link>
       </div>
     </>
   )

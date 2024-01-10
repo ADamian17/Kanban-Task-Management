@@ -1,6 +1,5 @@
-import { BoardFormProvider } from "./board-form-components/BoardFormProvider";
-
 import BoardColumnsFields from "./board-form-components/BoardColumnsFields";
+import BoardFormWrapper from "./board-form-components/BoardFormWrapper";
 import BoardNameTextField from "./board-form-components/BoardNameTextField";
 import Button from "@/components/UI/Button";
 
@@ -21,13 +20,13 @@ const BoardForm = ({ headline, isEdit, submitBtnTxt }: BoardFormProps) => (
   <div className={styles.boardForm}>
     <h2 className={styles.headline}>{headline}</h2>
 
-    <BoardFormProvider isEdit={isEdit}>
+    <BoardFormWrapper>
       <BoardNameTextField />
 
       <BoardColumnsFields />
 
       <Button type="submit">{submitBtnTxt}</Button>
-    </BoardFormProvider>
+    </BoardFormWrapper>
   </div>
 )
 

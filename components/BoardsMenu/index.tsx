@@ -1,7 +1,8 @@
 "use server"
-import { getBoards } from "@/utils/getBoards";
+import Link from "next/link";
+
+import { getBoards } from "@/utils/board/getBoards";
 import BoardsMenuItem from "./BoardsMenuItem";
-import Modal from "../UI/Modal";
 
 import styles from "./BoardsMenu.module.scss"
 
@@ -25,21 +26,15 @@ const BoardsMenu = async () => {
         {boardList}
 
         <li className={styles.boardItem}>
-          {/* <Modal>
-            <Modal.Trigger>
-              <h3 className={`${styles.copy} ${styles.withPurpleText}`}>
-                <svg>
-                  <use href={`/icons/icons-defs.svg#board`}></use>
-                </svg>
+          <Link href="/add-board" className={styles.link}>
+            <h3 className={`${styles.copy} ${styles.withPurpleText}`}>
+              <svg>
+                <use href={`/icons/icons-defs.svg#board`}></use>
+              </svg>
 
-                + Create New Board
-              </h3>
-            </Modal.Trigger>
-
-            <Modal.Content>
-              hello
-            </Modal.Content>
-          </Modal> */}
+              + Create New Board
+            </h3>
+          </Link>
         </li>
       </ul>
     </div>

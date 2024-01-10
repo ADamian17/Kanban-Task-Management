@@ -1,6 +1,6 @@
 "use client"
 
-import { deleteBoard } from "@/utils/deleteBoard";
+import { deleteBoard } from "@/utils/board/deleteBoard";
 import Button from "../UI/Button";
 
 type DeleteBoardButtonType = {

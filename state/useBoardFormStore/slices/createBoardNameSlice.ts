@@ -8,7 +8,7 @@ type BoardNameState = {
 type BoardNameActions = {
   setValue: (value: string) => void;
   setError: (error: boolean) => void;
-  setResetBoardName: () => void;
+  resetBoardName: () => void;
 };
 
 export type BoardNameSlice = BoardNameActions & BoardNameState;
@@ -22,5 +22,5 @@ export const createBoardNameSlice: StateCreator<BoardNameSlice> = (set) => ({
   ...initialState,
   setError: (error) => set({ error }),
   setValue: (value) => set({ value }),
-  setResetBoardName: () => set(initialState),
+  resetBoardName: () => set(initialState),
 });

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 
 import { plusJakartaSans } from '@/assets/fonts'
+import DashboardLayout from '@/layouts/Dashboard'
+import HandleTheme from '@/components/HandleTheme'
+import ModalContainer from '@/containers/ModalContainer'
 
 import '@/styles/globals.scss'
-import HandleTheme from '@/components/HandleTheme'
-import DashboardLayout from '@/layouts/Dashboard'
-import ModalContainer from '@/containers/ModalContainer'
 
 export const metadata: Metadata = {
   title: 'Kanban',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const RootLayout = ({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
 }) => (
   <html lang="en">
     <body className={plusJakartaSans.variable}>
@@ -29,5 +29,7 @@ const RootLayout = ({
     </body>
   </html>
 )
+
+export const revalidate = 500
 
 export default RootLayout

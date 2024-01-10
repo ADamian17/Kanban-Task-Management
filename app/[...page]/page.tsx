@@ -1,4 +1,6 @@
-import { getBoard } from '@/utils/getBoard';
+import { revalidatePath } from 'next/cache';
+
+import { getBoard } from '@/utils/board/getBoard';
 import DashboardHeader from '@/layouts/DashboardHeader';
 import InitializeBoardStore from '@/components/InitializeBoardStore';
 
@@ -12,6 +14,7 @@ export default async function BoardDetailPage({
   params,
 }: BoardDetailPageType) {
   const data = await getBoard(`/${params?.page?.join("/")}/`)
+  revalidatePath(`/${params?.page?.join("/")}/`)
 
   return (
     <>

@@ -9,4 +9,8 @@
     display: grid;
     row-gap: 2.4rem;
   }
+
+  .errMsg {
+    color: var(--red);
+  }
 }

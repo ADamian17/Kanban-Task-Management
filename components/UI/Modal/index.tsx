@@ -1,21 +1,29 @@
+"use client"
 import { ComponentProps } from "react";
-
-import ModalContent from "./ModalContent";
+import { useRouter } from 'next/navigation'
 
 import styles from "./Modal.module.scss";
 
 type ModalType = {
   children: React.ReactNode
+  closeUrl: string
 } & ComponentProps<"div">;
 
-const Modal = ({ children, onClick, ...rest }: ModalType) => {
+const Modal = ({ children, onClick, closeUrl, ...rest }: ModalType) => {
+  const router = useRouter()
+
+  const handleClick: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    onClick && onClick(e)
+    router.back()
+  }
+
   return (
     <div
       className={`${styles.modal}`}
       {...rest}
     >
       <div className={`${styles.modalBackdrop}`}
-        onClick={onClick}
+        onClick={handleClick}
       />
 
       {children}

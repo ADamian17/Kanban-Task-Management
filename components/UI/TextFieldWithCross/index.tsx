@@ -1,5 +1,5 @@
 "use client"
-import { ChangeEventHandler, MouseEventHandler, useState } from "react"
+import { ChangeEventHandler, MouseEventHandler, useEffect, useState } from "react"
 import TextField from "../TextField"
 
 import styles from "./TextFieldWithCross.module.scss"
@@ -25,6 +25,10 @@ const TextFieldWithCross = ({
 }: TextFieldWithCrossProps) => {
   const [internalVal, setInternalVal] = useState(value || "")
   const [internalErr, setInternalErr] = useState(error || false)
+
+  useEffect(() => {
+    setInternalErr(error)
+  }, [error])
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { id, value } = e.target

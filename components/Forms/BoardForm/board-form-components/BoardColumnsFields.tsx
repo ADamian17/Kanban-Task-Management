@@ -1,6 +1,5 @@
+"use client"
 import DynamicInputs from "@/components/DynamicInputs";
-import { useBoardFormCtx } from "./BoardFormProvider";
-
 import TextFieldGroup from "@/components/UI/TextFieldGroup";
 import { useBoardFormStore } from "@/state/useBoardFormStore";
 
@@ -11,7 +10,7 @@ const BoardColumnsFields = () => {
     removeColumn,
     onSetColumnValue,
     onSetColumnError
-  } = useBoardFormStore();
+  } = useBoardFormStore(state => state);
 
   return (
     <TextFieldGroup label="board Columns">
