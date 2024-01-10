@@ -1,4 +1,5 @@
-import { ChangeEventHandler, ComponentProps, MouseEventHandler, useState } from "react"
+"use client"
+import { ChangeEventHandler, MouseEventHandler, useState } from "react"
 import TextField from "../TextField"
 
 import styles from "./TextFieldWithCross.module.scss"
@@ -26,14 +27,24 @@ const TextFieldWithCross = ({
   const [internalErr, setInternalErr] = useState(error || false)
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    onSetValue(e.target.id, e.target.value)
-    setInternalVal(e.target.value)
+    const { id, value } = e.target
+
+    if (internalErr) {
+      onSetError(id, false)
+      setInternalErr(false)
+    }
+
+    onSetValue(id, value)
+    setInternalVal(value)
   }
 
   const handleBlur: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const error = e.target.value.trim() === ""
-    onSetError(e.target.id, error)
-    setInternalErr(error)
+    const isEmpty = e.target.value.trim() === "";
+
+    if (isEmpty) {
+      onSetError(e.target.id, true)
+      setInternalErr(true)
+    }
   }
 
   return (
