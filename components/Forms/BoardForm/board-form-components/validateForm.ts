@@ -1,34 +1,37 @@
-import { InputProps } from "@/components/DynamicInputs";
+import { z } from "zod";
 
 type ValidateFromProps = {
-  boardName: Pick<InputProps, "error" | "value">;
+  boardName: FormDataEntryValue | null;
+  columns: FormDataEntryValue[];
   setBoardNameError: (error: boolean) => void;
-  // columns: [string, InputDataType][];
+  setColumnError: (id: string, error: boolean) => void;
 };
 
 export function validateForm({
   boardName,
+  columns,
   setBoardNameError,
+  setColumnError,
 }: ValidateFromProps) {
   let isValid = true;
 
-  // if (boardName.value.trim() === "") {
-  //   setBoardNameError(true);
-  //   isValid = false;
-  // }
+  const name = z.string().min(1);
+  const validatedBoardName = name.safeParse(boardName);
 
-  // columns.forEach(([colId, col]) => {
-  //   if (col.value.trim() === "") {
-  //     const updatedValue = { ...col };
-  //     updatedValue.error = true;
+  if (!validatedBoardName.success) {
+    setBoardNameError(!validatedBoardName.success);
+    isValid = false;
+  }
 
-  //     setColumnsMap((prev) => {
-  //       prev.set(colId, updatedValue);
+  columns.forEach((col, idx) => {
+    const column = z.string().min(1);
+    const validatedCol = column.safeParse(col);
 
-  //       return prev;
-  //     });
-  //   }
-  // });
+    if (!validatedCol?.success) {
+      setColumnError(`col-${idx}`, !validatedCol?.success);
+      isValid = false;
+    }
+  });
 
   return isValid;
 }
