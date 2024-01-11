@@ -1,37 +1,23 @@
-import { redirect } from 'next/navigation'
-import dynamic from 'next/dynamic'
-
-import { getBoards } from "@/utils/board/getBoards";
-import DashboardHeader from '@/layouts/DashboardHeader';
-import ModalTrigger from '@/components/UI/Modal/ModalTrigger';
 import Link from 'next/link';
+// background - color: #8EC5FC;
+// background - image: linear - gradient(62deg, #8EC5FC 0 %, #E0C3FC 100 %);
 
-const AddModalEmptyBoards = dynamic(() => import('@/components/AddModalEmptyBoards'), { ssr: false })
-
-export default async function Home({
-  params,
-}: {
-  params: {
-    page: string[]
-  }
-}) {
-  const data = await getBoards()
-
-  if (!params?.page && data?.boards?.length > 0) {
-    redirect(data?.boards[0].uri)
-  }
-
+export default async function Home() {
   return (
-    <>
-      <DashboardHeader boardName={""} />
+    <section>
+      <div />
 
       <div>
-        Create a Board to get started.
+        <h1>Kanban task management web app</h1>
 
-        <Link href="/add-board">
-          + Add New Board
+        <p>
+          Welcome to our innovative demo app, born out of a challenge posed by Frontend Mentor. Our task management application, inspired by their Kanban challenge, is a fully-functional solution tailored for the Next JS framework. With a dynamic interface and customizable features, users can effortlessly organize tasks while enjoying the added convenience of a light/dark mode toggle. Seamlessly integrating with the Next JS framework, this app not only meets but exceeds the requirements of the Frontend Mentor challenge. Welcome to a new era of task management, where efficiency meets creativity in a sleek and adaptable package.
+        </p>
+
+        <Link href="/dashboard">
+          Go to Dashboard
         </Link>
       </div>
-    </>
+    </section>
   )
 }
