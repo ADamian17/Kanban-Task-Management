@@ -1,12 +1,11 @@
 import Image from "next/image";
 
+import { KebabMenuItem } from "@/utils/kebabMenuItem";
 import Button from "@/components/UI/Button";
 import KebabDropdown from "@/components/UI/Dropdowns/KebabDropdown";
-import MobileSelectBoard from "@/components/MobileSelectBoard";
+import ModalTriggerWithChevron from "@/components/ModalTriggerWithChevron";
 
 import styles from "./DashboardHeader.module.scss";
-import { KebabMenuItem } from "@/utils/kebabMenuItem";
-import ModalTriggerWithChevron from "@/components/ModalTriggerWithChevron";
 
 const DashboardHeader = ({ boardName = "", pathname = "" }: { boardName: string, pathname: string }) => {
   const kebabMenuItems = [

@@ -1,4 +1,3 @@
-import HandleTheme from "@/components/HandleTheme";
 import DashboardLayout from "@/layouts/Dashboard";
 
 export default function DashboardRootLayout(props: {

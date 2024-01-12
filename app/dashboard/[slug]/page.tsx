@@ -5,8 +5,6 @@ import DashboardHeader from "@/layouts/DashboardHeader";
 
 const BoardDetailPage = async ({ params }: { params: { slug: string } }) => {
   const data = await getBoard(`/${params?.slug}/`)
-  revalidatePath(`/${params?.slug}/`)
-  console.log({ data });
 
   return (
     <>

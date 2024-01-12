@@ -1,28 +1,48 @@
 "use server";
 import { redirect } from "next/navigation";
-import gql from "graphql-tag";
-import { revalidatePath } from "next/cache";
+import { gql } from "@apollo/client";
 
 import { apolloClient } from "@/lib/apollo/apollo-client";
+import { GET_BOARDS } from "../queries/board.queries";
 
-export const deleteBoard = async (deleteBoardId: number | null) => {
-  const { data, errors } = await apolloClient.mutate({
+export const deleteBoard = async (formData: FormData) => {
+  const deleteBoardId = Number(formData.get("boardId"));
+
+  const { errors } = await apolloClient.mutate({
     mutation: gql`
       mutation DeleteBoard($deleteBoardId: Int!) {
         deleteBoard(id: $deleteBoardId) {
           id
-          name
         }
       }
     `,
     variables: {
       deleteBoardId,
     },
+    update(cache, { data }) {
+      console.log(data);
+
+      // cache.modify({
+      //   fields: {
+      //     todos(existingTodos = []) {
+      //       const newTodoRef = cache.writeFragment({
+      //         data: addTodo,
+      //         fragment: gql`
+      //           fragment NewTodo on Todo {
+      //             id
+      //             type
+      //           }
+      //         `
+      //       });
+      //       return [...existingTodos, newTodoRef];
+      //     }
+      //   }
+      // });
+    },
     errorPolicy: "all",
   });
 
-  if (data?.deleteBoard?.id) {
-    revalidatePath("/");
-    redirect("/");
-  }
+  if (errors) return;
+
+  redirect("/dashboard/");
 };

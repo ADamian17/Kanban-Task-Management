@@ -1,29 +1,19 @@
-"use client"
-
 import { deleteBoard } from "@/utils/board/deleteBoard";
 import Button from "../UI/Button";
-import { redirect } from "next/navigation";
-import { revalidateTag } from "next/cache";
+import styles from "./DeleteBoardButton.module.scss"
 
 type DeleteBoardButtonType = {
-  boardId: number | null
+  boardId: string | number | null
 };
 
-const DeleteBoardButton: React.FC<DeleteBoardButtonType> = ({ boardId }) => {
-  const handleClick = () => {
-    deleteBoard(boardId)
-    revalidateTag("dashboard")
-    redirect("/dashboard/")
-  }
+const DeleteBoardButton: React.FC<DeleteBoardButtonType> = ({ boardId }) => (
+  <form action={deleteBoard} className={styles.wrapper}>
+    <input type="hidden" value={boardId!} name="boardId" />
 
-  return (
-    <Button
-      variant="destructive"
-      onClick={handleClick}
-    >
+    <Button type="submit" variant="destructive">
       Delete
     </Button>
-  )
-};
+  </form>
+)
 
 export default DeleteBoardButton;

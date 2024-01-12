@@ -1,10 +1,9 @@
 "use server";
-import { GraphQLError } from "graphql";
+import { redirect } from "next/navigation";
 
 import { createBoard } from "@/utils/board/createBoard";
 
 type AddBoardReturn = Promise<{
-  uri: string | null;
   error?: {
     message?: string;
   } | null;
@@ -22,21 +21,21 @@ export const addBoard = async (boardFormData: FormData): AddBoardReturn => {
     columns,
   });
 
-  if (errors) {
-    const [error] = errors;
+  if (!errors) {
+    redirect(`/dashboard${data?.createBoard?.uri}`);
+  }
 
-    if (error.message.includes("Unique constraint failed")) {
-      return {
-        error: {
-          message: "Board name needs to be unique",
-        },
-        uri: null,
-      };
-    }
+  const [error] = errors;
+
+  if (error.message.includes("Unique constraint failed")) {
+    return {
+      error: {
+        message: "Board name needs to be unique",
+      },
+    };
   }
 
   return {
-    uri: data?.createBoard?.uri,
     error: null,
   };
 };
