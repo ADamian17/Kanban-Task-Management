@@ -13,8 +13,6 @@ const DashboardHeader = ({ boardName = "", pathname = "" }: { boardName: string,
     { ...new KebabMenuItem("delete board", `/dashboard/delete-board/${pathname}`, true) },
   ];
 
-  console.log(pathname);
-
   return (
     <header className={styles.dashboardHeader}>
       <figure className={styles.logo}>
