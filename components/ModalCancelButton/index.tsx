@@ -1,13 +1,14 @@
 "use client"
 import useModalStore from "@/state/useModalStore";
 import Button from "../UI/Button";
+import { useRouter } from "next/navigation";
 
 
 const ModalCancelButton = () => {
-  const { closeModal } = useModalStore(state => state);
+  const router = useRouter()
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    closeModal()
+    router.back()
   }
 
   return (

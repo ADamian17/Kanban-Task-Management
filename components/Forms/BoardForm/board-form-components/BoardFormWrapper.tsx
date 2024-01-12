@@ -1,6 +1,6 @@
 "use client"
 import { useRef, ElementRef, useState } from "react";
-import { useRouter, redirect } from "next/navigation"
+
 import { addBoard } from "./boardFormActions";
 import { useBoardFormStore } from "@/state/useBoardFormStore";
 import { validateForm } from "./validateForm";
@@ -13,10 +13,10 @@ type ModalProviderProps = {
 }
 
 const BoardFormWrapper = ({ children, isEdit }: ModalProviderProps) => {
-  const router = useRouter()
-  const formRef = useRef<ElementRef<"form">>(null);
-  const [errMsg, setErrMsg] = useState<string | null>(null)
   const { setError, onSetColumnError, resetBoardName, resetColumnsName } = useBoardFormStore(state => state);
+
+  const [errMsg, setErrMsg] = useState<string | null>(null)
+  const formRef = useRef<ElementRef<"form">>(null);
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
@@ -31,19 +31,16 @@ const BoardFormWrapper = ({ children, isEdit }: ModalProviderProps) => {
 
     if (!isValid) return;
 
-    const { uri, error } = await addBoard(data);
+    const res = await addBoard(data);
 
-    if (error && error?.message) {
-      setErrMsg(error?.message)
+    if (res?.error && res?.error?.message) {
+      setErrMsg(res?.error?.message)
       return;
     };
-    if (uri) {
-      resetBoardName()
-      resetColumnsName()
-      setErrMsg("")
 
-      router.push(uri)
-    }
+    resetBoardName()
+    resetColumnsName()
+    setErrMsg("")
   }
 
   return (

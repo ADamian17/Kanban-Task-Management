@@ -1,9 +1,8 @@
 "use server";
-import gql from "graphql-tag";
 
 import createApolloClient from "@/lib/apollo/apollo-client";
 import { Board } from "@/types";
-import { revalidatePath } from "next/cache";
+import { GET_BOARDS } from "../queries/board.queries";
 
 export const getBoards = async (): Promise<{
   boards: Pick<Board, "id" | "name" | "uri">[];
@@ -11,15 +10,7 @@ export const getBoards = async (): Promise<{
   const client = createApolloClient();
 
   const { data } = await client.query({
-    query: gql`
-      query Boards {
-        boards {
-          id
-          name
-          uri
-        }
-      }
-    `,
+    query: GET_BOARDS,
   });
 
   return data;

@@ -14,7 +14,7 @@ export const getBoard = async (
 
   const { data, errors } = await client.query({
     query: gql`
-      query BoardQuery($uri: String!) {
+      query GetBoardQuery($uri: String!) {
         board(uri: $uri) {
           name
           id

@@ -4,11 +4,12 @@ import Dropdown from "../Dropdown";
 import styles from "./KebabDropdown.module.scss";
 import ModalTrigger from "../../Modal/ModalTrigger";
 import { ModalTriggerType } from "@/state/useModalStore";
+import Link from "next/link";
 
 type KebabDropdownItem = {
   label: string,
   isDelete: boolean,
-  modalTrigger: ModalTriggerType;
+  uri: string;
 }
 
 type KebabDropdownProps = {
@@ -34,9 +35,9 @@ const KebabDropdown = ({ className, menuItems }: KebabDropdownProps) => {
               <li
                 key={menuItem.label + "-" + idx}
               >
-                <ModalTrigger modalTrigger={menuItem.modalTrigger} className={`${styles.menuItem} ${menuItem.isDelete && styles.redTxt}`}>
+                <Link passHref href={menuItem.uri} className={`${styles.menuItem} ${menuItem.isDelete && styles.redTxt}`}>
                   {menuItem?.label}
-                </ModalTrigger>
+                </Link>
               </li>
             ))
           }

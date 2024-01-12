@@ -26,7 +26,7 @@ const BoardsMenu = async () => {
         {boardList}
 
         <li className={styles.boardItem}>
-          <Link href="/add-board" className={styles.link}>
+          <Link href="/dashboard/add-board/" className={styles.link}>
             <h3 className={`${styles.copy} ${styles.withPurpleText}`}>
               <svg>
                 <use href={`/icons/icons-defs.svg#board`}></use>

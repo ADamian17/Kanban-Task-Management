@@ -1,9 +1,7 @@
 import type { Metadata } from 'next'
 
 import { plusJakartaSans } from '@/assets/fonts'
-import DashboardLayout from '@/layouts/Dashboard'
 import HandleTheme from '@/components/HandleTheme'
-import ModalContainer from '@/containers/ModalContainer'
 
 import '@/styles/globals.scss'
 
@@ -21,11 +19,7 @@ const RootLayout = ({
     <body className={plusJakartaSans.variable}>
       <HandleTheme />
 
-      <DashboardLayout>
-        {children}
-      </DashboardLayout>
-
-      <ModalContainer />
+      {children}
     </body>
   </html>
 )
