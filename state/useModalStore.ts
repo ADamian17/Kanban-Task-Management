@@ -1,7 +1,5 @@
 import { create } from "zustand";
 
-import AddTask from "@/components/ModalsContent/AddTask";
-import DeleteBoard from "@/components/ModalsContent/DeleteBoard";
 import DeleteTask from "@/components/ModalsContent/DeleteTask";
 import EditBoard from "@/components/ModalsContent/EditBoard";
 import EditTask from "@/components/ModalsContent/EditTask";
@@ -24,8 +22,6 @@ export type ModalTriggerType =
   | null;
 
 const modalsInitialState = {
-  "add-task": AddTask,
-  "delete-board": DeleteBoard,
   "delete-task": DeleteTask,
   "edit-board": EditBoard,
   "edit-task": EditTask,
