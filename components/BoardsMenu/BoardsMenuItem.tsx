@@ -11,12 +11,12 @@ type BoardsMenuItemType = {
 }
 
 const BoardsMenuItem: React.FC<BoardsMenuItemType> = ({ name, uri }) => {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <li className={styles.boardItem}>
       <Link href={`/dashboard${uri}`} className={styles.link}>
-        <h3 className={`${styles.copy} ${uri === pathname && styles.active}`}>
+        <h3 className={`${styles.copy} ${`/dashboard${uri}` === pathname && styles.active}`}>
           <svg>
             <use href={`/icons/icons-defs.svg#board`}></use>
           </svg>

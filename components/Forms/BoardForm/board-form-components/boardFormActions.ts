@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { createBoard } from "@/utils/board/createBoard";
 
 type AddBoardReturn = Promise<{
+  uri: string | null;
   error?: {
     message?: string;
   } | null;
@@ -22,13 +23,17 @@ export const addBoard = async (boardFormData: FormData): AddBoardReturn => {
   });
 
   if (!errors) {
-    redirect(`/dashboard${data?.createBoard?.uri}`);
+    return {
+      uri: data?.createBoard?.uri,
+      error: null,
+    };
   }
 
   const [error] = errors;
 
   if (error.message.includes("Unique constraint failed")) {
     return {
+      uri: null,
       error: {
         message: "Board name needs to be unique",
       },
@@ -36,7 +41,10 @@ export const addBoard = async (boardFormData: FormData): AddBoardReturn => {
   }
 
   return {
-    error: null,
+    uri: null,
+    error: {
+      message: error.message,
+    },
   };
 };
 

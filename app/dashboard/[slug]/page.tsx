@@ -1,13 +1,14 @@
-import { revalidatePath } from "next/cache";
-
 import { getBoard } from "@/utils/board/getBoard";
 import DashboardHeader from "@/layouts/DashboardHeader";
+import DashboardLayout from "@/layouts/Dashboard";
+
+export const revalidate = 5;
 
 const BoardDetailPage = async ({ params }: { params: { slug: string } }) => {
   const data = await getBoard(`/${params?.slug}/`)
 
   return (
-    <>
+    <DashboardLayout>
       <DashboardHeader boardName={data?.board.name} pathname={`/${params?.slug}/`} />
 
       <section>
@@ -23,7 +24,7 @@ const BoardDetailPage = async ({ params }: { params: { slug: string } }) => {
           </div>
         ))}
       </section>
-    </>
+    </DashboardLayout>
   )
 }
 
