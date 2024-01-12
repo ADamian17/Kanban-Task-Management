@@ -6,10 +6,8 @@ export default function DashboardRootLayout(props: {
 }) {
   return (
     <>
-      <DashboardLayout>
-        {props.children}
-        {props.modal}
-      </DashboardLayout>
+      {props.children}
+      {props.modal}
     </>
   );
 }

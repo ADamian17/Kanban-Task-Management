@@ -6,6 +6,7 @@ import { useBoardFormStore } from "@/state/useBoardFormStore";
 import { validateForm } from "./validateForm";
 
 import styles from "../BoardForm.module.scss"
+import { useRouter } from "next/navigation";
 
 type ModalProviderProps = {
   children: React.ReactNode
@@ -14,6 +15,7 @@ type ModalProviderProps = {
 
 const BoardFormWrapper = ({ children, isEdit }: ModalProviderProps) => {
   const { setError, onSetColumnError, resetBoardName, resetColumnsName } = useBoardFormStore(state => state);
+  const router = useRouter();
 
   const [errMsg, setErrMsg] = useState<string | null>(null)
   const formRef = useRef<ElementRef<"form">>(null);
@@ -41,6 +43,8 @@ const BoardFormWrapper = ({ children, isEdit }: ModalProviderProps) => {
     resetBoardName()
     resetColumnsName()
     setErrMsg("")
+
+    router.push(`/dashboard${res?.uri}`);
   }
 
   return (

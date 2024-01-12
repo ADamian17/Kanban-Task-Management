@@ -1,8 +1,9 @@
-import DashboardHeader from "@/layouts/DashboardHeader";
-import { getBoards } from "@/utils/board/getBoards";
-import { revalidatePath } from "next/cache";
-import Link from "next/link";
 import { redirect } from "next/navigation";
+import Link from "next/link";
+
+import { getBoards } from "@/utils/board/getBoards";
+import DashboardHeader from "@/layouts/DashboardHeader";
+import DashboardLayout from "@/layouts/Dashboard";
 
 const EmptyBoardPage = async () => {
   const data = await getBoards()
@@ -12,7 +13,7 @@ const EmptyBoardPage = async () => {
   }
 
   return (
-    <>
+    <DashboardLayout>
       <DashboardHeader boardName={""} pathname='/' />
 
       <div>
@@ -22,7 +23,8 @@ const EmptyBoardPage = async () => {
           + Add New Board
         </Link>
       </div>
-    </>
+
+    </DashboardLayout>
   )
 }
 
