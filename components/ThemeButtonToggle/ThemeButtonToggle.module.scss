@@ -46,6 +46,10 @@
       border-radius: 50%;
       transition: justify-content 0.3s ease;
     }
+
+    &:hover {
+      background-color: var(--main-purple-hover);
+    }
   }
 
   @include media-query("xl") {

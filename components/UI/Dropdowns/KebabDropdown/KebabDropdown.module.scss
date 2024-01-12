@@ -15,6 +15,7 @@
   .menuItem {
     color: var(--medium-grey, #828fa3);
     text-transform: capitalize;
+    text-decoration: none;
 
     &.redTxt {
       color: var(--red);

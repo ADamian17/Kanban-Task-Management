@@ -1,24 +1,25 @@
 import React from "react";
 
-import styles from "./DeleteBoard.module.scss";
-import ModalContent from "@/components/UI/Modal/ModalContent";
-import Button from "@/components/UI/Button";
-import { useBoardStore } from "@/state/useBoardStore";
-import useModalStore from "@/state/useModalStore";
 import DeleteModalButtons from "@/components/DeleteModalButtons";
+import Modal from "@/components/UI/Modal";
 
-type DeleteBoardType = {};
+import styles from "./DeleteBoard.module.scss";
 
-const DeleteBoard: React.FC<DeleteBoardType> = (props) => {
-  return (
-    <>
-      <h2>Delete this board?</h2>
-
-      <p>Are you sure you want to delete the {`'coming soon'`} board? This action will remove all columns and tasks and cannot be reversed.</p>
-
-      <DeleteModalButtons boardId={0} />
-    </>
-  )
+type DeleteBoardType = {
+  boardName: string
+  boardId: number
 };
 
-export default DeleteBoard;
+const DeleteBoardContent: React.FC<DeleteBoardType> = ({ boardId, boardName }) => (
+  <Modal>
+    <div className={styles.wrapper}>
+      <h2 className={styles.headline}>Delete this board?</h2>
+
+      <p className={styles.copy}>Are you sure you want to delete the {`'${boardName}'`} board? This action will remove all columns and tasks and cannot be reversed.</p>
+
+      <DeleteModalButtons boardId={boardId} />
+    </div>
+  </Modal>
+);
+
+export default DeleteBoardContent;

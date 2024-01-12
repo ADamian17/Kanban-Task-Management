@@ -1,0 +1,19 @@
+.wrapper {
+  display: grid;
+  row-gap: 2.4rem;
+
+  .headline {
+    color: var(--red);
+  }
+
+  .copy {
+    color: var(--medium-grey);
+    font-feature-settings:
+      "clig" off,
+      "liga" off;
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 2.3rem; /* 176.923% */
+  }
+}
