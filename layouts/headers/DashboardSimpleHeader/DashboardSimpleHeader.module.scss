@@ -1,0 +1,38 @@
+@use "breakpoints" as *;
+@use "button" as *;
+
+.dashboardHeader {
+  min-height: 6.4rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1.6rem;
+  column-gap: 1.6rem;
+  background-color: var(--accent-bg);
+  max-width: 100%;
+
+  .logo {
+    display: inline-block;
+    height: fit-content;
+    height: 2.5rem;
+
+    .icon {
+      display: inline-block;
+      object-fit: contain;
+      object-position: center;
+      height: inherit;
+    }
+  }
+
+  .cta {
+    @extend %button-primary;
+
+    margin-left: auto;
+    text-decoration: none;
+    padding: 0.7rem 1.5rem;
+
+    &.disableCta {
+      opacity: 0.25;
+      pointer-events: none;
+    }
+  }
+}
