@@ -1,0 +1,118 @@
+:root {
+  --black: hsl(237, 100%, 4%);
+  --white: hsl(0, 0%, 100%);
+
+  --main-Purple: hsl(242, 48%, 58%);
+  --main-purple-hover: hsl(243, 100%, 82%);
+
+  --dark-grey: hsl(235, 12%, 19%);
+  --medium-grey: hsl(216, 15%, 57%);
+
+  --very-dark-grey-dark-bg: hsl(235, 16%, 15%);
+  --light-grey-light-bg: hsl(220, 69%, 97%);
+
+  --lines-dark: hsl(236, 11%, 27%);
+  --lines-light: hsl(221, 69%, 94%);
+
+  --red: hsl(0, 78%, 63%);
+  --red-hover: hsl(0, 100%, 80%);
+
+  /* Theme */
+  --accent-bg: var(--white);
+  --default-bg: var(--light-grey-light-bg);
+  --logo-headline-txt-color: var(--black);
+  --line-accent: var(--lines-light);
+  --text-color: var(--black);
+}
+
+* {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px
+  transition:
+    background-color 0.2s,
+    color 0.3s;
+  background-color: var(--default-bg);
+}
+
+html.light {
+  color-scheme: light;
+}
+
+html.dark {
+  --accent-bg: var(--dark-grey, hsl(235, 12%, 19%));
+  --default-bg: var(--very-dark-grey-dark-bg);
+  --logo-headline-txt-color: var(--white);
+  --line-accent: var(--lines-dark);
+  --text-color: var(--white);
+
+  color-scheme: dark;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: var(--font-plus-jakarta);
+  font-size: 1.6rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  color: var(--black, #000112);
+}
+
+h1 {
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  /* Heading (XL) */
+  font-size: 2.4rem;
+  font-style: normal;
+  line-height: normal;
+}
+
+h2 {
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  /* Heading (L) */
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+h3 {
+  color: var(--black, #000112);
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  /* Heading (M) */
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+}

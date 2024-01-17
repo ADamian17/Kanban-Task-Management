@@ -1,0 +1,20 @@
+@use "sass:map";
+
+@mixin media-query($target) {
+  $bp: (
+    "sm": 375px,
+    "md": 768px,
+    "lg": 1024px,
+    "xl": 1440px,
+  );
+
+  @if $target {
+    $current-bp: map.get($bp, $target);
+
+    @media (min-width: $current-bp) {
+      @content;
+    }
+  } @else {
+    @error "Breakpoint not found please :( -> available Breakpoints (sm | md | lg | xl)";
+  }
+}

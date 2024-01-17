@@ -2,11 +2,14 @@
 
 const nextConfig = {
   trailingSlash: true,
+  sassOptions: {
+    includePaths: ["styles"],
+  },
   logging: {
     fetches: {
       fullUrl: true,
     },
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
