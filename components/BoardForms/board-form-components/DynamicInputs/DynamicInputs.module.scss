@@ -1,0 +1,12 @@
+@use "button" as *;
+
+p.btn {
+  @extend %button-secondary;
+
+  &.isDisable {
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  margin-bottom: 1.2rem;
+}

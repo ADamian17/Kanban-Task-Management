@@ -1,13 +1,14 @@
 "use client";
-import { ChangeEvent, ChangeEventHandler, ComponentProps, FocusEvent, FocusEventHandler, useEffect, useRef, useState } from "react";
+import { ComponentProps } from "react";
 
 import styles from "./TextField.module.scss";
 
 type TextFieldProps = {
   error: boolean
+  errorMsg?: string
 } & ComponentProps<"input">
 
-const TextField = ({ error, ...rest }: TextFieldProps) => {
+const TextField = ({ error, errorMsg, ...rest }: TextFieldProps) => {
   return (
     <div className={`${styles.textFieldWrapper} ${error && styles.error}`}>
       <input
@@ -15,6 +16,7 @@ const TextField = ({ error, ...rest }: TextFieldProps) => {
         type="text"
         {...rest}
       />
+      {error && <p className={styles.errorMsg}>{errorMsg || "Can't be empty"}</p>}
     </div>
   )
 }

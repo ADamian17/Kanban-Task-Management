@@ -1,6 +1,5 @@
+import { InputProps } from "@/types";
 import { StateCreator } from "zustand";
-
-import { InputProps } from "@/components/DynamicInputs";
 
 type ColumnsState = {
   mappedColumns: Record<string, InputProps>;

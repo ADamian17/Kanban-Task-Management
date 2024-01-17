@@ -9,7 +9,7 @@
       border: 1px solid var(--red);
     }
 
-    &::after {
+    .errorMsg {
       display: initial;
     }
   }
@@ -27,18 +27,19 @@
     }
   }
 
-  &::after {
+  .errorMsg {
     color: var(--red);
-    content: "Can't be empty";
     display: none;
     font-size: 1.3rem;
     font-weight: 500;
     line-height: 2.3rem;
     padding-right: 1.6rem;
     text-align: right;
+    width: fit-content;
+    justify-self: end;
   }
 
-  &::after,
+  .errorMsg,
   .input {
     grid-row: 1;
     grid-column: 1;

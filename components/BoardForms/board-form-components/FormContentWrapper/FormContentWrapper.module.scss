@@ -1,0 +1,12 @@
+.wrapper {
+  .headline {
+    color: var(--white);
+    text-transform: capitalize;
+    margin-bottom: 2.4rem;
+  }
+
+  form {
+    display: grid;
+    row-gap: 2.4rem;
+  }
+}

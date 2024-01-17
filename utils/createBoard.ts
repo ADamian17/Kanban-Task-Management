@@ -1,42 +1,71 @@
 "use server";
-import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
+import { revalidateTag } from "next/cache";
+import { CreateBoardStateProp } from "@/types";
+import { validateBoardFom } from "./validateBoardFom";
 
-export const createBoard = async (prevState: any, formData: FormData) => {
-  const boardName = formData.get("boardName");
-  const redirectPath = formData.get("_redirect");
+export const createBoard = async (
+  prevState: CreateBoardStateProp,
+  fd: FormData,
+) => {
+  const boardNameVal = fd.get("boardName");
+  const columnsVals = fd.getAll("input");
+  const columns = columnsVals.map((col) => ({ name: col.toString() })) || [];
   let target = "";
 
+  const { nextState, isValid } = validateBoardFom({
+    state: prevState,
+    boardNameVal,
+    columnsVals,
+  });
+
   try {
+    if (!isValid) throw "invalid Form";
+
     const res = await fetch(`${process.env.API_ENDPOINT}/boards/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name: boardName }),
+      body: JSON.stringify({
+        name: boardNameVal,
+        columns,
+      }),
       cache: "no-store",
     });
-
-    if (res.status !== 200) throw new Error("Something went wrong");
     const data = await res.json();
+
+    if (
+      res.status !== 200 &&
+      data?.error.message === "Board name needs to be unique"
+    ) {
+      throw "board name error";
+    }
     target = data?.createdBoard?.uri;
 
     revalidateTag("dashboard");
 
     return {
-      ...prevState,
-      success: true,
-      boardName,
+      boardName: { isInvalid: false, msg: "" },
+      columns: [],
     };
   } catch (error) {
-    console.log(error);
+    if (error === "invalid Form") {
+      return nextState;
+    }
 
-    return {
-      ...prevState,
-      success: true,
-      boardName,
-    };
+    if (error === "board name error") {
+      nextState.boardName.isInvalid = true;
+      nextState.boardName.msg = "Board name already exist";
+      return nextState;
+    }
+
+    return nextState;
   } finally {
-    if (redirectPath) redirect(`/dashboard${target}`);
+    if (isValid && target.length > 1) {
+      redirect(`/dashboard${target}`);
+    }
+
+    return nextState;
   }
 };
