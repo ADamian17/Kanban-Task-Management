@@ -8,9 +8,7 @@ const WelcomePageContent = () => (
       <h1>Kanban task management web app</h1>
 
       <p className={styles.copy}>
-        Welcome to our innovative demo app, crafted in response to Frontend Mentor{"'"}s challenge. Inspired by their Kanban challenge, our task management application is a fully-functional solution designed for the Next JS framework. Boasting a dynamic interface, customizable features, and a convenient light/dark mode toggle, users can effortlessly organize tasks. Seamlessly integrating with Next JS, our app not only meets but exceeds Frontend Mentor{"'"}s challenge. In this new era of task management, efficiency meets creativity in a sleek and adaptable package.
-
-        Empowering users with creative freedom, our platform allows them to bring their ideas to life by creating <b>up to three instances of each feature</b>, fostering innovation within resource constraints. Experience a powerful blend of functionality and flexibility, redefining how tasks are managed in a world of limitless possibilities.
+        Unveil elegance with our task management app, inspired by Frontend Mentor{`'`}s Kanban challenge. Next JS powered, it seamlessly blends dynamic features with simplicity. <b>Create up to three instances for each feature</b>, Experience a powerful blend of functionality and flexibility, redefining how tasks are managed in a world of limitless possibilities.
       </p>
 
       <Link href="/dashboard/" className={styles.cta}>

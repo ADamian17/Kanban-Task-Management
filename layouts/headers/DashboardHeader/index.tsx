@@ -7,7 +7,7 @@ import ModalTriggerWithChevron from "@/components/ModalTriggerWithChevron";
 
 import styles from "./DashboardHeader.module.scss";
 
-const DashboardHeader = ({ boardName = "", pathname = "" }: { boardName: string, pathname: string }) => {
+const DashboardHeader = ({ boardName = "", pathname = "" }: { boardName?: string, pathname?: string }) => {
   const kebabMenuItems = [
     { ...new KebabMenuItem("edit board", `/dashboard/edit-board/${pathname}`) },
     { ...new KebabMenuItem("delete board", `/dashboard/delete-board/${pathname}`, true) },

@@ -1,12 +1,13 @@
 import BoardForm from "@/components/BoardForm";
+import DashboardHeader from "@/layouts/headers/DashboardHeader";
 
 const AddBoardPage = () => {
   return (
-    <div>
-      AddBoardPage
+    <>
+      <DashboardHeader />
 
       <BoardForm />
-    </div>
+    </>
   )
 }
 

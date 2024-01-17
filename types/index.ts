@@ -3,6 +3,18 @@ export type Board = {
   id: number;
   name: string;
   uri: string;
+  _count: {
+    columns: number;
+  };
+};
+
+export type Boards = {
+  boards: Board[] | null;
+  count: number | null;
+};
+
+export type GetAllBoardsReturnType = Boards & {
+  error?: unknown;
 };
 
 export type Column = {

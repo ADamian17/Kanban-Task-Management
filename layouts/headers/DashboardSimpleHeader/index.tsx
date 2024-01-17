@@ -30,7 +30,7 @@ const DashboardSimpleHeader = ({ count }: { count: number | null }) => {
       </Link>
 
       <Link
-        className={`${styles.cta} ${styles.disableCta}`}
+        className={`${styles.cta} ${disableCta && styles.disableCta}`}
         href="/dashboard/add-board"
       >
         + Add new Board

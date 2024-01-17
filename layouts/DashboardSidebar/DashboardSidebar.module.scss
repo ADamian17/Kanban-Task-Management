@@ -47,7 +47,7 @@
 
     &.isOpen {
       transition: 300ms;
-      animation: openSidebar 0.2s ease-out;
+      // animation: openSidebar 0.2s ease-out;
       border-bottom: 0;
       display: grid;
       grid-row: 1 / span 2;

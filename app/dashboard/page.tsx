@@ -1,34 +1,25 @@
-import DashboardContent from "@/layouts/DashboardContent";
-import DashboardHeader from "@/layouts/DashboardHeader";
 import { getBoards } from "@/utils/getBoards";
-import Link from "next/link";
+import BoardsGrid from "@/components/BoardsGrid";
+import DashboardContent from "@/layouts/DashboardContent";
+import DashboardSimpleHeader from "@/layouts/headers/DashboardSimpleHeader";
 
 const DashboardPage = async () => {
   const data = await getBoards()
   const showEmptyPage = data?.count && data.count <= 0;
+  const content = showEmptyPage ? (
+    <div>
+      Without projects
+    </div>
+  ) : (
+    <BoardsGrid boards={data?.boards} count={data?.count} />
+  )
 
   return (
     <>
-      <DashboardHeader boardName={""} pathname='/' />
+      <DashboardSimpleHeader count={data?.count} />
 
       <DashboardContent>
-        {
-          showEmptyPage ? (
-            <div>
-              Without projects
-            </div>
-
-          ) : (
-            <div>
-              {data?.boards && data?.boards.map((board: any) => (
-                <li key={"board" + board.id}>
-                  <Link href={`/dashboard${board.uri}`}>{board.name}</Link>
-                </li>
-              ))}
-            </div>
-
-          )
-        }
+        {content}
       </DashboardContent>
     </>
   )

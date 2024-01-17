@@ -13,8 +13,8 @@ export default async function DashboardRootLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
+    <DashboardLayout>
       {children}
-    </>
+    </DashboardLayout>
   )
 }
