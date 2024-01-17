@@ -1,0 +1,28 @@
+.kebabMenuButton {
+  background-color: transparent;
+
+  .icon {
+    width: 0.3692rem;
+    height: 1.6rem;
+    pointer-events: none;
+  }
+}
+
+.kebabMenuItems {
+  display: grid;
+  row-gap: 1.6rem;
+
+  .menuItem {
+    color: var(--medium-grey, #828fa3);
+    text-transform: capitalize;
+    text-decoration: none;
+
+    &.redTxt {
+      color: var(--red);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

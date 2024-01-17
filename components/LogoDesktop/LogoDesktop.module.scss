@@ -1,0 +1,20 @@
+@use "breakpoints" as *;
+
+.container {
+  height: 100%;
+  padding: 2.8rem 2.4rem;
+  display: none;
+  max-width: 100%;
+
+  img {
+    display: block;
+  }
+
+  @include media-query("md") {
+    display: inline-block;
+  }
+
+  @include media-query("xl") {
+    width: 28.9rem;
+  }
+}

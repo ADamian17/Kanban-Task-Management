@@ -1,0 +1,58 @@
+@use "breakpoints" as *;
+
+.container {
+  align-items: center;
+  background-color: var(--default-bg);
+  border-radius: 0.8rem;
+  column-gap: 2.3rem;
+  display: flex;
+  height: 4.8rem;
+  justify-content: center;
+  justify-self: center;
+  margin: 0 auto;
+  width: 23.5rem;
+
+  .sun {
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+
+  .moon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .toggleSwitch {
+    -webkit-tap-highlight-color: transparent;
+    align-items: center;
+    background-color: var(--main-Purple, hsl(242, 48%, 58%));
+    border-radius: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    height: 2rem;
+    padding: 0.3rem;
+    position: relative;
+    transition: background-color 0.3s ease;
+    width: 4rem;
+
+    &.dark {
+      justify-content: flex-end;
+    }
+
+    .toggleHandle {
+      width: 1.4rem;
+      height: 1.4rem;
+      background-color: var(--white);
+      border-radius: 50%;
+      transition: justify-content 0.3s ease;
+    }
+
+    &:hover {
+      background-color: var(--main-purple-hover);
+    }
+  }
+
+  @include media-query("xl") {
+    width: 25.1rem;
+  }
+}

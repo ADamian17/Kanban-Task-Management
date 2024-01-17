@@ -1,0 +1,12 @@
+.textFieldGroupWrapper {
+  display: grid;
+  row-gap: 0.8rem;
+
+  .label {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}

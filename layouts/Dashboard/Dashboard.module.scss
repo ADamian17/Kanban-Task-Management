@@ -1,0 +1,11 @@
+@use "breakpoints" as *;
+
+.dashboard {
+  @include media-query("md") {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: 8rem 1fr;
+    min-height: 100dvh;
+    position: relative;
+  }
+}

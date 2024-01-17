@@ -1,0 +1,77 @@
+@use "breakpoints" as *;
+
+.sideBar {
+  --default-close-w: 20.2rem;
+  --default-open-w: 26rem;
+
+  background-color: var(--accent-bg);
+  border-bottom: 0.1rem solid var(--line-accent);
+  border-right: 0.1rem solid var(--line-accent);
+  display: none;
+  grid-column: 1 / span 1;
+
+  @include media-query("md") {
+    display: grid;
+
+    .sideBarMenu {
+      display: none;
+      padding: 3.1rem 0 4.7rem;
+      flex-direction: column;
+    }
+
+    .sideBarMenuItems {
+      margin-bottom: auto;
+    }
+
+    .hideSidebarButton {
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      display: flex;
+      gap: 1rem;
+      margin-top: 3rem;
+      outline: none;
+      padding-left: 2.4rem;
+      width: fit-content;
+      cursor: pointer;
+
+      h3 {
+        color: var(--medium-grey);
+      }
+
+      svg {
+        height: 1.6rem;
+        width: 1.8rem;
+      }
+    }
+
+    &.isOpen {
+      transition: 300ms;
+      animation: openSidebar 0.2s ease-out;
+      border-bottom: 0;
+      display: grid;
+      grid-row: 1 / span 2;
+      grid-template-rows: 8rem 1fr;
+      width: var(--default-open-w);
+
+      .sideBarMenu {
+        display: flex;
+      }
+    }
+  }
+
+  @include media-query("xl") {
+    --default-open-w: 30rem;
+    --default-close-w: 28.9rem;
+  }
+
+  @keyframes openSidebar {
+    from {
+      width: var(--default-close-w);
+    }
+
+    to {
+      width: var(--default-open-w);
+    }
+  }
+}

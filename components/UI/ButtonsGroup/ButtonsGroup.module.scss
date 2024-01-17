@@ -1,0 +1,13 @@
+@use "breakpoints" as *;
+
+.group {
+  display: grid;
+  row-gap: 2.4rem;
+
+  // @include media-query("lg") {
+  //   font-size: 15px;
+  //   font-style: normal;
+  //   line-height: normal;
+  //   padding: 15px;
+  // }
+}

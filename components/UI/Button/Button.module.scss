@@ -1,0 +1,15 @@
+@use "button" as *;
+
+.btn {
+  &.primary {
+    @extend %button-primary;
+  }
+
+  &.secondary {
+    @extend %button-secondary;
+  }
+
+  &.destructive {
+    @extend %button-destructive;
+  }
+}

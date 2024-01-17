@@ -1,0 +1,14 @@
+@use "breakpoints" as *;
+
+.dashContent {
+  display: grid;
+  padding: 2.4rem;
+
+  @include media-query("md") {
+    grid-column: 1 / -1;
+
+    &.isOpen {
+      grid-column: 2 / -1;
+    }
+  }
+}

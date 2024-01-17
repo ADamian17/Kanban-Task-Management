@@ -1,0 +1,23 @@
+@use "breakpoints" as *;
+
+.container {
+  display: none;
+  height: fit-content;
+  outline: none;
+  width: fit-content;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  &.isOpen {
+    display: none;
+  }
+
+  @include media-query("md") {
+    display: initial;
+    position: fixed;
+    bottom: 3.2rem;
+    left: 0;
+    z-index: 2;
+  }
+}
