@@ -1,11 +1,7 @@
-import Link from 'next/link'
+import WelcomePageContent from '@/components/WelcomePageContent';
 
 export default function Home() {
   return (
-    <main>
-      Welcome
-
-      <Link href={"/dashboard/"}>Co to Dashboard</Link>
-    </main>
+    <WelcomePageContent />
   )
 }

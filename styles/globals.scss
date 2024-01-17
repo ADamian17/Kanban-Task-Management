@@ -60,6 +60,7 @@ body {
   box-sizing: border-box;
   font-family: var(--font-plus-jakarta);
   font-size: 1.6rem;
+  color: var(--text-color);
 }
 
 h1,
@@ -69,7 +70,6 @@ h4,
 h5,
 h6 {
   font-weight: 700;
-  color: var(--black, #000112);
 }
 
 h1 {
@@ -94,7 +94,6 @@ h2 {
 }
 
 h3 {
-  color: var(--black, #000112);
   font-feature-settings:
     "clig" off,
     "liga" off;

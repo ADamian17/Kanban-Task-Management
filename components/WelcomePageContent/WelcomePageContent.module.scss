@@ -1,0 +1,54 @@
+@use "button" as *;
+
+.mainWrapper {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  padding: 0 2.4rem;
+  color: var(--medium-grey, #828fa3);
+
+  .content {
+    max-width: 144rem;
+    text-align: center;
+    display: grid;
+    row-gap: 2.4rem;
+
+    .copy {
+      max-width: 90rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 2.3rem;
+
+      b {
+        text-decoration: underline;
+      }
+    }
+
+    .cta {
+      @extend %button-primary;
+
+      justify-self: center;
+      margin-top: 1.6rem;
+      max-width: 25rem;
+      text-decoration: none;
+      width: 100%;
+    }
+  }
+
+  .footerWrapper {
+    display: flex;
+    column-gap: 2.4rem;
+    justify-content: center;
+    height: 5rem;
+    align-items: flex-end;
+
+    a:where(:visited, :active) {
+      color: var(--main-Purple);
+      font-weight: 500;
+
+      &:hover {
+        color: var(--main-purple-hover);
+      }
+    }
+  }
+}
