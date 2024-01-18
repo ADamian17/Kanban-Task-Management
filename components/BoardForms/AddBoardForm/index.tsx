@@ -1,6 +1,6 @@
 "use client"
 import { useBoardFormStore } from "@/state/useBoardFormStore"
-import { createBoard } from "@/utils/createBoard"
+import { createBoard } from "@/utils/board-actions/create-board"
 import { useEffect } from "react"
 import { useFormStatus, useFormState } from "react-dom"
 import BoardNameTextField from "../board-form-components/BoardNameTextField"

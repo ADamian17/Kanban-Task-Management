@@ -1,10 +1,10 @@
 "use client"
 import { ElementRef, useRef } from "react";
-import Dropdown from "../Dropdown";
-import styles from "./KebabDropdown.module.scss";
-import ModalTrigger from "../../Modal/ModalTrigger";
-import { ModalTriggerType } from "@/state/useModalStore";
 import Link from "next/link";
+
+import Dropdown from "../Dropdown";
+
+import styles from "./KebabDropdown.module.scss";
 
 type KebabDropdownItem = {
   label: string,

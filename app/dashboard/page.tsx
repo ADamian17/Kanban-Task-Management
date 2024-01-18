@@ -1,4 +1,4 @@
-import { getBoards } from "@/utils/getBoards";
+import { getBoards } from "@/utils/board-actions/get-boards";
 import BoardsGrid from "@/components/BoardsGrid";
 import DashboardContent from "@/layouts/DashboardContent";
 import DashboardSimpleHeader from "@/layouts/headers/DashboardSimpleHeader";

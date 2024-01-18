@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Boards } from "@/types";
 
 import styles from "./BoardsGrid.module.scss";
-import { KebabMenuItem } from "@/utils/kebabMenuItem";
+import { KebabMenuItem } from "@/utils/kebab-menu-item";
 import KebabDropdown from "../UI/Dropdowns/KebabDropdown";
 import BoardsGridItem from "./BoardsGridItem";
 

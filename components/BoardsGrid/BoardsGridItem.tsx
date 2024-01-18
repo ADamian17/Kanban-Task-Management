@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { Board, } from "@/types";
-import { KebabMenuItem } from "@/utils/kebabMenuItem";
+import { KebabMenuItem } from "@/utils/kebab-menu-item";
 import KebabDropdown from "../UI/Dropdowns/KebabDropdown";
 
 import styles from "./BoardsGrid.module.scss";
@@ -19,7 +19,7 @@ const BoardsGridItem: React.FC<BoardsGridType> = ({ board }) => {
   return (
     <div className={styles.board}>
       <div className={styles.headline}>
-        <Link href={`/dashboard${board.uri}`}>{board.name}</Link>
+        <Link href={`/dashboard${board.uri}`} className={styles.link}>{board.name}</Link>
 
         <KebabDropdown menuItems={kebabMenuItems} />
       </div>

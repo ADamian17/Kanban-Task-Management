@@ -1,0 +1,29 @@
+@use "breakpoints" as *;
+
+p.errorMsg {
+  color: var(--red);
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2.3rem; /* 176.923% */
+}
+
+.wrapper {
+  display: grid;
+  gap: 2.4rem 1.5rem;
+
+  .deleteCta {
+    display: flex;
+
+    > * {
+      width: 100%;
+    }
+  }
+
+  @include media-query("md") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

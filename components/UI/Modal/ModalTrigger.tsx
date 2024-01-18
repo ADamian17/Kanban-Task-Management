@@ -1,21 +1,27 @@
 "use client"
 import { ComponentProps } from "react";
-import useModalStore, { ModalTriggerType } from "@/state/useModalStore";
+// import useModalStore, { ModalTriggerType } from "@/state/useModalStore";
 
 import styles from "./Modal.module.scss"
 
 type ModalTriggerProps = {
   children: React.ReactNode
-  modalTrigger: ModalTriggerType;
+  // modalTrigger: ModalTriggerType;
 } & ComponentProps<"button">;
 
-const ModalTrigger = ({ children, className, onClick, modalTrigger, ...rest }: ModalTriggerProps) => {
-  const { openModal } = useModalStore(state => state);
+const ModalTrigger = ({
+  children,
+  className,
+  onClick,
+  // modalTrigger, 
+  ...rest
+}: ModalTriggerProps) => {
+  // const { openModal } = useModalStore(state => state);
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     if (onClick) onClick(e);
 
-    openModal(modalTrigger)
+    // openModal(modalTrigger)
   }
 
   return (

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Board } from "@/types";
 import BoardsMenuItem from "./BoardsMenuItem";
-import { getBoards } from "@/utils/getBoards";
+import { getBoards } from "@/utils/board-actions/get-boards";
 
 import styles from "./BoardsMenu.module.scss"
 

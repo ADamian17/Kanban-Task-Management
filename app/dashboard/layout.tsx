@@ -1,8 +1,5 @@
 import type { Metadata } from 'next'
 
-import DashboardLayout from "@/layouts/Dashboard";
-import { getBoards } from '@/utils/getBoards';
-
 export const metadata: Metadata = {
   title: 'Dashboard - Kanban',
 }

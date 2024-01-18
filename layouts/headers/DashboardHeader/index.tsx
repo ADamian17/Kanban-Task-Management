@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { KebabMenuItem } from "@/utils/kebabMenuItem";
+import { KebabMenuItem } from "@/utils/kebab-menu-item";
 import Button from "@/components/UI/Button";
 import KebabDropdown from "@/components/UI/Dropdowns/KebabDropdown";
 import ModalTriggerWithChevron from "@/components/ModalTriggerWithChevron";

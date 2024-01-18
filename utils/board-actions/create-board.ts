@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation";
 import { revalidateTag } from "next/cache";
 import { CreateBoardStateProp } from "@/types";
-import { validateBoardFom } from "./validateBoardFom";
+import { validateBoardFom } from "./validate-board-fom";
 
 export const createBoard = async (
   prevState: CreateBoardStateProp,
