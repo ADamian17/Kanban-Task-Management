@@ -4,8 +4,8 @@ import Modal from "@/components/UI/Modal";
 import styles from "./DeleteBoardForm.module.scss";
 
 type DeleteBoardFormType = {
-  boardName: string
-  boardId: number
+  boardName?: string
+  boardId?: number
 };
 
 const DeleteBoardForm: React.FC<DeleteBoardFormType> = ({ boardId, boardName }) => (
@@ -15,7 +15,9 @@ const DeleteBoardForm: React.FC<DeleteBoardFormType> = ({ boardId, boardName }) 
 
       <p className={styles.copy}>Are you sure you want to delete the {`'${boardName}'`} board? This action will remove all columns and tasks and cannot be reversed.</p>
 
-      <DeleteBoardButtons boardId={boardId} />
+      {
+        boardId && <DeleteBoardButtons boardId={boardId} />
+      }
     </div>
   </Modal>
 );
