@@ -9,7 +9,7 @@ export const createBoard = async (
   fd: FormData,
 ) => {
   const boardNameVal = fd.get("boardName");
-  const columnsVals = fd.getAll("input");
+  const columnsVals = fd.getAll("column");
   const columns = columnsVals.map((col) => ({ name: col.toString() })) || [];
   let target = "";
 
