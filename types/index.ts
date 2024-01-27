@@ -43,7 +43,7 @@ export type InputProps = {
   error: boolean;
 };
 
-export type CreateBoardStateProp = {
+export type BoardFormStateProp = {
   boardName: { isInvalid: boolean; msg: string };
   columns: { id: string; isInvalid: boolean }[];
 };

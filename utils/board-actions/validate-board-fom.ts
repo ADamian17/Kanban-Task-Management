@@ -1,8 +1,8 @@
+import { BoardFormStateProp } from "@/types";
 import { z } from "zod";
-import { CreateBoardStateProp } from "@/types";
 
 type validateBoardFomArgs = {
-  state: CreateBoardStateProp;
+  state: BoardFormStateProp;
   boardNameVal: FormDataEntryValue | null;
   columnsVals: FormDataEntryValue[];
 };
@@ -12,7 +12,10 @@ export function validateBoardFom({
   boardNameVal,
   columnsVals,
 }: validateBoardFomArgs) {
-  const columnsSet = new Set<{ id: string; isInvalid: boolean }>();
+  const columnsSet = new Set<{
+    id: string;
+    isInvalid: boolean;
+  }>();
   const name = z.string().min(1, "Can't be empty");
   const validatedBoardName = name.safeParse(boardNameVal);
   let isValid = true;

@@ -1,7 +1,14 @@
 import { cache } from "react";
 import { unstable_noStore as noStore } from "next/cache";
+import { Board } from "@/types";
+import { number } from "zod";
 
-const getOnBoard = async (uri: string) => {
+type GetOnBoardReturn = {
+  board: Board;
+  status?: number;
+};
+
+const getOnBoard = async (uri: string): Promise<GetOnBoardReturn | null> => {
   try {
     noStore();
     const res = await fetch(`${process.env.API_ENDPOINT}/boards/${uri}`);

@@ -8,8 +8,8 @@ type TextFieldWithCrossProps = {
   colId: string
   error: boolean
   inputIconClickHandler: MouseEventHandler<SVGElement>
-  onSetError: (id: string, value: boolean) => void;
-  onSetValue: (id: string, value: string) => void;
+  onSetError?: (id: string, value: boolean) => void;
+  onSetValue?: (id: string, value: string) => void;
   placeholder?: string,
   value: string,
 }
@@ -34,11 +34,11 @@ const TextFieldWithCross = ({
     const { id, value } = e.target
 
     if (internalErr) {
-      onSetError(id, false)
+      onSetError && onSetError(id, false)
       setInternalErr(false)
     }
 
-    onSetValue(id, value)
+    onSetValue && onSetValue(id, value)
     setInternalVal(value)
   }
 
@@ -46,17 +46,18 @@ const TextFieldWithCross = ({
     const isEmpty = e.target.value.trim() === "";
 
     if (isEmpty) {
-      onSetError(e.target.id, true)
+      onSetError && onSetError(e.target.id, true)
       setInternalErr(true)
     }
   }
 
   return (
     <div className={styles.inputWrapper}>
+      <input type="hidden" name="columnId" value={colId} />
       <TextField
         error={internalErr}
         id={colId}
-        name="input"
+        name="column"
         onBlur={handleBlur}
         onChange={handleChange}
         value={internalVal}
@@ -73,6 +74,5 @@ const TextFieldWithCross = ({
     </div>
   )
 }
-
 
 export default TextFieldWithCross;

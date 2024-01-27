@@ -1,7 +1,6 @@
-import DashboardHeader from "@/layouts/headers/DashboardHeader";
-import FormContentWrapper from "@/components/BoardForms/board-form-components/FormContentWrapper";
-import Modal from "@/components/UI/Modal";
 import AddBoardForm from "@/components/BoardForms/AddBoardForm";
+import DashboardHeader from "@/layouts/headers/DashboardHeader";
+import Modal from "@/components/UI/Modal";
 
 const AddBoardPage = () => {
   return (
