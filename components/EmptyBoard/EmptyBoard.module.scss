@@ -1,0 +1,24 @@
+@use "button" as *;
+
+.container {
+  display: grid;
+  display: grid;
+  min-height: calc(100dvh - 11.2rem);
+  place-content: center;
+  text-align: center;
+  row-gap: 2.5rem;
+  color: var(--Medium-Grey, #828fa3);
+  text-align: center;
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+
+  .cta {
+    @extend %button-primary;
+
+    text-decoration: none;
+    justify-self: center;
+    padding: 1.4rem 1.8rem;
+    font-size: 1.5rem;
+  }
+}

@@ -2,13 +2,16 @@
 
 .dashContent {
   padding: 2.4rem;
+  min-height: calc(100dvh - 6.4rem);
 
   @include media-query("md") {
-    display: grid;
     grid-column: 1 / -1;
 
     &.isOpen {
       grid-column: 2 / -1;
     }
   }
+  // @include media-query("xl") {
+  //   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  // }
 }
