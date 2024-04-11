@@ -10,17 +10,12 @@ const BoardDetailPage = async ({ params }: { params: { slug: string } }) => {
 
   if (data?.status === 404) notFound();
 
-  const isEmptyBoard = data?.board?.columns && data?.board?.columns?.length <= 0
-
-  const boardContent = isEmptyBoard ? (
-    <EmptyBoard slug={params?.slug} />
-  ) : (
-    <ColumnsContainer columns={data?.board?.columns} />
-  )
-
   return (
     <DashboardContent>
-      {boardContent}
+      <ColumnsContainer
+        columns={data?.board?.columns}
+        slug={params?.slug}
+      />
     </DashboardContent>
   )
 }

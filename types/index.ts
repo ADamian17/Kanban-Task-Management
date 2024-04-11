@@ -1,5 +1,5 @@
 export type Board = {
-  columns: Column[];
+  columns: ColumnType[];
   id: number;
   name: string;
   uri: string;
@@ -17,7 +17,7 @@ export type GetAllBoardsReturnType = Boards & {
   error?: unknown;
 };
 
-export type Column = {
+export type ColumnType = {
   id: string;
   name: string;
   tasks: Task[];
