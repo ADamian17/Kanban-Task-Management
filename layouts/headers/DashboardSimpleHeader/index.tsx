@@ -25,6 +25,7 @@ const DashboardSimpleHeader = ({ count }: { count: number | null }) => {
             width={153}
             height={25}
             alt='kanban icon'
+            priority
           />
         </picture>
       </Link>
