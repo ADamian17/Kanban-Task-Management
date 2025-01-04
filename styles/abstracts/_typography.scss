@@ -1,12 +1,12 @@
 @use "./functions" as *;
 
+// ==== Heading Mixins starts ====
 @mixin shared-heading-props {
   font-family: inherit;
   font-style: normal;
   font-weight: 700;
 }
   
-
 @mixin heading-xl {
   @include shared-heading-props;
   font-size: REM(24);
@@ -31,3 +31,23 @@
   line-height: REM(15);
   kerning: REM(24);
 }
+// ==== Heading Mixins ends ====
+
+// ==== Body Mixins starts ====
+@mixin body-lg {
+  color: var(--default-body-text-color);
+  font-size: REM(13);
+  font-style: normal;
+  font-weight: 500;
+  line-height: REM(23);
+}
+
+@mixin body-md {
+  color: var(--default-body-text-color);
+  font-size: REM(12);
+  font-style: normal;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+// ==== Body Mixins ends ====

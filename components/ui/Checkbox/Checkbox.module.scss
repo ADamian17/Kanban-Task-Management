@@ -1,0 +1,56 @@
+.checkboxWrapper {
+  align-items: center;
+  background-color: var(--default-checkbox-wrapper-bg);
+  border-radius: REM(4);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  gap: REM(16);
+  min-height: REM(40);
+  padding: REM(12);
+  transition: background-color 0.2s;
+  
+  .input {
+    display: none;
+  }
+
+  .label {
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    border: 1px solid rgba(130, 143, 163, 0.25);
+    background-color: var(--default-checkbox-bg);
+    display: grid;
+    place-items: center;
+
+    .checkboxIcon {
+      display: none;
+    }
+  }
+
+  .text {
+    padding-bottom: 1px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .input:checked + .label {
+    background-color: var(--main-purple);
+    border: none;
+
+    .checkboxIcon {
+      display: initial;
+    }
+  }
+
+  .input:checked + .label + .text {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+
+  &:hover {
+    background-color: var(--light-purple-hover);
+  }
+}
