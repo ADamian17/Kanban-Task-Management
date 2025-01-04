@@ -11,7 +11,10 @@ const meta = {
       description: 'Array of options to display in the dropdown',
     },
   },
-  args: {},
+  args: {
+    label: 'Current Status',
+    placeholder: 'Select status...',
+  },
 } satisfies Meta<typeof SelectField>;
 
 export default meta;
