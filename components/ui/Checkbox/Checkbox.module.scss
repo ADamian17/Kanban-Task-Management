@@ -18,8 +18,8 @@
     width: 16px;
     height: 16px;
     border-radius: 2px;
-    border: 1px solid rgba(130, 143, 163, 0.25);
-    background-color: var(--default-checkbox-bg);
+    border: 1px solid var(--default-border-color);
+    background-color: var(--default-input-bg);
     display: grid;
     place-items: center;
 

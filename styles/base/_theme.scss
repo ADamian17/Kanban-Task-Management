@@ -24,14 +24,15 @@
   --default-bg: var(--light-grey-light-bg);
   --default-text-color: var(--black);
   --default-body-text-color: var(--dark-grey);
+  --default-border-color: #828fa340;
 
   // buttons
   --default-secondary-btn-bg: var(--light-purple);
   --default-secondary-btn-hover: var(--light-purple-hover);
 
-  // checkbox
+  // inputs
+  --default-input-bg: var(--white);
   --default-checkbox-wrapper-bg: var(--light-grey-light-bg);
-  --default-checkbox-bg: var(--white);
 }
 
 html {
@@ -48,7 +49,7 @@ html {
     --default-secondary-btn-bg: var(--white);
     --default-secondary-btn-hover: var(--white);
     --default-checkbox-wrapper-bg: var(--very-dark-grey-dark-bg);
-    --default-checkbox-bg: var(--dark-grey);
+    --default-input-bg: var(--dark-grey);
 
     color-scheme: dark;
   }
