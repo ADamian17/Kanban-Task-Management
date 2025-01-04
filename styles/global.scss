@@ -1,0 +1,16 @@
+@use "./theme.scss" as *;
+
+* {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  font-feature-settings: "clig" off, "liga" off;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: var(--font-plus-jakarta);
+  color: var(--default-text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

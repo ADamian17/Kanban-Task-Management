@@ -1,0 +1,39 @@
+:root {
+  --black: #000112;
+  --white: #ffffff;
+
+  --dark-grey: #2b2c37;
+  --medium-grey: #828fa3;
+
+  --very-dark-grey-dark-bg: #20212c;
+  --light-grey-light-bg: #f4f7fd;
+
+  --lines-dark: #3e3f4e;
+  --lines-light: #e4ebfa;
+
+  --main-purple: #635fc7;
+  --main-purple-hover: #a8a4ff;
+  --red: #ea5555;
+  --red-hover: #ff9898;
+
+
+  // theme
+  --default-bg: var(--light-grey-light-bg);
+  --default-text-color: var(--black);
+}
+
+html {
+  transition: background-color 0.2s, color 0.2s;
+  background-color: var(--default-bg);
+
+  &[data-current-theme-color="dark"] {
+    --default-bg: var(--very-dark-grey-dark-bg);
+    --default-text-color: var(--white);
+    color-scheme: dark;
+  }
+
+  &[data-current-theme-color="light"] {
+    --default-bg: var(--light-grey-light-bg);
+    color-scheme: light;
+  }
+}
