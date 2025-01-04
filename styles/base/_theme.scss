@@ -13,6 +13,9 @@
 
   --main-purple: #635fc7;
   --main-purple-hover: #a8a4ff;
+  --light-purple: #635fc71a;
+  --light-purple-hover: #635fc740;
+
   --red: #ea5555;
   --red-hover: #ff9898;
 
@@ -20,6 +23,10 @@
   // theme
   --default-bg: var(--light-grey-light-bg);
   --default-text-color: var(--black);
+
+  // buttons
+  --default-secondary-btn-bg: var(--light-purple);
+  --default-secondary-btn-hover: var(--light-purple-hover);
 }
 
 html {
@@ -29,6 +36,9 @@ html {
   &[data-current-theme-color="dark"] {
     --default-bg: var(--very-dark-grey-dark-bg);
     --default-text-color: var(--white);
+    --default-secondary-btn-bg: var(--white);
+    --default-secondary-btn-hover: var(--white);
+
     color-scheme: dark;
   }
 

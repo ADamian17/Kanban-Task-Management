@@ -1,0 +1,33 @@
+@use "./functions" as *;
+
+@mixin shared-heading-props {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 700;
+}
+  
+
+@mixin heading-xl {
+  @include shared-heading-props;
+  font-size: REM(24);
+  line-height: REM(30);
+}
+
+@mixin heading-lg {
+  @include shared-heading-props;
+  font-size: REM(18);
+  line-height: REM(23);
+}
+
+@mixin heading-md {
+  @include shared-heading-props;
+  font-size: REM(15);
+  line-height: REM(19);
+}
+
+@mixin heading-sm {
+  @include shared-heading-props;
+  font-size: REM(12);
+  line-height: REM(15);
+  kerning: REM(24);
+}

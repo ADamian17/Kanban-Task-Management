@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-// import { fn } from '@storybook/test';
 
 import Button from '.';
 
@@ -14,11 +13,17 @@ const meta = {
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
-  // argTypes: {
-  //   backgroundColor: { control: 'color' },
-  // },
+  argTypes: {
+    size: { control: 'select', description: 'controls button size' },
+    text: { description: 'button text' },
+    variant: {control: 'select', description: 'controls button styles' },
+  },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-  // args: { onClick: fn() },
+  args: { 
+    size: 'md',
+    text: 'Button',
+    variant: 'primary',
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -27,24 +32,45 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
   args: {
-    text: 'Button',
+    variant: 'primary',
+    text: 'Button Primary (S)'
   },
 };
 
 export const Secondary: Story = {
   args: {
-    text: 'Button',
+    variant: 'secondary',
+    text: 'Button Secondary',
+  },
+};
+
+export const Danger: Story = {
+  args: {
+    variant: 'danger',
+    text: 'Button Destructive',
+  },
+};
+
+export const XLarge: Story = {
+  args: {
+    size: 'xl',
   },
 };
 
 export const Large: Story = {
   args: {
-    text: 'Button',
+    size: 'lg',
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    size: 'md',
   },
 };
 
 export const Small: Story = {
   args: {
-    text: 'Button',
+    size: 'sm',
   },
 };
