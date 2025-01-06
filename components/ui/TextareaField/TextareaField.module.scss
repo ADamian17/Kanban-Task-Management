@@ -1,0 +1,51 @@
+.textareaWrapper {
+   border: none;
+  display: grid;
+  row-gap: REM(8);
+  align-items: center;
+
+  &.error {
+    .textarea {
+      border-color: var(--red);
+      outline-color: var(--red);
+
+      &::placeholder {
+        opacity: 0;
+      }
+    }
+  }
+
+  .textarea {
+    background-color: var(--default-input-bg);
+    border-radius: 4px;
+    border: 1px solid var(--default-border-color);
+    grid-column: 1 / -1;
+    grid-row: 2;
+    height: REM(112);
+    padding: REM(8) REM(16);
+    resize: vertical;
+
+    &:focus, 
+    &:active {
+      border-color: var(--main-purple);
+      outline: 1px solid var(--main-purple);
+    }
+  }
+
+  .label {
+    @include body-md;
+    color: var(--medium-grey, #828FA3);
+    grid-row: 1;
+  }
+
+  .errorMsg {
+    @include body-lg;
+    align-self: start;
+    color: var(--red);
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: end;
+    padding-right: REM(16);
+    padding-top: REM(6);
+  }
+}
