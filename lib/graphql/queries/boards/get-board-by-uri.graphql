@@ -1,0 +1,33 @@
+query GetOneBoardById($uri: String) {
+  getOneBoard(uri: $uri) {
+    id
+    name
+    uri
+    createdAt
+    updatedAt
+    columns {
+      count
+      nodes {
+        id
+        name
+        tasks {
+          count
+          nodes {
+            id
+            title
+            description
+            subtasks {
+              completedSubtasks
+              count
+              nodes {
+                id
+                title
+                completed
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

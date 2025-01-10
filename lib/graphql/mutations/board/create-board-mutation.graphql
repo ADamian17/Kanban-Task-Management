@@ -1,0 +1,7 @@
+mutation CreateBoard($name: String!, $columns: [ColumnInput!]) {
+  createBoard(input: { name: $name, columnsAttributes: $columns }) {
+    id
+    name
+    uri
+  }
+}

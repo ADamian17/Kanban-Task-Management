@@ -1,0 +1,13 @@
+query AllBoards {
+  getAllBoards {
+    count
+    nodes {
+      id
+      name
+      uri
+      columns {
+        count
+      }
+    }
+  }
+}

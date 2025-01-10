@@ -1,0 +1,19 @@
+mutation CreateTask(
+  $title: String!
+  $columnId: ID!
+  $description: String!
+  $subtasks: [SubtaskInput!]
+) {
+  createTask(
+    input: {
+      title: $title
+      description: $description
+      columnId: $columnId
+      subtasksAttributes: $subtasks
+    }
+  ) {
+    id
+    title
+    description
+  }
+}

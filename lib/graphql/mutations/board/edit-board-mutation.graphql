@@ -1,0 +1,13 @@
+mutation EditBoard($id: ID!, $name: String, $columns: [ColumnInput!]) {
+  updateBoard(input: { id: $id, name: $name, columnsAttributes: $columns }) {
+    id
+    name
+    uri
+    columns {
+      nodes {
+        id
+        name
+      }
+    }
+  }
+}
