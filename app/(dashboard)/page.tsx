@@ -1,4 +1,5 @@
 import { AllBoardsDocument } from "@/__generated__/graphql";
+import CreateBoardForm from "@/components/forms/board-forms/CreateBoardForm";
 import { executeApiReq } from "@/lib/utils/executeApiReq";
 import Link from "next/link";
 
@@ -12,6 +13,10 @@ export default async function DashboardPage() {
 
   return (
     <div style={{ padding: "1rem", margin: "1rem auto", maxWidth: "1110px" }}>
+      <div style={{ padding: "1rem", }}>
+        <CreateBoardForm />
+      </div>
+
       <h3>My boards | {count}</h3>
 
       <ul style={{ listStyle: "none", padding: 0, display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "1rem", marginTop: 12 }}>
