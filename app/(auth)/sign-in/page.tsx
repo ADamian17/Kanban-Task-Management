@@ -6,9 +6,6 @@ import Button from '@/components/ui/Button';
 import TextField from '@/components/ui/TextField';
 import { validateEmail } from '@/lib/utils/validate-email';
 
-// import SignInForm from '@/components/SignInForm';
-// import SignInSignUpWrapper from '@/components/SignInSignUpWrapper';
-
 const SignInPage = () => {
   const onSubmit: FormProps["onSubmit"] = async (values) => {
     try {
@@ -52,7 +49,7 @@ const SignInPage = () => {
 
             <Field
               name="password"
-              validate={(value) => value ? undefined : 'Can’t be empty'}
+              validate={(value) => value ? undefined : "Can't be empty"}
             >
               {({ input, meta }) => (
                 <TextField
@@ -69,16 +66,6 @@ const SignInPage = () => {
         )}
       />
     </div>
-    // <SignInSignUpWrapper
-    //   title="Welcome back to KTM"
-    //   linkInfo={{
-    //     copy: "Don't have an account?",
-    //     text: "Sign up",
-    //     path: "/sign-up"
-    //   }}
-    // >
-    //   <SignInForm />
-    // </SignInSignUpWrapper>
   )
 }
 
