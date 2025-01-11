@@ -7,7 +7,7 @@ import TextField from '@/components/ui/TextField';
 import { validateEmail } from '@/lib/utils/validate-email';
 
 const SignInPage = () => {
-  const onSubmit: FormProps["onSubmit"] = async (values) => {
+  const onSubmit: FormProps<{ email: string; password: string }>["onSubmit"] = async (values) => {
     try {
       const signIn = signInAction.bind(values)
       const res = await signIn(values)
