@@ -12,8 +12,8 @@ export default async function DashboardPage() {
 
 
   return (
-    <div style={{ padding: "1rem", margin: "1rem auto", maxWidth: "1110px" }}>
-      <div style={{ padding: "1rem", }}>
+    <div style={{ padding: "4rem", margin: "1rem auto", maxWidth: "1110px" }}>
+      <div style={{ paddingBottom: "4rem", }}>
         <CreateBoardForm />
       </div>
 

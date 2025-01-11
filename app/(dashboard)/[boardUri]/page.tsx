@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { executeApiReq } from "@/lib/utils/executeApiReq";
 import { GetOneBoardByIdDocument } from "@/__generated__/graphql";
+import EditBoardForm from "@/components/forms/board-forms/EditBoardForm";
 
 export const dynamic = 'force-dynamic';
 
@@ -19,7 +20,7 @@ const BoardPage = async ({ params }: {
     return notFound();
   }
 
-  const { columns } = data.getOneBoard
+  const { columns, name, id } = data.getOneBoard
 
   if (columns.count <= 0) return (
     <div>
@@ -29,27 +30,33 @@ const BoardPage = async ({ params }: {
   )
 
   return (
-    <div style={{ padding: 0, display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "1rem", marginTop: 12 }}>
-      {(columns?.nodes ?? []).map((column) => (
-        <div key={column?.id}>
-          <p>{column?.name} ({column?.tasks?.count})</p>
+    <>
+      <div style={{ paddingBottom: "4rem", }}>
+        <EditBoardForm boardId={id} boardName={name ?? ''} columns={columns?.nodes} />
+      </div>
 
-          <ul>
-            {(column?.tasks?.nodes ?? []).map(task => (
-              <Link key={task?.id} href={`/${boardUri}?task-id=${task?.id}?modal=show-task`}>
-                <li>
-                  <p style={{ wordBreak: "break-word" }}>{task?.title}</p>
+      <div style={{ padding: 0, display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "1rem", marginTop: 12 }}>
+        {(columns?.nodes ?? []).map((column) => (
+          <div key={column?.id}>
+            <p>{column?.name} ({column?.tasks?.count})</p>
 
-                  <p style={{ wordBreak: "break-word" }}>
-                    {task?.subtasks.completedSubtasks} of {task?.subtasks.count} subtasks
-                  </p>
-                </li>
-              </Link>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
+            <ul>
+              {(column?.tasks?.nodes ?? []).map(task => (
+                <Link key={task?.id} href={`/${boardUri}?task-id=${task?.id}?modal=show-task`}>
+                  <li>
+                    <p style={{ wordBreak: "break-word" }}>{task?.title}</p>
+
+                    <p style={{ wordBreak: "break-word" }}>
+                      {task?.subtasks.completedSubtasks} of {task?.subtasks.count} subtasks
+                    </p>
+                  </li>
+                </Link>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 

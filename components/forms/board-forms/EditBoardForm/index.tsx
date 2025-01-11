@@ -1,36 +1,56 @@
 "use client";
-import React from 'react'
+import React, { useCallback, useRef } from 'react'
 import { Field, Form, FormProps } from 'react-final-form'
-import { useRouter } from 'next/navigation';
+import { FieldArray } from 'react-final-form-arrays';
 import arrayMutators from 'final-form-arrays'
 
-import { createBoardAction } from './create-board-action';
+import { editBoardAction } from './edit-board-action';
+import { onSuccessEditBoardAction } from './on-success-edit-board-action';
 import Button from '@/components/ui/Button';
 import TextField from '@/components/ui/TextField';
-import { FieldArray } from 'react-final-form-arrays';
+import { GetOneBoardByIdQuery } from '@/__generated__/graphql';
 
-const CreateBoardForm = () => {
-  const router = useRouter()
+type EditBoardFormProps = {
+  boardId: string
+  boardName: string
+  columns: GetOneBoardByIdQuery["getOneBoard"]["columns"]["nodes"]
+}
+
+const EditBoardForm: React.FC<EditBoardFormProps> = ({ boardName, boardId, columns }) => {
+  const removedColumns = useRef<Array<Record<string, string | boolean>>>([])
+
+  const initialValues = {
+    name: boardName ?? '',
+    columns: (columns ?? []).map((col) => ({ name: col?.name ?? '', id: col?.id ?? '' })),
+  }
 
   const onSubmit: FormProps["onSubmit"] = async (values) => {
     try {
-      const createBoard = createBoardAction.bind(values)
-      const res = await createBoard(values)
+      const editBoardData = { ...values, id: boardId, columns: [...values.columns, ...removedColumns.current] }
+
+      const editBoard = editBoardAction.bind(editBoardData)
+      const res = await editBoard(editBoardData)
 
       if (typeof res === "object" && 'error' in res) {
         return { name: res?.error }; // this is for form validation 
       }
 
-      if (res?.createBoard?.uri) {
-        router.push(res?.createBoard?.uri)
+      if (res?.updateBoard?.uri) {
+        const onSuccess = onSuccessEditBoardAction.bind(res?.updateBoard?.uri)
+        onSuccess(res?.updateBoard?.uri)
       }
     } catch (error) {
       console.error(error);
     }
   }
 
+  const onRemoveColumn = useCallback((col: Record<string, string | boolean>) => {
+    removedColumns.current.push(col)
+  }, [])
+
   return (
     <Form
+      initialValues={initialValues}
       onSubmit={onSubmit}
       mutators={{ ...arrayMutators }}
       render={({ handleSubmit, submitting }) => (
@@ -76,8 +96,8 @@ const CreateBoardForm = () => {
                         </Field>
 
                         <div onClick={() => {
-                          // const removedItem = { ...fields.remove(index), _destroy: true };
-                          fields.remove(index)
+                          const removedItem = { ...fields.remove(index), _destroy: true };
+                          onRemoveColumn(removedItem)
                         }}>
                           remove
                         </div>
@@ -96,7 +116,7 @@ const CreateBoardForm = () => {
               )}
             </FieldArray>
 
-            <Button type='submit' disabled={submitting} text="Create New Board" />
+            <Button type='submit' disabled={submitting} text="Save Changes" />
           </div>
         </form>
       )}
@@ -104,4 +124,4 @@ const CreateBoardForm = () => {
   )
 }
 
-export default CreateBoardForm
+export default EditBoardForm
