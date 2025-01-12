@@ -45,7 +45,7 @@ const EditBoardForm: React.FC<EditBoardFormProps> = ({ boardName, boardId, colum
   }
 
   const onRemoveColumn = useCallback((col: Record<string, string | boolean>) => {
-    removedColumns.current.push(col)
+    removedColumns.current.push({ ...col, _destroy: true })
   }, [])
 
   return (
@@ -96,7 +96,7 @@ const EditBoardForm: React.FC<EditBoardFormProps> = ({ boardName, boardId, colum
                         </Field>
 
                         <div onClick={() => {
-                          const removedItem = { ...fields.remove(index), _destroy: true };
+                          const removedItem = fields.remove(index);
                           onRemoveColumn(removedItem)
                         }}>
                           remove

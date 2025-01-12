@@ -1,0 +1,39 @@
+.selectInputWrapper {
+  display: grid;
+  grid-template-columns: 1fr REM(34);
+
+  .selectIcon {
+    align-self: center;
+    grid-column: 2 / -1;
+    grid-row: 1;
+    height: REM(8);
+    justify-self: center;
+    pointer-events: none;
+    width: REM(16);
+    z-index: 1;
+  }
+
+  .selectInput {
+    background-color: var(--default-input-bg);
+    border-radius: 4px;
+    border: 1px solid var(--default-border-color);
+    grid-column: 1 / -1;
+    grid-row: 1;
+    padding: REM(8) REM(16);
+
+    &.isOpen,
+    &:focus,
+    &:active {
+      border-color: var(--main-purple);
+      outline: 1px solid var(--main-purple);
+    }
+
+    &.inputError {
+      border: 1px solid var(--red);
+
+      + .inputErrorMsg {
+        color: var(--red);
+      }
+    }
+  }
+}

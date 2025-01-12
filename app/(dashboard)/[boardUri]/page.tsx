@@ -3,6 +3,7 @@ import Link from "next/link";
 import { executeApiReq } from "@/lib/utils/executeApiReq";
 import { GetOneBoardByIdDocument } from "@/__generated__/graphql";
 import EditBoardForm from "@/components/forms/board-forms/EditBoardForm";
+import CreateTaskForm from "@/components/forms/task-forms/CreateTaskForm";
 
 export const dynamic = 'force-dynamic';
 
@@ -38,21 +39,25 @@ const BoardPage = async ({ params }: {
       <div style={{ padding: 0, display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "1rem", marginTop: 12 }}>
         {(columns?.nodes ?? []).map((column) => (
           <div key={column?.id}>
-            <p>{column?.name} ({column?.tasks?.count})</p>
+            <CreateTaskForm pathname={`/${boardUri}/`} />
 
-            <ul>
-              {(column?.tasks?.nodes ?? []).map(task => (
-                <Link key={task?.id} href={`/${boardUri}?task-id=${task?.id}?modal=show-task`}>
-                  <li>
-                    <p style={{ wordBreak: "break-word" }}>{task?.title}</p>
+            <div>
+              <p>{column?.name} ({column?.tasks?.count})</p>
 
-                    <p style={{ wordBreak: "break-word" }}>
-                      {task?.subtasks.completedSubtasks} of {task?.subtasks.count} subtasks
-                    </p>
-                  </li>
-                </Link>
-              ))}
-            </ul>
+              <ul>
+                {(column?.tasks?.nodes ?? []).map(task => (
+                  <Link key={task?.id} href={`/${boardUri}?task-id=${task?.id}?modal=show-task`}>
+                    <li>
+                      <p style={{ wordBreak: "break-word" }}>{task?.title}</p>
+
+                      <p style={{ wordBreak: "break-word" }}>
+                        {task?.subtasks.completedSubtasks} of {task?.subtasks.count} subtasks
+                      </p>
+                    </li>
+                  </Link>
+                ))}
+              </ul>
+            </div>
           </div>
         ))}
       </div>
