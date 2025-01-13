@@ -3,15 +3,15 @@ import SelectList from "./SelectList";
 import SelectProvider from "./context/Select.provider";
 
 import styles from "./Select.module.scss";
-import { SelectListItemType } from "./SelectListItem";
 
 type SelectType = {
-  options: Pick<SelectListItemType, "label" | "value">[]
-  placeholder?: string
-}
+  onChange?: (value: Select.Context["inputValue"]) => void;
+  options: Select.Context["inputValue"][];
+  placeholder?: string;
+};
 
-const Select: React.FC<SelectType> = ({ options = [], placeholder }) => (
-  <SelectProvider optionsCount={options.length}>
+const Select: React.FC<SelectType> = ({ options = [], placeholder, onChange }) => (
+  <SelectProvider optionsCount={options.length} onChange={onChange}>
     <div className={styles.selectWrapper}>
       <SelectInput placeholder={placeholder} />
 

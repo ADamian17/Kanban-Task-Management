@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Field, Form, FormProps } from "react-final-form";
-import arrayMutators from 'final-form-arrays'
+import arrayMutators from "final-form-arrays";
 
 import { createTaskAction } from "./create-task-action";
 import { FieldArray } from "react-final-form-arrays";
@@ -14,31 +14,31 @@ import TextField from "@/components/ui/TextField";
 type CreateTaskFormValues = {
   title: string;
   description: string;
-  columnId: string
-}
+  columnId: string;
+};
 
 type CreateTaskFormProps = {
-  pathname: string
-}
+  pathname: string;
+};
 
 const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ pathname }) => {
   const onSubmit: FormProps<CreateTaskFormValues>["onSubmit"] = async (values) => {
     try {
-      const createTask = createTaskAction.bind(values)
-      const res = await createTask(values)
+      const createTask = createTaskAction.bind(values);
+      const res = await createTask(values);
 
-      if (typeof res === "object" && 'error' in res) {
+      if (typeof res === "object" && "error" in res) {
         return console.error(res?.error);
       }
 
       if (res?.createTask?.id) {
-        const revalidateBoard = revalidateBoardAction.bind(pathname)
-        revalidateBoard(pathname)
+        const revalidateBoard = revalidateBoardAction.bind(pathname);
+        revalidateBoard(pathname);
       }
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   return (
     <Form
@@ -47,27 +47,27 @@ const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ pathname }) => {
       render={({ handleSubmit, submitting }) => (
         <form onSubmit={handleSubmit} data-autofocus>
           <div>
-            <Field
-              name="title"
-              validate={(value) => value ? undefined : 'Can\'t be empty'}
-            >
+            <Field name="title" validate={(value) => (value ? undefined : "Can't be empty")}>
               {({ input, meta }) => (
                 <TextField
                   {...input}
-                  error={(meta?.error && meta?.touched || meta.submitError) && meta.error || meta?.submitError}
+                  error={
+                    (((meta?.error && meta?.touched) || meta.submitError) && meta.error) ||
+                    meta?.submitError
+                  }
                   label="Title"
                 />
               )}
             </Field>
 
-            <Field
-              name="description"
-              validate={(value) => value ? undefined : 'Can\'t be empty'}
-            >
+            <Field name="description" validate={(value) => (value ? undefined : "Can't be empty")}>
               {({ input, meta }) => (
                 <TextareaField
                   {...input}
-                  error={(meta?.error && meta?.touched || meta.submitError) && meta.error || meta?.submitError}
+                  error={
+                    (((meta?.error && meta?.touched) || meta.submitError) && meta.error) ||
+                    meta?.submitError
+                  }
                   label="Description"
                   placeholder="e.g. It's always good to take a break. This 15 minute break will recharge the batteries a little."
                 />
@@ -80,21 +80,25 @@ const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ pathname }) => {
                   <p>Subtasks</p>
 
                   {fields.map((subtask, index) => (
-                    <div key={subtask} style={{ display: 'flex', alignItems: 'center' }}>
+                    <div key={subtask} style={{ display: "flex", alignItems: "center" }}>
                       <Field
                         name={`${subtask}.title`}
-                        validate={(value) => value ? undefined : 'Can\'t be empty'}
+                        validate={(value) => (value ? undefined : "Can't be empty")}
                       >
                         {({ input, meta }) => (
                           <TextField
                             {...input}
-                            label='Column Name'
-                            error={(meta?.error && meta?.touched) && meta.error}
+                            label="Column Name"
+                            error={meta?.error && meta?.touched && meta.error}
                           />
                         )}
                       </Field>
 
-                      <div onClick={() => { fields.remove(index) }}>
+                      <div
+                        onClick={() => {
+                          fields.remove(index);
+                        }}
+                      >
                         remove
                       </div>
                     </div>
@@ -102,26 +106,34 @@ const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ pathname }) => {
 
                   <Button
                     disabled={submitting}
-                    onClick={() => fields.push({ title: '' })}
+                    onClick={() => fields.push({ title: "" })}
                     text="Add new subtask"
+                    type="button"
                     variant="secondary"
                   />
                 </div>
               )}
             </FieldArray>
 
-            <Field name="columnId" validate={(value) => value ? undefined : 'Can\'t be empty'}>
+            <Field name="columnId" validate={(value) => (value ? undefined : "Can't be empty")}>
               {({ input }) => (
-                <input {...input} />
+                <SelectField
+                  {...input}
+                  options={[]}
+                  // error={(meta?.error && meta?.touched || meta.submitError) && meta.error || meta?.submitError}
+                  label="Status"
+                  onChange={(value) => input.onChange(value)}
+                  placeholder="Select status"
+                />
               )}
             </Field>
 
-            <Button text='Create task' disabled={submitting} />
+            <Button text="Create task" disabled={submitting} />
           </div>
         </form>
       )}
     />
-  )
+  );
 };
 
 export default CreateTaskForm;

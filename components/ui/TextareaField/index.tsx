@@ -15,16 +15,11 @@ const TextareaField: React.FC<TextareaFieldType> = ({ error, placeholder, label,
     <div className={`${styles.textareaWrapper} ${hasError && styles.error}`}>
       <label className={styles.label}>{label}</label>
 
-      <textarea
-        className={styles.textarea}
-        placeholder={placeholder}
-        rows={4}
-        {...rest}
-      />
+      <textarea className={styles.textarea} placeholder={placeholder} rows={4} {...rest} />
 
       {hasError && <p className={styles.errorMsg}>{error}</p>}
     </div>
-  )
+  );
 };
 
 export default TextareaField;

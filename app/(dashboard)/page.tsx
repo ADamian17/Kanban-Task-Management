@@ -8,20 +8,28 @@ export default async function DashboardPage() {
 
   if (!data?.getAllBoards?.nodes) return null;
 
-  const { count, nodes: allBoards } = data.getAllBoards
-
+  const { count, nodes: allBoards } = data.getAllBoards;
 
   return (
     <div style={{ padding: "4rem", margin: "1rem auto", maxWidth: "1110px" }}>
-      <div style={{ paddingBottom: "4rem", }}>
+      <div style={{ paddingBottom: "4rem" }}>
         <CreateBoardForm />
       </div>
 
       <h3>My boards | {count}</h3>
 
-      <ul style={{ listStyle: "none", padding: 0, display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: "1rem", marginTop: 12 }}>
+      <ul
+        style={{
+          listStyle: "none",
+          padding: 0,
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+          gap: "1rem",
+          marginTop: 12
+        }}
+      >
         {allBoards.map((board) => (
-          <Link key={board?.id} href={board?.uri ?? ''}>
+          <Link key={board?.id} href={board?.uri ?? ""}>
             <li>
               <h4>{board?.name}</h4>
               <p>columns: {board?.columns.count}</p>

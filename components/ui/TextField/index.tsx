@@ -17,7 +17,7 @@ const TextField: React.FC<TextFieldType> = ({ label, placeholder, error, ...rest
 
       {hasError && <p className={styles.errorMsg}>{error}</p>}
     </fieldset>
-  )
-}
+  );
+};
 
 export default TextField;

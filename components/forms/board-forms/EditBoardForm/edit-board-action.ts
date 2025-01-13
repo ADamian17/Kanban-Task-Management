@@ -5,15 +5,13 @@ import { executeApiReq } from "@/lib/utils/executeApiReq";
 export const editBoardAction = async ({
   name,
   columns,
-  id,
-}: Record<string, any>): Promise<
-  EditBoardMutation | { error: string } | undefined
-> => {
+  id
+}: Record<string, any>): Promise<EditBoardMutation | { error: string } | undefined> => {
   try {
     const res = await executeApiReq(EditBoardDocument, {
       columns,
       id,
-      name,
+      name
     });
 
     return res;

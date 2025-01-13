@@ -6,7 +6,7 @@ type ButtonType = React.ComponentProps<"button"> & {
   size?: "sm" | "md" | "lg" | "xl";
   text: string;
   variant?: "primary" | "secondary" | "danger";
-}
+};
 
 const Button: React.FC<ButtonType> = ({
   text,
@@ -15,12 +15,9 @@ const Button: React.FC<ButtonType> = ({
   variant = "primary",
   ...rest
 }) => (
-  <button
-    className={`${styles.btn} ${styles[size]} ${styles[variant]} ${className}`}
-    {...rest}
-  >
+  <button className={`${styles.btn} ${styles[size]} ${styles[variant]} ${className}`} {...rest}>
     {text}
   </button>
-)
+);
 
 export default Button;

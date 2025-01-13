@@ -16,5 +16,6 @@ declare namespace Select {
   type Provider = {
     children: React.ReactNode;
     optionsCount: number;
+    onChange?: (value: Select.Context["inputValue"]) => void;
   };
 }

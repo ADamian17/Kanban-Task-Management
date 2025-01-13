@@ -10,7 +10,7 @@ declare module "next-auth" {
 
 export const authConfig = {
   pages: {
-    signIn: "/sign-in",
+    signIn: "/sign-in"
   },
   callbacks: {
     authorized: ({ auth }) => {
@@ -19,7 +19,7 @@ export const authConfig = {
     session: async ({ session, token }) => {
       session.user = {
         ...session.user,
-        accessToken: token.accessToken,
+        accessToken: token.accessToken
       } as typeof session.user;
 
       return session;
@@ -28,9 +28,7 @@ export const authConfig = {
       // Check if access token has expired
       const currentTime = Math.floor(Date.now() / 1000);
       const accessTokenExpires =
-        typeof token.accessTokenExpires === "number"
-          ? token.accessTokenExpires
-          : 0;
+        typeof token.accessTokenExpires === "number" ? token.accessTokenExpires : 0;
 
       if (accessTokenExpires && currentTime >= accessTokenExpires) {
         token = await refreshAccessToken(token);
@@ -44,7 +42,7 @@ export const authConfig = {
       }
 
       return token;
-    },
+    }
   },
-  providers: [], // Add an empty array or provide the necessary provider configurations
+  providers: [] // Add an empty array or provide the necessary provider configurations
 } satisfies NextAuthConfig;

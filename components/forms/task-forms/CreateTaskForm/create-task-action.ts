@@ -3,7 +3,7 @@
 import {
   CreateTaskDocument,
   CreateTaskMutation,
-  CreateTaskMutationVariables,
+  CreateTaskMutationVariables
 } from "@/__generated__/graphql";
 import { executeApiReq } from "@/lib/utils/executeApiReq";
 
@@ -11,16 +11,14 @@ export const createTaskAction = async ({
   title,
   description,
   columnId,
-  subtasks,
-}: CreateTaskMutationVariables): Promise<
-  CreateTaskMutation | { error: string } | undefined
-> => {
+  subtasks
+}: CreateTaskMutationVariables): Promise<CreateTaskMutation | { error: string } | undefined> => {
   try {
     const res = await executeApiReq(CreateTaskDocument, {
       title,
       description,
       columnId,
-      subtasks,
+      subtasks
     });
 
     return res;

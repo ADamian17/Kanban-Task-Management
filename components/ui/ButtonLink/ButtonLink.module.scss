@@ -1,0 +1,59 @@
+.btn {
+  --btn-bg: var(--main-purple);
+  --btn-hover: var(--main-purple-hover);
+  --btn-txt-color: var(--white);
+
+  background: var(--btn-bg);
+  border-radius: REM(24);
+  border: none;
+  outline: none;
+  color: var(--btn-txt-color);
+  padding: REM(8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-decoration: none;
+  display: flex;
+
+  &:visited {
+    color: var(--btn-txt-color);
+  }
+
+  &.sm {
+    @include heading-sm;
+  }
+
+  &.md {
+    @include heading-md;
+  }
+
+  &.lg {
+    @include heading-lg;
+  }
+
+  &.xl {
+    @include heading-xl;
+
+    padding: REM(15);
+  }
+
+  &.primary {
+    --btn-bg: var(--main-purple);
+    --btn-hover: var(--main-purple-hover);
+  }
+
+  &.secondary {
+    --btn-bg: var(--default-secondary-btn-bg);
+    --btn-hover: var(--default-secondary-btn-hover);
+    --btn-txt-color: var(--main-purple);
+  }
+
+  &.danger {
+    --btn-bg: var(--red);
+    --btn-hover: var(--red-hover);
+  }
+
+  &:hover {
+    background: var(--btn-hover);
+  }
+}

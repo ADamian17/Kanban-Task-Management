@@ -2,14 +2,14 @@ import { ComponentRef, useEffect } from "react";
 
 import { useSelectCtx } from "../context/Select.provider";
 
-import styles from './SelectListItem.module.scss';
+import styles from "./SelectListItem.module.scss";
 import { useFocus } from "@/lib/hooks/useFocus";
 
 export type SelectListItemType = {
   idx: number;
   label: string;
-  value: string
-}
+  value: string;
+};
 
 const SelectListItem: React.FC<SelectListItemType> = ({ idx, label, value }) => {
   const [liRef, setLiFocus] = useFocus<ComponentRef<"li">>();
@@ -34,6 +34,6 @@ const SelectListItem: React.FC<SelectListItemType> = ({ idx, label, value }) => 
       <p className={styles.label}>{label}</p>
     </li>
   );
-}
+};
 
 export default SelectListItem;

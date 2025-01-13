@@ -16,11 +16,7 @@ export const useFocus = <T>() => {
   };
 
   const setBlur = () => {
-    if (
-      htmlElRef.current &&
-      typeof htmlElRef.current === "object" &&
-      "blur" in htmlElRef.current
-    ) {
+    if (htmlElRef.current && typeof htmlElRef.current === "object" && "blur" in htmlElRef.current) {
       if (typeof htmlElRef.current.blur === "function") {
         htmlElRef.current.blur();
       }

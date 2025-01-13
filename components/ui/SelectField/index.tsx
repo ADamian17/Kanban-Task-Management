@@ -1,30 +1,21 @@
-import React from 'react';
-import Select from 'react-select';
+import React from "react";
 
-import { customSelectStyles } from './select-styles';
-import ChevronDown from '@/components/icons/ChevronDown';
+import Select from "../Select";
 
-import styles from './SelectField.module.scss';
+import styles from "./SelectField.module.scss";
 
 type SelectFieldProps = {
   label: string;
-  options: Array<Record<'label' | 'value', string>>;
+  options: Array<Record<"label" | "value", string>>;
   placeholder?: string;
-}
+  onChange?: (value: Select.Context["inputValue"]) => void;
+};
 
-const SelectField: React.FC<SelectFieldProps> = ({ options, placeholder, label }) => (
+const SelectField: React.FC<SelectFieldProps> = ({ options, placeholder, label, onChange }) => (
   <div className={styles.selectWrapper}>
     <label className={styles.label}>{label}</label>
 
-    <Select
-      components={{
-        IndicatorSeparator: () => null,
-        DropdownIndicator: () => <ChevronDown style={{ marginRight: 16 }} />
-      }}
-      options={options ?? []}
-      placeholder={placeholder}
-      styles={customSelectStyles}
-    />
+    <Select options={options ?? []} placeholder={placeholder} onChange={onChange} />
   </div>
 );
 

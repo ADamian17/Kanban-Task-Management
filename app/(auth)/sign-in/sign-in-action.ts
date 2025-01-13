@@ -7,7 +7,7 @@ type SignInActionResType = { error: string } | boolean | undefined;
 
 export const signInAction = async ({
   email,
-  password,
+  password
 }: Record<string, unknown>): Promise<SignInActionResType> => {
   let hasError = false;
 
@@ -15,7 +15,7 @@ export const signInAction = async ({
     const res = await signIn("credentials", {
       email,
       password,
-      redirect: false,
+      redirect: false
     });
 
     return res;

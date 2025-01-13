@@ -5,7 +5,7 @@ import { executeApiReqNoHeaders } from "../utils/executeApiReqNoHeaders";
 export const refreshAccessToken = async (token: JWT) => {
   try {
     const data = await executeApiReqNoHeaders(RefreshAccessTokenDocument, {
-      refreshToken: token.refreshToken as string,
+      refreshToken: token.refreshToken as string
     });
 
     const newAccessToken = data.refreshToken?.accessToken;

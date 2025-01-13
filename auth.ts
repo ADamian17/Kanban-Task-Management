@@ -10,13 +10,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
       async authorize(credentials) {
-        const { email, password } = credentials as Record<
-          "email" | "password",
-          string
-        >;
+        const { email, password } = credentials as Record<"email" | "password", string>;
         const data = await executeApiReq(SignInUserDocument, {
           email,
-          password,
+          password
         });
 
         if (
@@ -29,9 +26,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         return {
           id: data?.signInUser?.user?.id,
           accessToken: data?.signInUser?.accessToken ?? undefined,
-          refreshToken: data?.signInUser?.refreshToken ?? undefined,
+          refreshToken: data?.signInUser?.refreshToken ?? undefined
         };
-      },
-    }),
-  ],
+      }
+    })
+  ]
 });

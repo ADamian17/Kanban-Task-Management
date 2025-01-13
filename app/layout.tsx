@@ -5,30 +5,28 @@ import "@/styles/global.scss";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 export const metadata: Metadata = {
-  title: 'Kanban Board',
-  description: 'A simple kanban board',
+  title: "Kanban Board",
+  description: "A simple kanban board"
 };
 
 type DefaultHtmlAttributes = {
   lang: string;
-  "data-current-theme-color": 'dark' | 'light';
-}
+  "data-current-theme-color": "dark" | "light";
+};
 
 const defaultHtmlAttributes: DefaultHtmlAttributes = {
   lang: "en",
-  "data-current-theme-color": "dark",
-}
+  "data-current-theme-color": "dark"
+};
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html {...defaultHtmlAttributes}>
-      <body className={`${plusJakartaSans.variable}`}>
-        {children}
-      </body>
+      <body className={`${plusJakartaSans.variable}`}>{children}</body>
     </html>
   );
 }

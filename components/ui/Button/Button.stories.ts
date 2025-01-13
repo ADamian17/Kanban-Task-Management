@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
-import Button from '.';
+import Button from ".";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -8,22 +8,22 @@ const meta = {
   component: Button,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: 'centered',
+    layout: "centered"
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    size: { control: 'select', description: 'controls button size' },
-    text: { description: 'button text' },
-    variant: {control: 'select', description: 'controls button styles' },
+    size: { control: "select", description: "controls button size" },
+    text: { description: "button text" },
+    variant: { control: "select", description: "controls button styles" }
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-  args: { 
-    size: 'md',
-    text: 'Button',
-    variant: 'primary',
-  },
+  args: {
+    size: "md",
+    text: "Button",
+    variant: "primary"
+  }
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -32,45 +32,45 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
   args: {
-    variant: 'primary',
-    text: 'Button Primary (S)'
-  },
+    variant: "primary",
+    text: "Button Primary (S)"
+  }
 };
 
 export const Secondary: Story = {
   args: {
-    variant: 'secondary',
-    text: 'Button Secondary',
-  },
+    variant: "secondary",
+    text: "Button Secondary"
+  }
 };
 
 export const Danger: Story = {
   args: {
-    variant: 'danger',
-    text: 'Button Destructive',
-  },
+    variant: "danger",
+    text: "Button Destructive"
+  }
 };
 
 export const XLarge: Story = {
   args: {
-    size: 'xl',
-  },
+    size: "xl"
+  }
 };
 
 export const Large: Story = {
   args: {
-    size: 'lg',
-  },
+    size: "lg"
+  }
 };
 
 export const Medium: Story = {
   args: {
-    size: 'md',
-  },
+    size: "md"
+  }
 };
 
 export const Small: Story = {
   args: {
-    size: 'sm',
-  },
+    size: "sm"
+  }
 };

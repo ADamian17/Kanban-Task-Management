@@ -17,17 +17,17 @@ const config: CodegenConfig = {
         dedupeOperationSuffix: true,
         preResolveTypes: true,
         ignoreNoDocuments: true,
-        futureProofEnums: true,
+        futureProofEnums: true
       },
       presetConfig: {
         dedupeFragments: true,
-        fragmentMasking: false,
-      },
-    },
+        fragmentMasking: false
+      }
+    }
   },
   hooks: {
-    afterAllFileWrite: ["prettier --write __generated__/**/*.ts"],
-  },
+    afterAllFileWrite: ["prettier --write __generated__/**/*.ts"]
+  }
 };
 
 export default config;

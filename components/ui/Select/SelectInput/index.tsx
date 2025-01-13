@@ -1,11 +1,11 @@
 import ChevronDown from "@/components/icons/ChevronDown";
 import { useSelectCtx } from "../context/Select.provider";
 
-import styles from './SelectInput.module.scss';
+import styles from "./SelectInput.module.scss";
 
 type SelectListType = {
   placeholder?: string;
-}
+};
 
 const SelectInput: React.FC<SelectListType> = ({ placeholder }) => {
   const { handleOpenList, inputRef, inputValue, handleInputKeyUp, isOpen } = useSelectCtx();
@@ -27,6 +27,6 @@ const SelectInput: React.FC<SelectListType> = ({ placeholder }) => {
       <ChevronDown className={styles.selectIcon} />
     </div>
   );
-}
+};
 
 export default SelectInput;

@@ -1,72 +1,83 @@
 import { useFocus } from "@/lib/hooks/useFocus";
 import { ComponentRef, createContext, useContext, useState } from "react";
 
-const SelectCtx = createContext<Select.Context>({} as Select.Context)
+const SelectCtx = createContext<Select.Context>({} as Select.Context);
 
-const SelectProvider: React.FC<Select.Provider> = ({ children, optionsCount }) => {
-  const [tabIndex, setTabIndex] = useState(1)
+const SelectProvider: React.FC<Select.Provider> = ({ children, optionsCount, onChange }) => {
+  const [tabIndex, setTabIndex] = useState(1);
   const [inputRef, setInputFocus] = useFocus<ComponentRef<"input">>();
   const [menuRef, _, setMenuBlur] = useFocus<HTMLMenuElement>();
-  const [isOpen, setIsOpen] = useState(false)
-  const [inputValue, setInputValue] = useState<Select.Context["inputValue"]>({ value: "", label: "" })
+  const [isOpen, setIsOpen] = useState(false);
+  const [inputValue, setInputValue] = useState<Select.Context["inputValue"]>({
+    value: "",
+    label: ""
+  });
 
   const handleSetInputValue = (e: React.MouseEvent<HTMLLIElement>) => {
-    setInputValue(JSON.parse(e.currentTarget.dataset["opt"] as string))
-  }
+    const selectedOption = JSON.parse(e.currentTarget.dataset["opt"] as string);
+    setInputValue(selectedOption);
+
+    if (typeof onChange === "function") {
+      onChange(selectedOption);
+    }
+  };
 
   const handleOpenList = () => {
-    setTabIndex(0)
+    setTabIndex(0);
     setIsOpen(!isOpen);
   };
 
   const handleCloseList = (e: MouseEvent) => {
-    if (
-      e.target !== menuRef.current &&
-      e.target !== inputRef.current
-    ) {
+    if (e.target !== menuRef.current && e.target !== inputRef.current) {
       setIsOpen(false);
-      setTabIndex(0)
+      setTabIndex(0);
     }
   };
 
   const handleInputKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key.toLowerCase() === "enter" && !isOpen) {
-      setTabIndex(0)
+      setTabIndex(0);
       setIsOpen(true);
       return;
     }
 
     if (e.key.toLowerCase() === "escape" && isOpen) {
-      setTabIndex(0)
+      setTabIndex(0);
       setIsOpen(!isOpen);
       return;
     }
 
     if (e.key === "ArrowDown") {
       setMenuBlur();
-      setTabIndex(prev => prev + 1)
+      setTabIndex((prev) => prev + 1);
     }
   };
 
   const handleMenuKeyUp = (e: React.KeyboardEvent<HTMLMenuElement>) => {
     if (e.key.toLowerCase() === "escape" && isOpen) {
-      setTabIndex(0)
+      setTabIndex(0);
       setIsOpen(!isOpen);
       return;
     }
 
     if (e.key.toLowerCase() === "enter" && isOpen) {
-      setInputValue(JSON.parse(document.activeElement?.getAttribute("data-opt") as string))
+      const selectedOption = JSON.parse(document.activeElement?.getAttribute("data-opt") as string);
+      setInputValue(selectedOption);
+
+      if (typeof onChange === "function") {
+        onChange(selectedOption);
+      }
+
       setIsOpen(false);
       return;
     }
 
     if (e.key === "ArrowDown") {
-      setTabIndex(prev => {
+      setTabIndex((prev) => {
         if (prev >= optionsCount) return prev;
 
-        return prev + 1
-      })
+        return prev + 1;
+      });
 
       return;
     }
@@ -76,10 +87,10 @@ const SelectProvider: React.FC<Select.Provider> = ({ children, optionsCount }) =
         setInputFocus();
       }
 
-      setTabIndex(prev => {
+      setTabIndex((prev) => {
         if (prev <= 0) return prev;
 
-        return prev - 1
+        return prev - 1;
       });
 
       return;
@@ -100,11 +111,7 @@ const SelectProvider: React.FC<Select.Provider> = ({ children, optionsCount }) =
     tabIndex
   };
 
-  return (
-    <SelectCtx.Provider value={value}>
-      {children}
-    </SelectCtx.Provider>
-  )
+  return <SelectCtx.Provider value={value}>{children}</SelectCtx.Provider>;
 };
 
 export const useSelectCtx = () => useContext(SelectCtx);

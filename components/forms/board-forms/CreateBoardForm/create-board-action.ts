@@ -1,17 +1,12 @@
 "use server";
 
-import {
-  CreateBoardDocument,
-  CreateBoardMutation,
-} from "@/__generated__/graphql";
+import { CreateBoardDocument, CreateBoardMutation } from "@/__generated__/graphql";
 import { executeApiReq } from "@/lib/utils/executeApiReq";
 
 export const createBoardAction = async ({
   name,
-  columns,
-}: Record<string, any>): Promise<
-  CreateBoardMutation | { error: string } | undefined
-> => {
+  columns
+}: Record<string, any>): Promise<CreateBoardMutation | { error: string } | undefined> => {
   try {
     const res = await executeApiReq(CreateBoardDocument, { name, columns });
     return res;

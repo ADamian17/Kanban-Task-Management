@@ -12,6 +12,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   width: 100%;
+  min-height: REM(40);
 
   &.sm {
     @include heading-sm;
