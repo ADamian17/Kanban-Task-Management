@@ -1,4 +1,5 @@
-import { GetOneBoardByIdDocument } from "@/__generated__/graphql";
+import { GetOneBoardByUriDocument } from "@/__generated__/graphql";
+import ButtonLink from "@/components/ui/ButtonLink";
 import { executeApiReq } from "@/lib/utils/executeApiReq";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -11,7 +12,7 @@ const SingleDashboardRootLayout = async ({
   params: Promise<{ boardUri: string }>;
 }) => {
   const { boardUri } = await params;
-  const data = await executeApiReq(GetOneBoardByIdDocument, {
+  const data = await executeApiReq(GetOneBoardByUriDocument, {
     uri: `/${boardUri}/`
   });
 
@@ -31,7 +32,11 @@ const SingleDashboardRootLayout = async ({
 
   return (
     <div style={{ padding: "1rem", margin: "1rem auto", maxWidth: "1110px" }}>
-      <Link href="/">Boards</Link>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr auto" }}>
+        <Link href="/" style={{ display: "inline-block", marginRight: "auto" }}>Boards</Link>
+
+        <ButtonLink href={`/${boardUri}/task/new`} text="Add new Task" />
+      </div>
 
       <div
         style={{

@@ -1,4 +1,4 @@
-query GetOneBoardById($uri: String) {
+query GetOneBoardByUri($uri: String) {
   getOneBoard(uri: $uri) {
     id
     name

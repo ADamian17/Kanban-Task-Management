@@ -1,13 +1,24 @@
-import Modal from "@/components/ui/Modal";
 import React from "react";
 
-const EditTaskPage: React.FC = async (props) => {
+import EditTaskContainer from "@/containers/task/EditTaskContainer";
+import { executeApiReq } from "@/lib/utils/executeApiReq";
+import { GetTaskDocument } from "@/__generated__/graphql";
+
+const EditTaskPage = async ({ params }: { params: Promise<{ taskId: string; boardUri: string }>; }) => {
+  const { taskId, boardUri } = await params;
+
+  const data = await executeApiReq(GetTaskDocument, {
+    id: taskId,
+    boardUri: `/${boardUri}/`,
+  });
+
   return (
-    <Modal show={true}>
-      <p>This is the edit task page</p>
-      <pre>{JSON.stringify(props, null, 2)}</pre>
-    </Modal>
-  );
+    <EditTaskContainer
+      boardColumnsData={data?.getOneBoard?.columns}
+      boardUri={boardUri}
+      taskData={data?.getOneTask}
+    />
+  )
 };
 
 export default EditTaskPage;

@@ -1,8 +1,25 @@
-query GetTask($id: ID!) {
+query GetTask($id: ID!, $boardUri: String!) {
+  getOneBoard(uri: $boardUri) {
+    columns {
+      nodes {
+        id
+        name
+      }
+    }
+  }
   getOneTask(id: $id) {
     id
     title
     description
     status
+    subtasks {
+      count
+      completedSubtasks
+      nodes {
+        id
+        completed
+        title
+      }
+    }
   }
 }

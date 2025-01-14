@@ -1,20 +1,20 @@
-import Modal from "@/components/ui/Modal";
-import Link from "next/link";
 import React from "react";
 
-const TaskPage = async ({ params }: { params: Promise<{ taskId: string; boardUri: string }>; }) => {
+import ViewTaskContainer from "@/containers/task/ViewTaskContainer";
+import { executeApiReq } from "@/lib/utils/executeApiReq";
+import { GetTaskDocument } from "@/__generated__/graphql";
+
+const ViewTaskPage = async ({ params }: { params: Promise<{ taskId: string; boardUri: string }>; }) => {
   const { taskId, boardUri } = await params;
 
-  return (
-    <Modal show={true}>
-      <div>
-        <Link href={`/${boardUri}/task/${taskId}/delete`}>delete</Link>
-        <Link href={`/${boardUri}/task/${taskId}/edit`}>edit</Link>
-      </div>
+  const data = await executeApiReq(GetTaskDocument, {
+    id: taskId,
+    boardUri: `/${boardUri}/`,
+  });
 
-      <p>This is the task page</p>
-    </Modal>
+  return (
+    <ViewTaskContainer boardUri={boardUri} taskId={taskId} taskData={data?.getOneTask} />
   );
 };
 
-export default TaskPage;
+export default ViewTaskPage;

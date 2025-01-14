@@ -20,6 +20,11 @@ const SelectProvider: React.FC<Select.Provider> = ({ children, optionsCount, onC
     if (typeof onChange === "function") {
       onChange(selectedOption);
     }
+
+    if (isOpen) {
+      setTabIndex(0);
+      setIsOpen(false);
+    }
   };
 
   const handleOpenList = () => {

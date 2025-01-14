@@ -1,4 +1,4 @@
-import { useEffect, useId } from "react";
+import { useEffect } from "react";
 
 import { useSelectCtx } from "../context/Select.provider";
 import SelectListItem, { SelectListItemType } from "../SelectListItem";
@@ -11,7 +11,7 @@ type SelectListType = {
 
 const SelectList: React.FC<SelectListType> = ({ options }) => {
   const { handleCloseList, isOpen, menuRef, handleMenuKeyUp } = useSelectCtx();
-  const id = useId();
+
   useEffect(() => {
     document.addEventListener("click", handleCloseList);
 
@@ -28,7 +28,7 @@ const SelectList: React.FC<SelectListType> = ({ options }) => {
     >
       {options.length > 0 ? (
         options.map((item, idx) => (
-          <SelectListItem key={id} idx={idx} value={item.value} label={item.label} />
+          <SelectListItem key={item.value} idx={idx} value={item.value} label={item.label} />
         ))
       ) : (
         <li className={styles.listItem}>No options</li>
