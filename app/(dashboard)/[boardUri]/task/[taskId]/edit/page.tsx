@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 
 import EditTaskContainer from "@/containers/task/EditTaskContainer";
 import { executeApiReq } from "@/lib/utils/executeApiReq";
@@ -13,11 +13,13 @@ const EditTaskPage = async ({ params }: { params: Promise<{ taskId: string; boar
   });
 
   return (
-    <EditTaskContainer
-      boardColumnsData={data?.getOneBoard?.columns}
-      boardUri={boardUri}
-      taskData={data?.getOneTask}
-    />
+    <Suspense fallback={<div>Loading...</div>}>
+      <EditTaskContainer
+        boardColumnsData={data?.getOneBoard?.columns}
+        boardUri={boardUri}
+        taskData={data?.getOneTask}
+      />
+    </Suspense>
   )
 };
 

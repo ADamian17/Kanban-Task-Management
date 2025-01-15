@@ -1,0 +1,21 @@
+mutation EditTask(
+  $title: String!
+  $id: ID!
+  $description: String!
+  $columnId: ID
+  $subtasks: [SubtaskInput!]
+) {
+  updateTask(
+    input: {
+      description: $description
+      id: $id
+      subtasksAttributes: $subtasks
+      title: $title
+      columnId: $columnId
+    }
+  ) {
+    id
+    title
+    description
+  }
+}

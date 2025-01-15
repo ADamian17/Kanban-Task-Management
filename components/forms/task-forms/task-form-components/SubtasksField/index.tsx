@@ -1,3 +1,4 @@
+import { SubtaskInput } from '@/__generated__/graphql';
 import Button from '@/components/ui/Button';
 import TextField from '@/components/ui/TextField';
 import React from 'react'
@@ -6,7 +7,7 @@ import { FieldArray } from 'react-final-form-arrays';
 
 type SubtasksFieldProps = {
   submitting: boolean;
-  onRemove?: (col: Record<string, string | boolean>) => void
+  onRemove?: (subTask: SubtaskInput) => void
 }
 
 const SubtasksField: React.FC<SubtasksFieldProps> = ({ submitting, onRemove }) => (
