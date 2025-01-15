@@ -5,10 +5,11 @@ import SelectProvider from "./context/Select.provider";
 import styles from "./Select.module.scss";
 import { ComponentProps } from "react";
 
-type SelectType = Omit<ComponentProps<"input">, "onChange"> & {
+type SelectType = Omit<ComponentProps<"input">, "onChange" | "value"> & {
   onChange?: (value: Select.Context["inputValue"]) => void;
   options: Select.Context["inputValue"][];
   placeholder?: string;
+  value: Record<"label" | "value", string>;
 };
 
 const Select: React.FC<SelectType> = ({ options = [], placeholder, onChange, ...rest }) => (

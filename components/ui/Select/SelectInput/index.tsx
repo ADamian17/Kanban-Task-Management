@@ -4,7 +4,11 @@ import { useSelectCtx } from "../context/Select.provider";
 import styles from "./SelectInput.module.scss";
 import { ComponentProps } from "react";
 
-const SelectInput: React.FC<ComponentProps<"input">> = ({ placeholder, value, ...rest }) => {
+interface SelectInputProps extends Omit<ComponentProps<"input">, "value"> {
+  value: Record<"label" | "value", string>;
+}
+
+const SelectInput: React.FC<SelectInputProps> = ({ placeholder, value, ...rest }) => {
   const { handleOpenList, inputRef, inputValue, handleInputKeyUp, isOpen } = useSelectCtx();
   return (
     <div className={styles.selectInputWrapper}>
@@ -17,7 +21,7 @@ const SelectInput: React.FC<ComponentProps<"input">> = ({ placeholder, value, ..
         readOnly
         ref={inputRef}
         type="text"
-        value={((value as unknown) as typeof inputValue).label || inputValue.label}
+        value={value?.label || inputValue.label}
         {...rest}
       />
 

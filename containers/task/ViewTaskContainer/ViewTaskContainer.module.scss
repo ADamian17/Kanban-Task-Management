@@ -1,0 +1,93 @@
+.wrapper {
+  display: grid;
+  row-gap: REM(24);
+
+  .header {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    align-items: center;
+    column-gap: REM(24);
+
+    .title {
+      @include heading-lg;
+      word-break: break-word;
+    }
+
+    .actions {
+      display: grid;
+      column-gap: REM(16);
+    }
+  }
+
+  .subtasksHeader,
+  .currentStatusHeader {
+    @include heading-sm;
+    color: var(--white);
+  }
+
+  .subtasksHeader {
+    margin-bottom: REM(16);
+  }
+
+  .currentStatusHeader {
+    margin-bottom: REM(8);
+  }
+
+  .description {
+    @include body-lg;
+    color: var(--medium-grey);
+  }
+
+  .subtasks {
+    display: grid;
+    row-gap: REM(8);
+    list-style: none;
+
+    .subtask {
+      align-items: center;
+      background-color: var(--default-bg);
+      border-radius: 4px;
+      column-gap: REM(16);
+      display: grid;
+      grid-template-columns: min-content 1fr;
+      padding: REM(12);
+
+      .subtaskCheckboxLabel {
+        border-radius: 2px;
+        border: 1px solid rgba(130, 143, 163, 0.25);
+        display: grid;
+        height: REM(16);
+        width: REM(16);
+        place-items: center;
+
+        .subtaskCheckboxIcon {
+          display: none;
+          pointer-events: none;
+        }
+      }
+
+      .subtaskCheckbox {
+        display: none;
+
+        &:checked + .subtaskCheckboxLabel {
+          background-color: var(--main-purple);
+          border: 1px solid var(--main-purple);
+
+          .subtaskCheckboxIcon {
+            display: initial;
+          }
+        }
+
+        &:checked + .subtaskCheckboxLabel + .subtaskTitle {
+          opacity: 0.5;
+          text-decoration: line-through;
+        }
+      }
+
+      .subtaskTitle {
+        @include heading-sm;
+        word-break: break-word;
+      }
+    }
+  }
+}

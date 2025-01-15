@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 
 import ViewTaskContainer from "@/containers/task/ViewTaskContainer";
 import { executeApiReq } from "@/lib/utils/executeApiReq";
@@ -13,9 +13,12 @@ const ViewTaskPage = async ({ params }: { params: Promise<{ taskId: string; boar
   });
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ViewTaskContainer boardUri={boardUri} taskId={taskId} taskData={data?.getOneTask} />
-    </Suspense>
+    <ViewTaskContainer
+      boardColumnsData={data?.getOneBoard?.columns}
+      boardUri={boardUri}
+      taskData={data?.getOneTask}
+      taskId={taskId}
+    />
   );
 };
 
