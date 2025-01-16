@@ -11,9 +11,11 @@
     pointer-events: none;
     width: REM(16);
     z-index: 1;
+    cursor: pointer;
   }
 
   .selectInput {
+    cursor: pointer;
     background-color: var(--default-input-bg);
     border-radius: 4px;
     border: 1px solid var(--default-border-color);

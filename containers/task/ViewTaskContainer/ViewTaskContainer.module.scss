@@ -19,20 +19,6 @@
     }
   }
 
-  .subtasksHeader,
-  .currentStatusHeader {
-    @include heading-sm;
-    color: var(--white);
-  }
-
-  .subtasksHeader {
-    margin-bottom: REM(16);
-  }
-
-  .currentStatusHeader {
-    margin-bottom: REM(8);
-  }
-
   .description {
     @include body-lg;
     color: var(--medium-grey);

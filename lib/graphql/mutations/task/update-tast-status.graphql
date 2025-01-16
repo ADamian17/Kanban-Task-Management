@@ -1,0 +1,6 @@
+mutation UpdateTaskStatus($id: ID!, $columnId: ID!) {
+  updateTaskStatus(input: { id: $id, columnId: $columnId }) {
+    id
+    title
+  }
+}

@@ -1,36 +1,27 @@
 "use client";
-import React, { MouseEventHandler } from 'react'
+import React from 'react'
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 
 import { GetTaskQuery } from '@/__generated__/graphql';
+import CurrentTaskStatus from '@/components/features/CurrentTaskStatus';
 import Modal from '@/components/ui/Modal';
-import Select from '@/components/ui/Select';
 import SubtaskList from '@/components/features/SubtaskList';
 import ThreeDots from '@/components/icons/ThreeDots';
 
 import styles from './ViewTaskContainer.module.scss';
 
-
 type ViewTaskPageProps = {
   boardUri: string;
-  taskId: string;
   taskData: GetTaskQuery["getOneTask"];
   boardColumnsData: GetTaskQuery["getOneBoard"]["columns"];
   children?: React.ReactNode;
 }
 
-const ViewTaskContainer: React.FC<ViewTaskPageProps> = ({ boardUri, taskId, taskData, boardColumnsData }) => {
+const ViewTaskContainer: React.FC<ViewTaskPageProps> = ({ boardUri, taskData, boardColumnsData }) => {
   const router = useRouter();
-  const pathname = `/${boardUri}/task/${taskId}`;
+  const pathname = `/${boardUri}/task/${taskData?.id}`;
 
   const handleClose = () => router.push(`/${boardUri}/`);
-
-  const handleStatusChange = (value: Record<"label" | "value", string>) => {
-    console.log(value);
-  }
-
-  const foundColumn = (boardColumnsData?.nodes ?? []).find(column => column?.name?.toLowerCase() === taskData?.status?.toLowerCase())
 
   return (
     <Modal show={true} onClose={handleClose}>
@@ -49,22 +40,12 @@ const ViewTaskContainer: React.FC<ViewTaskPageProps> = ({ boardUri, taskId, task
 
         <SubtaskList pathname={pathname} subtasks={taskData?.subtasks} />
 
-        <div>
-          <p className={styles.currentStatusHeader}>Current Status</p>
-
-          <Select
-            options={(boardColumnsData?.nodes ?? []).map((column) => ({
-              label: column?.name ?? "",
-              value: column?.id ?? "",
-            }))}
-            onChange={handleStatusChange}
-            placeholder="Select status"
-            value={{
-              label: foundColumn?.name ?? "",
-              value: foundColumn?.id ?? "",
-            }}
-          />
-        </div>
+        <CurrentTaskStatus
+          columns={boardColumnsData?.nodes}
+          taskStatus={taskData?.status}
+          pathname={pathname}
+          taskId={taskData?.id}
+        />
       </div>
     </Modal>
   );

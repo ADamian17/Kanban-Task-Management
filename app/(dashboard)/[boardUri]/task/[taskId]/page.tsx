@@ -17,7 +17,6 @@ const ViewTaskPage = async ({ params }: { params: Promise<{ taskId: string; boar
       boardColumnsData={data?.getOneBoard?.columns}
       boardUri={boardUri}
       taskData={data?.getOneTask}
-      taskId={taskId}
     />
   );
 };
