@@ -9,6 +9,7 @@
   display: grid;
   place-items: center;
   padding: REM(16);
+  overflow-y: auto;
 
   .modal {
     background-color: var(--dark-grey);

@@ -4,9 +4,9 @@ import { useRouter } from 'next/navigation';
 
 import { GetTaskQuery } from '@/__generated__/graphql';
 import CurrentTaskStatus from '@/components/features/CurrentTaskStatus';
+import KebabDropdown from '@/components/ui/Dropdowns/KebabDropdown';
 import Modal from '@/components/ui/Modal';
 import SubtaskList from '@/components/features/SubtaskList';
-import ThreeDots from '@/components/icons/ThreeDots';
 
 import styles from './ViewTaskContainer.module.scss';
 
@@ -20,6 +20,10 @@ type ViewTaskPageProps = {
 const ViewTaskContainer: React.FC<ViewTaskPageProps> = ({ boardUri, taskData, boardColumnsData }) => {
   const router = useRouter();
   const pathname = `/${boardUri}/task/${taskData?.id}`;
+  const menuItems = [
+    { label: "Edit task", uri: `${pathname}/edit` },
+    { label: "delete task", uri: `${pathname}/delete`, isDelete: true }
+  ]
 
   const handleClose = () => router.push(`/${boardUri}/`);
 
@@ -29,11 +33,7 @@ const ViewTaskContainer: React.FC<ViewTaskPageProps> = ({ boardUri, taskData, bo
         <div className={styles.header}>
           <p className={styles.title}>{taskData?.title}</p>
 
-          <ThreeDots />
-          {/* <div className={styles.actions}>
-            <Link href={`/${boardUri}/task/${taskId}/delete`}>delete</Link>
-            <Link href={`/${boardUri}/task/${taskId}/edit`}>edit</Link>
-          </div> */}
+          <KebabDropdown menuItems={menuItems} />
         </div>
 
         <p className={styles.description}>{taskData?.description}</p>

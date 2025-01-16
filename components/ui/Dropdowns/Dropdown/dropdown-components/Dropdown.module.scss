@@ -1,0 +1,27 @@
+.dropdownWrapper {
+  position: relative;
+
+  &:focus-within {
+    z-index: 3;
+  }
+}
+
+.dropdownButton {
+  border: none;
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.dropdownMenu {
+  background-color: var(--default-bg);
+  border-radius: REM(8);
+  box-shadow: 0px REM(10) REM(20) 0px rgba(54, 78, 126, 0.25);
+  padding: REM(16);
+  position: absolute;
+  right: 0;
+  top: REM(36);
+  width: REM(192);
+}
