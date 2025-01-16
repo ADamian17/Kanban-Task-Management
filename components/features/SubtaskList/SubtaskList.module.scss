@@ -1,0 +1,11 @@
+.subtasks {
+  display: grid;
+  row-gap: REM(8);
+  list-style: none;
+}
+
+.subtasksHeader {
+  @include heading-sm;
+  color: var(--white);
+  margin-bottom: REM(16);
+}

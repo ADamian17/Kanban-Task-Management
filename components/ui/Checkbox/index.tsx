@@ -1,16 +1,17 @@
-import React from "react";
+import React, { ComponentProps } from "react";
 
 import styles from "./Checkbox.module.scss";
 
-type CheckboxType = {
+type CheckboxType = ComponentProps<"input"> & {
   text: string;
 };
 
-const Checkbox: React.FC<CheckboxType> = ({ text }) => {
+const Checkbox: React.FC<CheckboxType> = ({ text, id, ...rest }) => {
   return (
     <fieldset className={styles.checkboxWrapper} data-testid="checkbox">
-      <input type="checkbox" id="checkbox" className={styles.input} />
-      <label htmlFor="checkbox" className={styles.label}>
+      <input type="checkbox" id={id} className={styles.input} {...rest} />
+
+      <label htmlFor={id} className={styles.label}>
         <svg
           className={styles.checkboxIcon}
           xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +23,7 @@ const Checkbox: React.FC<CheckboxType> = ({ text }) => {
           <path
             d="M1.27588 3.06593L4.03234 5.82239L9.03234 0.822388"
             stroke="white"
-            stroke-width="2"
+            strokeWidth="2"
           />
         </svg>
       </label>

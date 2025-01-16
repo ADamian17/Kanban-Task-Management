@@ -1,0 +1,5 @@
+mutation CompleteSubtask($id: ID!, $completed: Boolean!) {
+  completeSubtask(input: { id: $id, completed: $completed }) {
+    success
+  }
+}
