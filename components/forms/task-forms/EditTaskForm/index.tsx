@@ -12,6 +12,7 @@ import SubtasksField from "../task-form-components/SubtasksField";
 import TitleField from "../task-form-components/TitleField";
 import { editTaskAction } from "./edit-task-action";
 import { revalidateBoardAction } from "../CreateTaskForm/revalidate-board-action";
+import FormWrapper from "@/components/ui/FormWrapper";
 
 type EditTaskFormProps = {
   pathname: string;
@@ -79,7 +80,7 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({ pathname, taskData, boardCo
       onSubmit={onSubmit}
       mutators={{ ...arrayMutators }}
       render={({ handleSubmit, submitting }) => (
-        <form onSubmit={handleSubmit}>
+        <FormWrapper onSubmit={handleSubmit}>
           <TitleField />
 
           <DescriptionField />
@@ -89,7 +90,7 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({ pathname, taskData, boardCo
           <StatusField boardColumnsData={boardColumnsData} />
 
           <Button type="submit" text="Save changes" disabled={submitting} />
-        </form>
+        </FormWrapper>
       )}
     />
   );

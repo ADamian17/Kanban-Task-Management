@@ -13,6 +13,7 @@ const TitleField = () => (
           meta?.submitError
         }
         label="Title"
+        placeholder='e.g. Take coffee break'
       />
     )}
   </Field>

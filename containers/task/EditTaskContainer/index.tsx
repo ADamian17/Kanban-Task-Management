@@ -18,7 +18,7 @@ const EditTaskContainer: React.FC<DeleteTaskContainerType> = ({ boardUri, taskDa
   const handleClose = () => router.push(`/${boardUri}/task/${taskData?.id}`);
 
   return (
-    <Modal show={true} onClose={handleClose}>
+    <Modal show={true} onClose={handleClose} title="Edit Task">
       <EditTaskForm
         pathname={`/${boardUri}`}
         taskData={taskData}

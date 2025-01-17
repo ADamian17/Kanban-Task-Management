@@ -2,14 +2,16 @@
 import React, { MouseEventHandler, useRef } from "react";
 
 import styles from "./Modal.module.scss";
+import { isNil } from "lodash";
 
 type ModalType = {
-  show: boolean;
   children: React.ReactNode;
   onClose?: () => void;
+  show: boolean;
+  title?: string;
 };
 
-const Modal: React.FC<ModalType> = ({ show, children, onClose }) => {
+const Modal: React.FC<ModalType> = ({ show, children, onClose, title }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const handleModalClose: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -27,7 +29,11 @@ const Modal: React.FC<ModalType> = ({ show, children, onClose }) => {
           onClick={handleModalClose}
           id="modal-wrapper"
         >
-          <div className={styles.modal}>{children}</div>
+          <div className={styles.modal}>
+            {!isNil(title) && <p className={styles.title}>{title}</p>}
+
+            {children}
+          </div>
         </div>
       )}
     </>

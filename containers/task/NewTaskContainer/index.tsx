@@ -17,7 +17,7 @@ const NewTaskContainer: React.FC<DeleteTaskContainerType> = ({ boardUri, boardCo
   const handleClose = () => router.push(`/${boardUri}/`);
 
   return (
-    <Modal show={true} onClose={handleClose}>
+    <Modal show={true} onClose={handleClose} title="Add New Task">
       <CreateTaskForm pathname={`/${boardUri}`} boardColumnsData={boardColumnsData} />
     </Modal>
   )

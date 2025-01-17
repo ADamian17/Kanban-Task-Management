@@ -19,4 +19,10 @@
     position: relative;
     width: 100%;
   }
+
+  .title {
+    @include heading-lg;
+    color: var(--white);
+    margin-bottom: REM(24);
+  }
 }

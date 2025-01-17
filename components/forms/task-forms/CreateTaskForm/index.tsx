@@ -12,6 +12,7 @@ import DescriptionField from "../task-form-components/DescriptionField";
 import TitleField from "../task-form-components/TitleField";
 import { GetTaskQuery } from "@/__generated__/graphql";
 import { useRouter } from "next/navigation";
+import FormWrapper from "@/components/ui/FormWrapper";
 
 type CreateTaskFormValues = {
   title: string;
@@ -53,10 +54,11 @@ const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ pathname, boardColumnsD
 
   return (
     <Form
+      initialValues={{ subtasks: [{ title: '' }, { title: '' }] }}
       onSubmit={onSubmit}
       mutators={{ ...arrayMutators }}
       render={({ handleSubmit, submitting }) => (
-        <form onSubmit={handleSubmit}>
+        <FormWrapper onSubmit={handleSubmit}>
           <TitleField />
 
           <DescriptionField />
@@ -66,7 +68,7 @@ const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ pathname, boardColumnsD
           <StatusField boardColumnsData={boardColumnsData} />
 
           <Button type="submit" text="Create task" disabled={submitting} />
-        </form>
+        </FormWrapper>
       )}
     />
   );
