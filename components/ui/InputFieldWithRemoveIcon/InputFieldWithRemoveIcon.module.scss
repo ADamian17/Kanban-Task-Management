@@ -1,0 +1,36 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  align-items: center;
+  column-gap: REM(16);
+
+  &.error {
+    .input {
+      border-color: var(--red);
+      outline-color: var(--red);
+    }
+
+    .errorMsg {
+      display: initial;
+      grid-column: 1 / 2;
+      grid-row: 1;
+    }
+  }
+
+  .input {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+
+  .icon {
+    cursor: pointer;
+  }
+
+  .errorMsg {
+    @include body-lg;
+    color: var(--red);
+    display: none;
+    justify-self: end;
+    padding-right: REM(16);
+  }
+}
