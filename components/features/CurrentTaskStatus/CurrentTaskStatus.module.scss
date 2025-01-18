@@ -1,5 +1,5 @@
 .currentStatusHeader {
   @include heading-sm;
-  color: var(--white);
+  color: var(--default-text-color);
   margin-bottom: REM(8);
 }

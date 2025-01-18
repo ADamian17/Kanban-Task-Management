@@ -19,9 +19,9 @@
   --red: #ea5555;
   --red-hover: #ff9898;
 
-
   // theme
   --default-bg: var(--light-grey-light-bg);
+  --default-accent-bg: var(--white);
   --default-text-color: var(--black);
   --default-body-text-color: var(--dark-grey);
   --default-border-color: #828fa340;
@@ -36,7 +36,9 @@
 }
 
 html {
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
   background-color: var(--default-bg);
 
   &[data-current-theme-color="light"] {
@@ -45,6 +47,7 @@ html {
 
   &[data-current-theme-color="dark"] {
     --default-bg: var(--very-dark-grey-dark-bg);
+    --default-accent-bg: var(--dark-grey);
     --default-text-color: var(--white);
     --default-secondary-btn-bg: var(--white);
     --default-secondary-btn-hover: var(--white);

@@ -1,8 +1,8 @@
-import { GetOneBoardByUriDocument } from "@/__generated__/graphql";
-import ButtonLink from "@/components/ui/ButtonLink";
-import { executeApiReq } from "@/lib/utils/executeApiReq";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+
+import { executeApiReq } from "@/lib/utils/executeApiReq";
+import { GetOneBoardByUriDocument } from "@/__generated__/graphql";
+import BoardLayout from "@/components/layouts/BoardLayout";
 
 const SingleDashboardRootLayout = async ({
   children,
@@ -20,59 +20,10 @@ const SingleDashboardRootLayout = async ({
     return notFound();
   }
 
-  const { columns, id } = data.getOneBoard;
-
-  if (columns.count <= 0)
-    return (
-      <div>
-        <p>This board is empty. Create a new column to get started.</p>
-        <Link href={`?addNewColumn=${id}`}>Add New Column</Link>
-      </div>
-    );
-
   return (
-    <div style={{ padding: "1rem", margin: "1rem auto", maxWidth: "1110px" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr auto" }}>
-        <Link href="/" style={{ display: "inline-block", marginRight: "auto" }}>Boards</Link>
-
-        <ButtonLink href={`/${boardUri}/task/new`} text="Add new Task" />
-      </div>
-
-      <div
-        style={{
-          padding: 0,
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-          gap: "1rem",
-          marginTop: 12
-        }}
-      >
-        {(columns?.nodes ?? []).map((column) => (
-          <div key={column?.id}>
-            <div>
-              <p>
-                {column?.name} ({column?.tasks?.count})
-              </p>
-
-              <ul>
-                {(column?.tasks?.nodes ?? []).map((task) => (
-                  <li key={task?.id}>
-                    <Link href={`/${boardUri}/task/${task?.id}`}>
-                      <p style={{ wordBreak: "break-word" }}>{task?.title}</p>
-                    </Link>
-
-                    <p style={{ wordBreak: "break-word" }}>
-                      {task?.subtasks.completedSubtasks} of {task?.subtasks.count} subtasks
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        ))}
-      </div>
+    <BoardLayout boardData={data.getOneBoard}>
       {children}
-    </div>
+    </BoardLayout>
   );
 };
 

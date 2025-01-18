@@ -19,6 +19,11 @@
     color: var(--btn-txt-color);
   }
 
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
   &.sm {
     @include heading-sm;
   }
