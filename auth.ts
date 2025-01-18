@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { authConfig } from "./auth.config";
 import { SignInUserDocument } from "@/__generated__/graphql";
-import { executeApiReq } from "./lib/utils/executeApiReq";
+import { executeApiReq } from "./lib/utils/execute-api-req";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   session: { strategy: "jwt" },

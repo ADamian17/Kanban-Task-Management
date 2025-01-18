@@ -1,22 +1,22 @@
-.boardLayoutHeader {
-  max-height: REM(96);
-  background-color: var(--default-accent-bg);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  column-gap: REM(10);
-  align-items: center;
-  padding: REM(24);
-}
-
 .boardLayoutMain {
-  height: calc(100dvh - REM(96));
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  .boardLayoutHeader {
+    height: REM(96);
+    background-color: var(--default-accent-bg);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: REM(10);
+    align-items: center;
+    padding: REM(24);
+  }
 
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 0;
+  .boardLayoutContent {
+    display: flex;
+    height: 100%;
+  }
+
+  .sidebar {
+    background-color: var(--default-accent-bg);
+    width: REM(300);
+    height: calc(100dvh - REM(96));
   }
 }

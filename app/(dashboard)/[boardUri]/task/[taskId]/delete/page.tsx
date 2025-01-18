@@ -1,6 +1,6 @@
 import React from "react";
 
-import { executeApiReq } from "@/lib/utils/executeApiReq";
+import { executeApiReq } from "@/lib/utils/execute-api-req";
 import { GetTaskDocument } from "@/__generated__/graphql";
 import DeleteTaskContainer from "@/containers/task/DeleteTaskContainer";
 

@@ -2,18 +2,32 @@
   display: flex;
   column-gap: REM(24);
   padding: REM(24) REM(24) REM(50);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 
   .column {
-    height: calc(100dvh - REM(96));
+    height: calc(100dvh - REM(96) - REM(24) - REM(50));
     width: REM(280);
   }
 
   .columnHeader {
     @include heading-sm;
+    align-items: center;
     color: var(--medium-grey);
+    column-gap: REM(12);
+    display: flex;
     letter-spacing: 2.4px;
     margin-bottom: REM(24);
     text-transform: uppercase;
+
+    .circle {
+      border-radius: 100%;
+      height: REM(15);
+      width: REM(15);
+      display: inline-block;
+    }
   }
 
   .taskList {
@@ -24,7 +38,6 @@
     list-style: none;
     overflow-x: hidden;
     overflow-y: auto;
-    padding-bottom: REM(100);
     row-gap: REM(20);
     width: REM(280);
     scrollbar-width: none;

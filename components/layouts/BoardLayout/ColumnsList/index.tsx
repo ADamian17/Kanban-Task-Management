@@ -4,18 +4,22 @@ import Link from 'next/link';
 import { GetOneBoardByUriQuery } from '@/__generated__/graphql';
 
 import styles from './ColumnsList.module.scss';
+import { generateRandomRGB } from '@/lib/utils/generate-random-rgb';
 
 type ColumnsListType = {
   columns: GetOneBoardByUriQuery["getOneBoard"]["columns"];
   boardUri: string;
 }
 
-const ColumnsList: React.FC<ColumnsListType> = ({ columns, boardUri }) => {
-  return (
-    <div className={styles.columnsListWrapper}>
-      {(columns?.nodes ?? []).map((column) => (
+const ColumnsList: React.FC<ColumnsListType> = ({ columns, boardUri }) => (
+  <div className={styles.columnsListWrapper}>
+    {(columns?.nodes ?? []).map((column) => {
+      const backgroundColor = generateRandomRGB()
+
+      return (
         <div key={column?.id} className={styles.column}>
           <p className={styles.columnHeader}>
+            <span style={{ backgroundColor }} className={styles.circle} />
             {column?.name} ({column?.tasks?.count})
           </p>
 
@@ -33,14 +37,15 @@ const ColumnsList: React.FC<ColumnsListType> = ({ columns, boardUri }) => {
             ))}
           </ul>
         </div>
-      ))}
-      <div className={styles.addColumn}>
-        <Link href='#' className={styles.addColumnLink}>
-          + New Column
-        </Link>
-      </div>
+      )
+    })}
+
+    <div className={styles.addColumn}>
+      <Link href='#' className={styles.addColumnLink}>
+        + New Column
+      </Link>
     </div>
-  )
-}
+  </div>
+)
 
 export default ColumnsList

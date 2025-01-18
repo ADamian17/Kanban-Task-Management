@@ -1,6 +1,6 @@
 import { GetOneBoardByUriDocument } from "@/__generated__/graphql";
 import NewTaskContainer from "@/containers/task/NewTaskContainer";
-import { executeApiReq } from "@/lib/utils/executeApiReq";
+import { executeApiReq } from "@/lib/utils/execute-api-req";
 import React from "react";
 
 const NewTaskPage = async ({ params }: { params: Promise<{ taskId: string; boardUri: string }>; }) => {

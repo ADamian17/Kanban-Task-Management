@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 
 import EditTaskContainer from "@/containers/task/EditTaskContainer";
-import { executeApiReq } from "@/lib/utils/executeApiReq";
+import { executeApiReq } from "@/lib/utils/execute-api-req";
 import { GetTaskDocument } from "@/__generated__/graphql";
 
 const EditTaskPage = async ({ params }: { params: Promise<{ taskId: string; boardUri: string }>; }) => {

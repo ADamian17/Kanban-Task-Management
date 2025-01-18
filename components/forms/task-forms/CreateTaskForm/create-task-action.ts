@@ -5,7 +5,7 @@ import {
   CreateTaskMutation,
   CreateTaskMutationVariables
 } from "@/__generated__/graphql";
-import { executeApiReq } from "@/lib/utils/executeApiReq";
+import { executeApiReq } from "@/lib/utils/execute-api-req";
 
 export const createTaskAction = async ({
   title,

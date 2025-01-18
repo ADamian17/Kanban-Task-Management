@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { executeApiReq } from "@/lib/utils/executeApiReq";
+import { executeApiReq } from "@/lib/utils/execute-api-req";
 import { GetOneBoardByUriDocument } from "@/__generated__/graphql";
 import BoardLayout from "@/components/layouts/BoardLayout";
 

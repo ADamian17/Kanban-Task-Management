@@ -1,6 +1,6 @@
 "use server";
 import { CompleteSubtaskDocument, CompleteSubtaskMutationVariables } from "@/__generated__/graphql";
-import { executeApiReq } from "@/lib/utils/executeApiReq";
+import { executeApiReq } from "@/lib/utils/execute-api-req";
 
 export const completeSubtaskAction = async ({
   id,

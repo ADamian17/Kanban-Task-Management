@@ -15,4 +15,5 @@ body {
   color: var(--default-text-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100dvh;
 }

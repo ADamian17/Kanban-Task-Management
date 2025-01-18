@@ -1,7 +1,7 @@
 import React from "react";
 
 import ViewTaskContainer from "@/containers/task/ViewTaskContainer";
-import { executeApiReq } from "@/lib/utils/executeApiReq";
+import { executeApiReq } from "@/lib/utils/execute-api-req";
 import { GetTaskDocument } from "@/__generated__/graphql";
 
 const ViewTaskPage = async ({ params }: { params: Promise<{ taskId: string; boardUri: string }>; }) => {

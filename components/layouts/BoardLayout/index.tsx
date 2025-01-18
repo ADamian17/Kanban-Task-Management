@@ -14,23 +14,31 @@ type BoardLayoutType = {
 };
 
 const BoardLayout: React.FC<BoardLayoutType> = ({ boardData, children }) => {
-  const { columns, id: boardId, uri } = boardData;
+  const { columns, id: boardId, uri, name } = boardData;
   const isColumnsEmpty = columns.count <= 0;
 
   return (
-    <>
+    <main className={styles.boardLayoutMain}>
       <header className={styles.boardLayoutHeader}>
-        <Link href="/" style={{ display: "inline-block", marginRight: "auto" }}>Boards</Link>
+        <div>
+          <Link href="/">Boards</Link>
+
+          <span className={styles.boardName}>{name}</span>
+        </div>
 
         <ButtonLink href={`${uri}task/new`} text="Add new Task" disabled={isColumnsEmpty} />
       </header>
 
-      <main className={styles.boardLayoutMain}>
+      <section className={styles.boardLayoutContent}>
+        <aside className={styles.sidebar}>
+          board layout aside
+        </aside>
+
         {isColumnsEmpty ? <EmptyBoard boardId={boardId} /> : <ColumnsList columns={columns} boardUri={uri ?? ''} />}
-      </main>
+      </section>
 
       {children}
-    </>
+    </main>
   )
 };
 

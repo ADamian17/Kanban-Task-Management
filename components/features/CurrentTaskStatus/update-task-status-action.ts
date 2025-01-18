@@ -3,7 +3,7 @@ import {
   UpdateTaskStatusDocument,
   UpdateTaskStatusMutationVariables
 } from "@/__generated__/graphql";
-import { executeApiReq } from "@/lib/utils/executeApiReq";
+import { executeApiReq } from "@/lib/utils/execute-api-req";
 
 export const updateTaskStatusAction = async ({
   id,

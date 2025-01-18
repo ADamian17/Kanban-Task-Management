@@ -1,6 +1,6 @@
 import { AllBoardsDocument } from "@/__generated__/graphql";
 import CreateBoardForm from "@/components/forms/board-forms/CreateBoardForm";
-import { executeApiReq } from "@/lib/utils/executeApiReq";
+import { executeApiReq } from "@/lib/utils/execute-api-req";
 import Link from "next/link";
 
 export default async function DashboardPage() {

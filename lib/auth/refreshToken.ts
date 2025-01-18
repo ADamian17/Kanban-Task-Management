@@ -1,6 +1,6 @@
 import { RefreshAccessTokenDocument } from "@/__generated__/graphql";
 import { JWT } from "next-auth/jwt";
-import { executeApiReqNoHeaders } from "../utils/executeApiReqNoHeaders";
+import { executeApiReqNoHeaders } from "../utils/execute-api-req-no-headers";
 
 export const refreshAccessToken = async (token: JWT) => {
   try {
