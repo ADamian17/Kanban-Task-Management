@@ -32,11 +32,9 @@ const DeleteTaskContainer: React.FC<DeleteTaskContainerType> = ({ taskId, taskTi
         <div className={styles.modalBtnsWrapper}>
           <DeleteTaskForm pathname={`/${boardUri}`} taskId={taskId} />
 
-          <Button
-            onClick={handleClose}
-            text="Cancel"
-            variant="secondary"
-          />
+          <Button onClick={handleClose} variant="secondary">
+            Cancel
+          </Button>
         </div>
       </div>
     </Modal>

@@ -38,11 +38,9 @@ const DeleteTaskForm: React.FC<DeleteTaskFormProps> = ({ pathname, taskId }) => 
 
   return (
     <form style={{ width: "100%" }} onSubmit={onSubmit}>
-      <Button
-        type="submit"
-        text="delete"
-        variant="danger"
-      />
+      <Button type="submit" variant="danger">
+        delete
+      </Button>
     </form>
   );
 };

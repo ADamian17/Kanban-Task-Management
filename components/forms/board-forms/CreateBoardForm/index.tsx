@@ -90,15 +90,18 @@ const CreateBoardForm = () => {
                   <Button
                     disabled={submitting}
                     onClick={() => fields.push({ name: "" })}
-                    text="Add new column"
                     type="button"
                     variant="secondary"
-                  />
+                  >
+                    Add new column
+                  </Button>
                 </div>
               )}
             </FieldArray>
 
-            <Button type="submit" disabled={submitting} text="Create New Board" />
+            <Button type="submit" disabled={submitting}>
+              Create New Board
+            </Button>
           </div>
         </form>
       )}

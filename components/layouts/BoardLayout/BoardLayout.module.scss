@@ -15,6 +15,7 @@
   }
 
   .sidebar {
+    display: none;
     background-color: var(--default-accent-bg);
     width: REM(300);
     height: calc(100dvh - REM(96));

@@ -89,7 +89,7 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({ pathname, taskData, boardCo
 
           <StatusField boardColumnsData={boardColumnsData} />
 
-          <Button type="submit" text="Save changes" disabled={submitting} />
+          <Button type="submit" disabled={submitting}>Save changes</Button>
         </FormWrapper>
       )}
     />

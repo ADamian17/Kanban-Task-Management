@@ -63,10 +63,11 @@ function DynamicInputFields<T = Record<string, unknown>>({
             <Button
               disabled={submitting}
               onClick={() => fields.push({ ...onClickPlaceholder })}
-              text={buttonText}
               type="button"
               variant="secondary"
-            />
+            >
+              {buttonText}
+            </Button>
           </div>
         </div>
       )}

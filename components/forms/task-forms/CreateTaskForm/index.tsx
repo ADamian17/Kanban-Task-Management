@@ -67,7 +67,7 @@ const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ pathname, boardColumnsD
 
           <StatusField boardColumnsData={boardColumnsData} />
 
-          <Button type="submit" text="Create task" disabled={submitting} />
+          <Button type="submit" disabled={submitting}>Create task</Button>
         </FormWrapper>
       )}
     />

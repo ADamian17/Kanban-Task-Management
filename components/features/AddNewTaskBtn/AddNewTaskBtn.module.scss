@@ -1,0 +1,21 @@
+.addNewTaskBtn {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-width: REM(48);
+  padding: REM(10) REM(18);
+
+  .actionText {
+    display: none;
+  }
+
+  @include media-query("md") {
+    .actionIcon {
+      display: none;
+    }
+
+    .actionText {
+      display: initial;
+    }
+  }
+}

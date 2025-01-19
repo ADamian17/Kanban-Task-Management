@@ -8,12 +8,12 @@ import { editBoardAction } from "./edit-board-action";
 import { onSuccessEditBoardAction } from "./on-success-edit-board-action";
 import Button from "@/components/ui/Button";
 import TextField from "@/components/ui/TextField";
-import { GetOneBoardByIdQuery } from "@/__generated__/graphql";
+import { GetOneBoardByUriQuery } from "@/__generated__/graphql";
 
 type EditBoardFormProps = {
   boardId: string;
   boardName: string;
-  columns: GetOneBoardByIdQuery["getOneBoard"]["columns"]["nodes"];
+  columns: GetOneBoardByUriQuery["getOneBoard"]["columns"]["nodes"];
 };
 
 const EditBoardForm: React.FC<EditBoardFormProps> = ({ boardName, boardId, columns }) => {
@@ -114,15 +114,16 @@ const EditBoardForm: React.FC<EditBoardFormProps> = ({ boardName, boardId, colum
                   <Button
                     disabled={submitting}
                     onClick={() => fields.push({ name: "" })}
-                    text="Add new column"
                     type="button"
                     variant="secondary"
-                  />
+                  >
+                    Add new column
+                  </Button>
                 </div>
               )}
             </FieldArray>
 
-            <Button type="submit" disabled={submitting} text="Save Changes" />
+            <Button type="submit" disabled={submitting}>Save Changes</Button>
           </div>
         </form>
       )}

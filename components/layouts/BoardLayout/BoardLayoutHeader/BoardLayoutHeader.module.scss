@@ -1,0 +1,82 @@
+.header {
+  --logo-w: REM(24);
+  --logo-h: REM(24);
+  --header-h: REM(64);
+
+  display: flex;
+  align-items: center;
+  height: REM(64);
+  column-gap: REM(16);
+  background-color: var(--default-accent-bg);
+  padding: 0 REM(16);
+
+  .boardName {
+    @include heading-lg;
+    color: var(--default-text-color);
+    text-transform: capitalize;
+  }
+
+  .actionsWrapper {
+    margin-left: auto;
+    display: flex;
+    column-gap: REM(16);
+    align-items: center;
+  }
+
+  .logoWrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    display: inline-flex;
+    height: REM(24);
+    width: REM(24);
+
+    img {
+      height: 100%;
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .nameAndActionsWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: REM(16);
+  }
+
+  @include media-query("md") {
+    height: REM(80);
+    padding: 0 REM(26);
+    border-bottom: 1px solid var(--default-line-color);
+    gap: 0;
+
+    .logoWrapper {
+      height: 100%;
+      padding-right: REM(24);
+      border-right: 1px solid var(--default-line-color);
+    }
+
+    .logo {
+      width: REM(152.53);
+      height: REM(25.22);
+    }
+
+    .nameAndActionsWrapper {
+      padding-left: REM(24);
+    }
+  }
+
+  @include media-query("lg") {
+    height: REM(96);
+    padding: 0 REM(34);
+
+    .boardName {
+      @include heading-xl;
+    }
+  }
+}

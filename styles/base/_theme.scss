@@ -25,6 +25,7 @@
   --default-text-color: var(--black);
   --default-body-text-color: var(--dark-grey);
   --default-border-color: #828fa340;
+  --default-line-color: var(--lines-light);
 
   // buttons
   --default-secondary-btn-bg: var(--light-purple);
@@ -53,6 +54,7 @@ html {
     --default-secondary-btn-hover: var(--white);
     --default-checkbox-wrapper-bg: var(--very-dark-grey-dark-bg);
     --default-input-bg: var(--dark-grey);
+    --default-line-color: var(--lines-dark);
 
     color-scheme: dark;
   }
