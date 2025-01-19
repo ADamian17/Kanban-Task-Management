@@ -12,7 +12,13 @@ type SelectFieldProps = Omit<ComponentProps<"input">, "onChange" | "value"> & {
   value: Record<"label" | "value", string>;
 };
 
-const SelectField: React.FC<SelectFieldProps> = ({ options, placeholder, label, onChange, ...rest }) => (
+const SelectField: React.FC<SelectFieldProps> = ({
+  options,
+  placeholder,
+  label,
+  onChange,
+  ...rest
+}) => (
   <div className={styles.selectWrapper}>
     <label className={styles.label}>{label}</label>
 

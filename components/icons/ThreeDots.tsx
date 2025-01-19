@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react'
+import React, { SVGProps } from "react";
 
 const ThreeDots: React.FC<SVGProps<SVGSVGElement>> = (props) => (
   <svg
@@ -13,6 +13,6 @@ const ThreeDots: React.FC<SVGProps<SVGSVGElement>> = (props) => (
     <circle cx="2.30769" cy="9.99995" r="2.30769" fill="#828FA3" />
     <circle cx="2.30769" cy="17.6923" r="2.30769" fill="#828FA3" />
   </svg>
-)
+);
 
-export default ThreeDots
+export default ThreeDots;

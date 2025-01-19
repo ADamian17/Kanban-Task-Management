@@ -6,25 +6,21 @@ import BoardLayout from "@/components/layouts/BoardLayout";
 
 const SingleDashboardRootLayout = async ({
   children,
-  params
+  params,
 }: {
   children: React.ReactNode;
   params: Promise<{ boardUri: string }>;
 }) => {
   const { boardUri } = await params;
   const data = await executeApiReq(GetOneBoardByUriDocument, {
-    uri: `/${boardUri}/`
+    uri: `/${boardUri}/`,
   });
 
   if (!data?.getOneBoard?.id) {
     return notFound();
   }
 
-  return (
-    <BoardLayout boardData={data.getOneBoard}>
-      {children}
-    </BoardLayout>
-  );
+  return <BoardLayout boardData={data.getOneBoard}>{children}</BoardLayout>;
 };
 
 export default SingleDashboardRootLayout;

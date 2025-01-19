@@ -1,29 +1,33 @@
 "use client";
-import React from 'react'
-import { useRouter } from 'next/navigation';
+import React from "react";
+import { useRouter } from "next/navigation";
 
-import { GetTaskQuery } from '@/__generated__/graphql';
-import CurrentTaskStatus from '@/components/features/CurrentTaskStatus';
-import KebabDropdown from '@/components/ui/Dropdowns/KebabDropdown';
-import Modal from '@/components/ui/Modal';
-import SubtaskList from '@/components/features/SubtaskList';
+import { GetTaskQuery } from "@/__generated__/graphql";
+import CurrentTaskStatus from "@/components/features/CurrentTaskStatus";
+import KebabDropdown from "@/components/ui/Dropdowns/KebabDropdown";
+import Modal from "@/components/ui/Modal";
+import SubtaskList from "@/components/features/SubtaskList";
 
-import styles from './ViewTaskContainer.module.scss';
+import styles from "./ViewTaskContainer.module.scss";
 
 type ViewTaskPageProps = {
   boardUri: string;
   taskData: GetTaskQuery["getOneTask"];
   boardColumnsData: GetTaskQuery["getOneBoard"]["columns"];
   children?: React.ReactNode;
-}
+};
 
-const ViewTaskContainer: React.FC<ViewTaskPageProps> = ({ boardUri, taskData, boardColumnsData }) => {
+const ViewTaskContainer: React.FC<ViewTaskPageProps> = ({
+  boardUri,
+  taskData,
+  boardColumnsData,
+}) => {
   const router = useRouter();
   const pathname = `/${boardUri}/task/${taskData?.id}`;
   const menuItems = [
     { label: "Edit task", uri: `${pathname}/edit` },
-    { label: "delete task", uri: `${pathname}/delete`, isDelete: true }
-  ]
+    { label: "delete task", uri: `${pathname}/delete`, isDelete: true },
+  ];
 
   const handleClose = () => router.push(`/${boardUri}/`);
 
@@ -49,6 +53,6 @@ const ViewTaskContainer: React.FC<ViewTaskPageProps> = ({ boardUri, taskData, bo
       </div>
     </Modal>
   );
-}
+};
 
-export default ViewTaskContainer
+export default ViewTaskContainer;

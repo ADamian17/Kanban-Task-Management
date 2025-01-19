@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react'
+import React, { SVGProps } from "react";
 
 const Cross: React.FC<SVGProps<SVGSVGElement>> = (props) => (
   <svg
@@ -12,6 +12,6 @@ const Cross: React.FC<SVGProps<SVGSVGElement>> = (props) => (
     <rect x="12.728" width="3" height="18" transform="rotate(45 12.728 0)" fill="#828FA3" />
     <rect y="2.12109" width="3" height="18" transform="rotate(-45 0 2.12109)" fill="#828FA3" />
   </svg>
-)
+);
 
-export default Cross
+export default Cross;

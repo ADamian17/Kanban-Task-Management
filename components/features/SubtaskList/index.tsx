@@ -1,18 +1,18 @@
 "use client";
-import React, { MouseEventHandler } from 'react'
-import isNil from 'lodash/isNil';
+import React, { MouseEventHandler } from "react";
+import isNil from "lodash/isNil";
 
-import { completeSubtaskAction } from './complete-subtask-action';
-import { GetTaskQuery } from '@/__generated__/graphql';
-import { revalidateBoardAction } from '@/lib/utils/revalidate-board-Action';
-import Checkbox from '@/components/ui/Checkbox'
+import { completeSubtaskAction } from "./complete-subtask-action";
+import { GetTaskQuery } from "@/__generated__/graphql";
+import { revalidateBoardAction } from "@/lib/utils/revalidate-board-Action";
+import Checkbox from "@/components/ui/Checkbox";
 
-import styles from './SubtaskList.module.scss';
+import styles from "./SubtaskList.module.scss";
 
 type SubtaskListProps = {
   pathname: string;
   subtasks: GetTaskQuery["getOneTask"]["subtasks"];
-}
+};
 
 const SubtaskList: React.FC<SubtaskListProps> = ({ pathname, subtasks }) => {
   const handleClick: MouseEventHandler<HTMLInputElement> = async (e) => {
@@ -30,26 +30,28 @@ const SubtaskList: React.FC<SubtaskListProps> = ({ pathname, subtasks }) => {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   return (
     <div>
-      <p className={styles.subtasksHeader}>Subtasks ({subtasks?.completedSubtasks} of {subtasks?.count})</p>
+      <p className={styles.subtasksHeader}>
+        Subtasks ({subtasks?.completedSubtasks} of {subtasks?.count})
+      </p>
 
       <ul className={styles.subtasks}>
-        {(subtasks?.nodes ?? []).map(subtask => (
+        {(subtasks?.nodes ?? []).map((subtask) => (
           <li key={subtask?.id}>
             <Checkbox
               defaultChecked={subtask?.completed ?? false}
               id={subtask?.id}
               onClick={handleClick}
-              text={subtask?.title ?? ''}
+              text={subtask?.title ?? ""}
             />
           </li>
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default SubtaskList
+export default SubtaskList;

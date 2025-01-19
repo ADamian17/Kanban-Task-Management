@@ -7,14 +7,14 @@ const config: StorybookConfig = {
     "@storybook/addon-onboarding",
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
-    "@storybook/addon-interactions"
+    "@storybook/addon-interactions",
   ],
   framework: {
     name: "@storybook/nextjs",
     options: {
-      nextConfigPath: path.resolve(__dirname, "../next.config.ts")
-    }
+      nextConfigPath: path.resolve(__dirname, "../next.config.ts"),
+    },
   },
-  staticDirs: ["../public"]
+  staticDirs: ["../public"],
 };
 export default config;

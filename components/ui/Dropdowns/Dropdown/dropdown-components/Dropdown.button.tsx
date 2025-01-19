@@ -1,11 +1,11 @@
-"use client"
+"use client";
 import { ComponentProps, RefObject, useEffect } from "react";
 import { useDropdownCtx } from "./Dropdown.provider";
 
-import styles from "./Dropdown.module.scss"
+import styles from "./Dropdown.module.scss";
 
 type DropdownButtonProps = ComponentProps<"button"> & {
-  ref: RefObject<HTMLButtonElement | null>
+  ref: RefObject<HTMLButtonElement | null>;
 };
 
 const DropdownButton: React.FC<DropdownButtonProps> = ({ children, className, ref, ...rest }) => {
@@ -14,19 +14,19 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({ children, className, re
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
       if (ref && typeof ref === "object" && e.target !== ref.current) {
-        close()
+        close();
       }
-    }
+    };
 
-    document.addEventListener("click", handleOutsideClick)
+    document.addEventListener("click", handleOutsideClick);
 
-    return () => document.removeEventListener("click", handleOutsideClick)
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     toggle();
-    (e.target as HTMLElement).focus()
-  }
+    (e.target as HTMLElement).focus();
+  };
 
   return (
     <button
@@ -38,6 +38,6 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({ children, className, re
       {children}
     </button>
   );
-}
+};
 
 export default DropdownButton;

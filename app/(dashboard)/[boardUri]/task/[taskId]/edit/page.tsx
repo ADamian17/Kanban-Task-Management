@@ -4,7 +4,11 @@ import EditTaskContainer from "@/containers/task/EditTaskContainer";
 import { executeApiReq } from "@/lib/utils/execute-api-req";
 import { GetTaskDocument } from "@/__generated__/graphql";
 
-const EditTaskPage = async ({ params }: { params: Promise<{ taskId: string; boardUri: string }>; }) => {
+const EditTaskPage = async ({
+  params,
+}: {
+  params: Promise<{ taskId: string; boardUri: string }>;
+}) => {
   const { taskId, boardUri } = await params;
 
   const data = await executeApiReq(GetTaskDocument, {
@@ -20,7 +24,7 @@ const EditTaskPage = async ({ params }: { params: Promise<{ taskId: string; boar
         taskData={data?.getOneTask}
       />
     </Suspense>
-  )
+  );
 };
 
 export default EditTaskPage;

@@ -4,7 +4,7 @@ import { executeApiReq } from "@/lib/utils/execute-api-req";
 
 export const completeSubtaskAction = async ({
   id,
-  completed
+  completed,
 }: CompleteSubtaskMutationVariables) => {
   try {
     const res = await executeApiReq(CompleteSubtaskDocument, { id, completed });

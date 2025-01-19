@@ -5,7 +5,7 @@ import { executeApiReq } from "@/lib/utils/execute-api-req";
 
 export const createBoardAction = async ({
   name,
-  columns
+  columns,
 }: Record<string, any>): Promise<CreateBoardMutation | { error: string } | undefined> => {
   try {
     const res = await executeApiReq(CreateBoardDocument, { name, columns });

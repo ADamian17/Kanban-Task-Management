@@ -20,7 +20,7 @@ const NewTaskContainer: React.FC<DeleteTaskContainerType> = ({ boardUri, boardCo
     <Modal show={true} onClose={handleClose} title="Add New Task">
       <CreateTaskForm pathname={`/${boardUri}`} boardColumnsData={boardColumnsData} />
     </Modal>
-  )
+  );
 };
 
 export default NewTaskContainer;

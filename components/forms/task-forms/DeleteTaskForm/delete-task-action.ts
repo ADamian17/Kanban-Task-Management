@@ -3,12 +3,12 @@
 import {
   DeleteTaskDocument,
   DeleteTaskMutation,
-  DeleteTaskMutationVariables
+  DeleteTaskMutationVariables,
 } from "@/__generated__/graphql";
 import { executeApiReq } from "@/lib/utils/execute-api-req";
 
 export const deleteTaskAction = async ({
-  id
+  id,
 }: DeleteTaskMutationVariables): Promise<DeleteTaskMutation | { error: string } | undefined> => {
   try {
     const res = await executeApiReq(DeleteTaskDocument, { id });

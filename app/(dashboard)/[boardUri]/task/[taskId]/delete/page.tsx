@@ -4,7 +4,11 @@ import { executeApiReq } from "@/lib/utils/execute-api-req";
 import { GetTaskDocument } from "@/__generated__/graphql";
 import DeleteTaskContainer from "@/containers/task/DeleteTaskContainer";
 
-const DeleteTaskPage = async ({ params }: { params: Promise<{ taskId: string; boardUri: string }>; }) => {
+const DeleteTaskPage = async ({
+  params,
+}: {
+  params: Promise<{ taskId: string; boardUri: string }>;
+}) => {
   const { taskId, boardUri } = await params;
 
   const data = await executeApiReq(GetTaskDocument, {
@@ -14,8 +18,8 @@ const DeleteTaskPage = async ({ params }: { params: Promise<{ taskId: string; bo
 
   return (
     <DeleteTaskContainer
-      taskId={data.getOneTask?.id ?? ''}
-      taskTitle={data.getOneTask?.title ?? ''}
+      taskId={data.getOneTask?.id ?? ""}
+      taskTitle={data.getOneTask?.title ?? ""}
       boardUri={boardUri}
     />
   );

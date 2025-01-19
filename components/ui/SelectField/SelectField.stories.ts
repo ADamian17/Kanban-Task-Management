@@ -8,13 +8,13 @@ const meta = {
   tags: ["autodocs"],
   argTypes: {
     options: {
-      description: "Array of options to display in the dropdown"
-    }
+      description: "Array of options to display in the dropdown",
+    },
   },
   args: {
     label: "Current Status",
-    placeholder: "Select status..."
-  }
+    placeholder: "Select status...",
+  },
 } satisfies Meta<typeof SelectField>;
 
 export default meta;
@@ -26,8 +26,8 @@ export const Default: Story = {
     options: [
       { label: "Option 1", value: "option-1" },
       { label: "Option 2", value: "option-2" },
-      { label: "Option 3", value: "option-3" }
+      { label: "Option 3", value: "option-3" },
     ],
-    onChange: (val) => alert(val)
-  }
+    onChange: (val) => alert(val),
+  },
 };

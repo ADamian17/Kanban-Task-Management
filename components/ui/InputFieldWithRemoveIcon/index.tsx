@@ -11,7 +11,12 @@ type InputFieldWithRemoveIconType = ComponentProps<"input"> & {
   placeholder?: string;
 };
 
-const InputFieldWithRemoveIcon: React.FC<InputFieldWithRemoveIconType> = ({ placeholder, onRemove, error, ...rest }) => {
+const InputFieldWithRemoveIcon: React.FC<InputFieldWithRemoveIconType> = ({
+  placeholder,
+  onRemove,
+  error,
+  ...rest
+}) => {
   const hasError = typeof error !== "undefined" && error !== "";
 
   return (
@@ -21,7 +26,7 @@ const InputFieldWithRemoveIcon: React.FC<InputFieldWithRemoveIconType> = ({ plac
 
       <p className={styles.errorMsg}>{error}</p>
     </div>
-  )
-}
+  );
+};
 
 export default InputFieldWithRemoveIcon;

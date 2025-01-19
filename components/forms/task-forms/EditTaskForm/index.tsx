@@ -29,11 +29,10 @@ type EditTaskFormValues = {
 
 const EditTaskForm: React.FC<EditTaskFormProps> = ({ pathname, taskData, boardColumnsData }) => {
   const router = useRouter();
-  const removedSubtasks = useRef<Array<SubtaskInput>>([])
-
+  const removedSubtasks = useRef<Array<SubtaskInput>>([]);
 
   const onSubmit: FormProps<EditTaskFormValues>["onSubmit"] = async (values) => {
-    pathname = `${pathname}/task/${taskData?.id}`
+    pathname = `${pathname}/task/${taskData?.id}`;
 
     try {
       const editBoardData = {
@@ -45,8 +44,8 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({ pathname, taskData, boardCo
       const editTask = editTaskAction.bind(editBoardData);
       const res = await editTask(editBoardData);
 
-      if (typeof res === "object" && 'error' in res) {
-        return { name: res?.error }; // this is for form validation 
+      if (typeof res === "object" && "error" in res) {
+        return { name: res?.error }; // this is for form validation
       }
 
       if (res?.updateTask?.id) {
@@ -57,13 +56,15 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({ pathname, taskData, boardCo
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   const onRemove = (subTask: SubtaskInput) => {
-    removedSubtasks.current.push({ ...subTask, _destroy: true })
-  }
+    removedSubtasks.current.push({ ...subTask, _destroy: true });
+  };
 
-  const foundColumn = (boardColumnsData?.nodes ?? []).find(column => column?.name?.toLowerCase() === taskData?.status?.toLowerCase())
+  const foundColumn = (boardColumnsData?.nodes ?? []).find(
+    (column) => column?.name?.toLowerCase() === taskData?.status?.toLowerCase(),
+  );
   const initialValues = {
     columnId: {
       label: foundColumn?.name ?? "",
@@ -72,7 +73,7 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({ pathname, taskData, boardCo
     description: taskData?.description ?? "",
     subtasks: taskData.subtasks.nodes ?? [],
     title: taskData?.title ?? "",
-  }
+  };
 
   return (
     <Form
@@ -89,7 +90,9 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({ pathname, taskData, boardCo
 
           <StatusField boardColumnsData={boardColumnsData} />
 
-          <Button type="submit" disabled={submitting}>Save changes</Button>
+          <Button type="submit" disabled={submitting}>
+            Save changes
+          </Button>
         </FormWrapper>
       )}
     />

@@ -6,15 +6,15 @@ type GQLResponse<GraphQLData> = { data: GraphQLData } | { errors: GraphQLError[]
 
 export const executeApiReq = async <Result, Variables>(
   document: TypedDocumentString<Result, Variables>,
-  variables?: Variables // Add a new parameter for variables
+  variables?: Variables, // Add a new parameter for variables
 ): Promise<Result> => {
   const body = JSON.stringify({
     query: document.toString(),
-    variables
+    variables,
   });
 
   const headers: Record<string, string> = {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   };
 
   /* NOTE ==   get stored token to send it with the request    == */
@@ -28,7 +28,7 @@ export const executeApiReq = async <Result, Variables>(
   const response = await fetch(process.env.NEXT_PUBLIC_GRAPHQL_API_URL!, {
     method: "POST",
     headers,
-    body
+    body,
   });
 
   const result: GQLResponse<Result> = await response.json();

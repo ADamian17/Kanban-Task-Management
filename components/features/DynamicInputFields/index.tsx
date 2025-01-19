@@ -1,11 +1,11 @@
-import React from 'react'
-import { Field } from 'react-final-form'
-import { FieldArray } from 'react-final-form-arrays'
+import React from "react";
+import { Field } from "react-final-form";
+import { FieldArray } from "react-final-form-arrays";
 
-import Button from '@/components/ui/Button'
-import InputFieldWithRemoveIcon from '@/components/ui/InputFieldWithRemoveIcon'
+import Button from "@/components/ui/Button";
+import InputFieldWithRemoveIcon from "@/components/ui/InputFieldWithRemoveIcon";
 
-import styles from './DynamicInputFields.module.scss'
+import styles from "./DynamicInputFields.module.scss";
 
 type DynamicInputFieldsProps<T> = {
   buttonText: string;
@@ -15,7 +15,7 @@ type DynamicInputFieldsProps<T> = {
   onClickPlaceholder: T;
   onRemove?: (opt: T) => void;
   submitting: boolean;
-}
+};
 
 function DynamicInputFields<T = Record<string, unknown>>({
   buttonText,
@@ -24,7 +24,7 @@ function DynamicInputFields<T = Record<string, unknown>>({
   label,
   onClickPlaceholder,
   onRemove,
-  submitting
+  submitting,
 }: DynamicInputFieldsProps<T>) {
   return (
     <FieldArray name={fieldArrayName}>
@@ -37,7 +37,7 @@ function DynamicInputFields<T = Record<string, unknown>>({
               const handleOnRemove = () => {
                 const removed = fields.remove(index);
                 if (typeof onRemove === "function") onRemove(removed);
-              }
+              };
 
               return (
                 <Field
@@ -53,11 +53,11 @@ function DynamicInputFields<T = Record<string, unknown>>({
                         meta?.submitError
                       }
                       onRemove={handleOnRemove}
-                      placeholder='e.g. Make coffee'
+                      placeholder="e.g. Make coffee"
                     />
                   )}
                 </Field>
-              )
+              );
             })}
 
             <Button
@@ -72,7 +72,7 @@ function DynamicInputFields<T = Record<string, unknown>>({
         </div>
       )}
     </FieldArray>
-  )
+  );
 }
 
-export default DynamicInputFields
+export default DynamicInputFields;

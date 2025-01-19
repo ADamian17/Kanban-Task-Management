@@ -7,7 +7,7 @@ const FormWrapper: React.FC<ComponentProps<"form">> = ({ className, children, ..
     <form className={`${styles.formWrapper} ${className}`} {...rest}>
       {children}
     </form>
-  )
+  );
 };
 
 export default FormWrapper;

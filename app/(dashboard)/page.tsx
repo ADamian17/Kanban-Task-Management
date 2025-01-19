@@ -25,7 +25,7 @@ export default async function DashboardPage() {
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
           gap: "1rem",
-          marginTop: 12
+          marginTop: 12,
         }}
       >
         {allBoards.map((board) => (

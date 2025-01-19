@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { ComponentRef, useRef } from "react";
 import Link from "next/link";
 
@@ -10,18 +10,18 @@ import DropdownMenu from "../Dropdown/dropdown-components/Dropdown.menu";
 import ThreeDots from "@/components/icons/ThreeDots";
 
 type KebabDropdownItem = {
-  label: string,
-  isDelete?: boolean,
+  label: string;
+  isDelete?: boolean;
   uri: string;
-}
+};
 
 type KebabDropdownProps = {
-  className?: string
-  menuItems: KebabDropdownItem[]
-}
+  className?: string;
+  menuItems: KebabDropdownItem[];
+};
 
 const KebabDropdown = ({ menuItems }: KebabDropdownProps) => {
-  const btnRef = useRef<ComponentRef<"button">>(null)
+  const btnRef = useRef<ComponentRef<"button">>(null);
 
   return (
     <Dropdown>
@@ -31,11 +31,9 @@ const KebabDropdown = ({ menuItems }: KebabDropdownProps) => {
 
       <DropdownMenu>
         <ul className={styles.kebabMenuItems}>
-          {
-            menuItems && menuItems.map((menuItem, idx) => (
-              <li
-                key={menuItem.label + "-" + idx}
-              >
+          {menuItems &&
+            menuItems.map((menuItem, idx) => (
+              <li key={menuItem.label + "-" + idx}>
                 <Link
                   className={`${styles.menuItem} ${menuItem.isDelete && styles.redTxt}`}
                   href={menuItem.uri}
@@ -43,12 +41,11 @@ const KebabDropdown = ({ menuItems }: KebabDropdownProps) => {
                   {menuItem?.label}
                 </Link>
               </li>
-            ))
-          }
+            ))}
         </ul>
       </DropdownMenu>
     </Dropdown>
-  )
-}
+  );
+};
 
 export default KebabDropdown;

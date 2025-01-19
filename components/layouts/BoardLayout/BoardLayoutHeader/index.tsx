@@ -1,27 +1,30 @@
-import React from 'react'
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 
-import AddNewTaskBtn from '@/components/features/AddNewTaskBtn';
-import KebabDropdown from '@/components/ui/Dropdowns/KebabDropdown';
+import { GetOneBoardByUriQuery } from "@/__generated__/graphql";
+import AddNewTaskBtn from "@/components/features/AddNewTaskBtn";
+import KebabDropdown from "@/components/ui/Dropdowns/KebabDropdown";
 
-import styles from './BoardLayoutHeader.module.scss'
-import { GetOneBoardByUriQuery } from '@/__generated__/graphql';
+import styles from "./BoardLayoutHeader.module.scss";
+import { useSnapshot } from "valtio";
+import { proxyGlobalSidebar } from "@/store/proxy-global-sidebar";
 
 type BoardLayoutHeaderType = {
   boardData: GetOneBoardByUriQuery["getOneBoard"];
-}
+};
 
 const BoardLayoutHeader: React.FC<BoardLayoutHeaderType> = ({ boardData }) => {
+  const { isOpen } = useSnapshot(proxyGlobalSidebar);
   const { uri, name, columns } = boardData;
   const isColumnsEmpty = columns.count <= 0;
 
   const menuItems = [
     { label: "Edit board", uri: `${uri}/edit` },
-    { label: "delete board", uri: `${uri}/delete`, isDelete: true }
-  ]
+    { label: "delete board", uri: `${uri}/delete`, isDelete: true },
+  ];
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isOpen && styles.sidebarIsOpen}`}>
       <div className={styles.logoWrapper}>
         <Link href="/" className={styles.logo}>
           <picture>
@@ -39,13 +42,13 @@ const BoardLayoutHeader: React.FC<BoardLayoutHeaderType> = ({ boardData }) => {
         </div>
 
         <div className={styles.actionsWrapper}>
-          <AddNewTaskBtn isColumnsEmpty={isColumnsEmpty} boardUri={uri ?? ''} columns={columns} />
+          <AddNewTaskBtn isColumnsEmpty={isColumnsEmpty} boardUri={uri ?? ""} columns={columns} />
 
           <KebabDropdown menuItems={menuItems} />
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default BoardLayoutHeader
+export default BoardLayoutHeader;

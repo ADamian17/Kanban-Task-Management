@@ -7,7 +7,7 @@ const meta = {
   parameters: {},
   tags: ["autodocs"],
   argTypes: {},
-  args: {}
+  args: {},
 } satisfies Meta<typeof Modal>;
 
 export default meta;
@@ -16,6 +16,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     show: true,
-    children: <div>Modal content</div>
-  }
+    children: <div>Modal content</div>,
+  },
 };

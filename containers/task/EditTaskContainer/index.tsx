@@ -12,7 +12,11 @@ type DeleteTaskContainerType = {
   boardColumnsData: GetTaskQuery["getOneBoard"]["columns"];
 };
 
-const EditTaskContainer: React.FC<DeleteTaskContainerType> = ({ boardUri, taskData, boardColumnsData }) => {
+const EditTaskContainer: React.FC<DeleteTaskContainerType> = ({
+  boardUri,
+  taskData,
+  boardColumnsData,
+}) => {
   const router = useRouter();
 
   const handleClose = () => router.push(`/${boardUri}/task/${taskData?.id}`);
@@ -25,7 +29,7 @@ const EditTaskContainer: React.FC<DeleteTaskContainerType> = ({ boardUri, taskDa
         boardColumnsData={boardColumnsData}
       />
     </Modal>
-  )
+  );
 };
 
 export default EditTaskContainer;

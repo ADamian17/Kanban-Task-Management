@@ -17,7 +17,7 @@ import FormWrapper from "@/components/ui/FormWrapper";
 type CreateTaskFormValues = {
   title: string;
   description: string;
-  columnId: Record<"label" | "value", string>
+  columnId: Record<"label" | "value", string>;
 };
 
 type CreateTaskFormProps = {
@@ -54,7 +54,7 @@ const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ pathname, boardColumnsD
 
   return (
     <Form
-      initialValues={{ subtasks: [{ title: '' }, { title: '' }] }}
+      initialValues={{ subtasks: [{ title: "" }, { title: "" }] }}
       onSubmit={onSubmit}
       mutators={{ ...arrayMutators }}
       render={({ handleSubmit, submitting }) => (
@@ -67,7 +67,9 @@ const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ pathname, boardColumnsD
 
           <StatusField boardColumnsData={boardColumnsData} />
 
-          <Button type="submit" disabled={submitting}>Create task</Button>
+          <Button type="submit" disabled={submitting}>
+            Create task
+          </Button>
         </FormWrapper>
       )}
     />

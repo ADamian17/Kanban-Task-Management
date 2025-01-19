@@ -14,7 +14,11 @@ type DeleteTaskContainerType = {
   boardUri: string;
 };
 
-const DeleteTaskContainer: React.FC<DeleteTaskContainerType> = ({ taskId, taskTitle, boardUri }) => {
+const DeleteTaskContainer: React.FC<DeleteTaskContainerType> = ({
+  taskId,
+  taskTitle,
+  boardUri,
+}) => {
   const router = useRouter();
 
   const handleClose = () => router.push(`/${boardUri}/task/${taskId}`);
@@ -25,8 +29,8 @@ const DeleteTaskContainer: React.FC<DeleteTaskContainerType> = ({ taskId, taskTi
         <p className={styles.modalContentTitle}>Delete this task?</p>
 
         <p className={styles.modalContentCopy}>
-          Are you sure you want to delete the &apos;{taskTitle}&apos; task and its subtasks?
-          This action cannot be reversed.
+          Are you sure you want to delete the &apos;{taskTitle}&apos; task and its subtasks? This
+          action cannot be reversed.
         </p>
 
         <div className={styles.modalBtnsWrapper}>
@@ -38,7 +42,7 @@ const DeleteTaskContainer: React.FC<DeleteTaskContainerType> = ({ taskId, taskTi
         </div>
       </div>
     </Modal>
-  )
+  );
 };
 
 export default DeleteTaskContainer;

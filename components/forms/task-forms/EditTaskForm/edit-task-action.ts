@@ -3,7 +3,7 @@
 import {
   EditTaskDocument,
   EditTaskMutation,
-  EditTaskMutationVariables
+  EditTaskMutationVariables,
 } from "@/__generated__/graphql";
 import { executeApiReq } from "@/lib/utils/execute-api-req";
 
@@ -12,7 +12,7 @@ export const editTaskAction = async ({
   description,
   id,
   subtasks,
-  title
+  title,
 }: EditTaskMutationVariables): Promise<EditTaskMutation | { error: string } | undefined> => {
   try {
     const res = await executeApiReq(EditTaskDocument, {
@@ -20,7 +20,7 @@ export const editTaskAction = async ({
       description,
       id,
       subtasks,
-      title
+      title,
     });
 
     return res;

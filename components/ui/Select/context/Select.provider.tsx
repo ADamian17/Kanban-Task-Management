@@ -10,7 +10,7 @@ const SelectProvider: React.FC<Select.Provider> = ({ children, optionsCount, onC
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState<Select.Context["inputValue"]>({
     value: "",
-    label: ""
+    label: "",
   });
 
   const handleSetInputValue = (e: React.MouseEvent<HTMLLIElement>) => {
@@ -113,7 +113,7 @@ const SelectProvider: React.FC<Select.Provider> = ({ children, optionsCount, onC
     isOpen,
     menuRef,
     setInputValue,
-    tabIndex
+    tabIndex,
   };
 
   return <SelectCtx.Provider value={value}>{children}</SelectCtx.Provider>;

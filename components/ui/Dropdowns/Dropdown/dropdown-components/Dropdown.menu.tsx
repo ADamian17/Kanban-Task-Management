@@ -1,26 +1,16 @@
-"use client"
+"use client";
 import { useDropdownCtx } from "./Dropdown.provider";
 
-import styles from "./Dropdown.module.scss"
+import styles from "./Dropdown.module.scss";
 
 type DropdownMenuProps = {
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 const DropdownMenu = ({ children }: DropdownMenuProps) => {
   const { isOpen } = useDropdownCtx();
 
-  return (
-    <>
-      {
-        isOpen && (
-          <div className={styles.dropdownMenu}>
-            {children}
-          </div>
-        )
-      }
-    </>
-  )
-}
+  return <>{isOpen && <div className={styles.dropdownMenu}>{children}</div>}</>;
+};
 
-export default DropdownMenu
+export default DropdownMenu;

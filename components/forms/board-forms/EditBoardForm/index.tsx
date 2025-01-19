@@ -21,7 +21,7 @@ const EditBoardForm: React.FC<EditBoardFormProps> = ({ boardName, boardId, colum
 
   const initialValues = {
     name: boardName ?? "",
-    columns: (columns ?? []).map((col) => ({ name: col?.name ?? "", id: col?.id ?? "" }))
+    columns: (columns ?? []).map((col) => ({ name: col?.name ?? "", id: col?.id ?? "" })),
   };
 
   const onSubmit: FormProps["onSubmit"] = async (values) => {
@@ -29,7 +29,7 @@ const EditBoardForm: React.FC<EditBoardFormProps> = ({ boardName, boardId, colum
       const editBoardData = {
         ...values,
         id: boardId,
-        columns: [...values.columns, ...removedColumns.current]
+        columns: [...values.columns, ...removedColumns.current],
       };
 
       const editBoard = editBoardAction.bind(editBoardData);
@@ -123,7 +123,9 @@ const EditBoardForm: React.FC<EditBoardFormProps> = ({ boardName, boardId, colum
               )}
             </FieldArray>
 
-            <Button type="submit" disabled={submitting}>Save Changes</Button>
+            <Button type="submit" disabled={submitting}>
+              Save Changes
+            </Button>
           </div>
         </form>
       )}

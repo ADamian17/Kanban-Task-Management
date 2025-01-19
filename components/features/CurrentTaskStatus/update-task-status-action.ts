@@ -1,13 +1,13 @@
 "use server";
 import {
   UpdateTaskStatusDocument,
-  UpdateTaskStatusMutationVariables
+  UpdateTaskStatusMutationVariables,
 } from "@/__generated__/graphql";
 import { executeApiReq } from "@/lib/utils/execute-api-req";
 
 export const updateTaskStatusAction = async ({
   id,
-  columnId
+  columnId,
 }: UpdateTaskStatusMutationVariables) => {
   try {
     const res = await executeApiReq(UpdateTaskStatusDocument, { id, columnId });

@@ -1,11 +1,11 @@
-import { GetTaskQuery } from '@/__generated__/graphql';
-import SelectField from '@/components/ui/SelectField'
-import React from 'react'
-import { Field } from 'react-final-form'
+import { GetTaskQuery } from "@/__generated__/graphql";
+import SelectField from "@/components/ui/SelectField";
+import React from "react";
+import { Field } from "react-final-form";
 
 type StatusFieldProps = {
   boardColumnsData: GetTaskQuery["getOneBoard"]["columns"];
-}
+};
 
 const StatusField: React.FC<StatusFieldProps> = ({ boardColumnsData }) => (
   <Field name="columnId" validate={(opt) => (opt?.value ? undefined : "Can't be empty")}>
@@ -23,6 +23,6 @@ const StatusField: React.FC<StatusFieldProps> = ({ boardColumnsData }) => (
       />
     )}
   </Field>
-)
+);
 
-export default StatusField
+export default StatusField;

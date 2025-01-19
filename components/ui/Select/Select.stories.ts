@@ -8,17 +8,17 @@ const meta = {
   tags: ["autodocs"],
   argTypes: {
     options: {
-      description: "Array of options to display in the dropdown"
-    }
+      description: "Array of options to display in the dropdown",
+    },
   },
   args: {
     placeholder: "Select an option",
     options: [
       { label: "Option 1", value: "option-1" },
       { label: "Option 2", value: "option-2" },
-      { label: "Option 3", value: "option-3" }
-    ]
-  }
+      { label: "Option 3", value: "option-3" },
+    ],
+  },
 } satisfies Meta<typeof Select>;
 
 export default meta;
@@ -26,5 +26,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {}
+  args: {},
 };

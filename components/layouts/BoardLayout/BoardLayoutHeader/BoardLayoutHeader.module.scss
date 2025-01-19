@@ -3,7 +3,8 @@
   --logo-h: REM(24);
   --header-h: REM(64);
 
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
   height: REM(64);
   column-gap: REM(16);
@@ -52,13 +53,21 @@
   @include media-query("md") {
     height: REM(80);
     padding: 0 REM(26);
-    border-bottom: 1px solid var(--default-line-color);
     gap: 0;
+
+    &.sidebarIsOpen {
+      grid-template-columns: REM(234) 1fr;
+
+      .logoWrapper {
+        border-bottom: none;
+      }
+    }
 
     .logoWrapper {
       height: 100%;
       padding-right: REM(24);
       border-right: 1px solid var(--default-line-color);
+      border-bottom: 1px solid var(--default-line-color);
     }
 
     .logo {
@@ -68,12 +77,17 @@
 
     .nameAndActionsWrapper {
       padding-left: REM(24);
+      border-bottom: 1px solid var(--default-line-color);
     }
   }
 
   @include media-query("lg") {
     height: REM(96);
     padding: 0 REM(34);
+
+    &.sidebarIsOpen {
+      grid-template-columns: REM(266) 1fr;
+    }
 
     .boardName {
       @include heading-xl;
