@@ -1,47 +1,4 @@
 .boardLayoutMain {
   position: relative;
-
-  .boardLayoutHeader {
-    height: REM(96);
-    background-color: var(--default-accent-bg);
-    display: grid;
-    grid-template-columns: 1fr auto;
-    column-gap: REM(10);
-    align-items: center;
-    padding: REM(24);
-  }
-
-  .boardLayoutContent {
-    display: grid;
-    grid-template-columns: 1fr;
-    height: 100%;
-  }
-
-  .sidebar {
-    display: none;
-    background-color: var(--default-accent-bg);
-    height: calc(100dvh - REM(96));
-    border-right: 1px solid var(--default-line-color);
-  }
-
-  @include media-query("md") {
-    &.isSidebarOpen {
-      .boardLayoutContent {
-        grid-template-columns: auto 1fr;
-      }
-
-      .sidebar {
-        display: grid;
-        width: REM(260);
-      }
-    }
-  }
-
-  @include media-query("lg") {
-    &.isSidebarOpen {
-      .sidebar {
-        width: REM(300);
-      }
-    }
-  }
+  min-height: 100dvh;
 }

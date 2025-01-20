@@ -26,5 +26,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    value: { label: "Option 1", value: "option-1" },
+  },
 };

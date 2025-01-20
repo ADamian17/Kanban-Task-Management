@@ -1,0 +1,45 @@
+.themeToggleWrapper {
+  margin-bottom: REM(8);
+  padding-left: REM(24);
+
+  .themeToggle {
+    align-items: center;
+    background-color: var(--default-bg);
+    border-radius: REM(8);
+    column-gap: REM(23);
+    display: flex;
+    height: REM(48);
+    justify-content: center;
+    width: 100%;
+  }
+
+  .toggleSwitch {
+    -webkit-tap-highlight-color: transparent;
+    align-items: center;
+    background-color: var(--main-purple);
+    border-radius: REM(12);
+    cursor: pointer;
+    display: flex;
+    height: REM(20);
+    padding: REM(3);
+    position: relative;
+    transition: background-color 0.3s ease;
+    width: REM(40);
+
+    &.dark {
+      justify-content: flex-end;
+    }
+
+    .toggleHandle {
+      width: REM(14);
+      height: REM(14);
+      background-color: var(--white);
+      border-radius: 50%;
+      transition: justify-content 0.3s ease;
+    }
+
+    &:hover {
+      background-color: var(--main-purple-hover);
+    }
+  }
+}

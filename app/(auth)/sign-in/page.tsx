@@ -52,7 +52,7 @@ const SignInPage = () => {
               )}
             </Field>
 
-            <Button type="submit" text="Sign in" size="md" disabled={submitting} />
+            <Button type="submit" size="md" disabled={submitting}>Sign in</Button>
           </form>
         )}
       />

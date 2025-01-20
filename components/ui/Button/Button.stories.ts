@@ -15,13 +15,11 @@ const meta = {
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
     size: { control: "select", description: "controls button size" },
-    text: { description: "button text" },
     variant: { control: "select", description: "controls button styles" },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
   args: {
     size: "md",
-    text: "Button",
     variant: "primary",
   },
 } satisfies Meta<typeof Button>;
@@ -33,21 +31,18 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     variant: "primary",
-    text: "Button Primary (S)",
   },
 };
 
 export const Secondary: Story = {
   args: {
     variant: "secondary",
-    text: "Button Secondary",
   },
 };
 
 export const Danger: Story = {
   args: {
     variant: "danger",
-    text: "Button Destructive",
   },
 };
 

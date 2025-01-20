@@ -12,6 +12,7 @@ const meta = {
     },
   },
   args: {
+    value: { label: "Option 1", value: "option-1" },
     label: "Current Status",
     placeholder: "Select status...",
   },

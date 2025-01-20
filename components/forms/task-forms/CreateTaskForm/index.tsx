@@ -52,9 +52,18 @@ const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ pathname, boardColumnsD
     }
   };
 
+  const firstColumn = (boardColumnsData.nodes ?? [])[0]
+  const initialValues = {
+    subtasks: [{ title: "" }, { title: "" }],
+    columnId: {
+      label: firstColumn?.name ?? "",
+      value: firstColumn?.id ?? "",
+    },
+  }
+
   return (
     <Form
-      initialValues={{ subtasks: [{ title: "" }, { title: "" }] }}
+      initialValues={initialValues}
       onSubmit={onSubmit}
       mutators={{ ...arrayMutators }}
       render={({ handleSubmit, submitting }) => (

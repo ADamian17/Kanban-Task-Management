@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .columnsListWrapper {
   display: flex;
   column-gap: REM(24);
@@ -27,6 +29,7 @@
       height: REM(15);
       width: REM(15);
       display: inline-block;
+      background-color: blue;
     }
   }
 
