@@ -8,6 +8,7 @@ const BoardLayoutContent = dynamic(() => import("./BoardLayoutContent"))
 
 import styles from "./BoardLayout.module.scss";
 import HandleTheme from "@/components/features/HandleTheme";
+import BoardsNavigation from "@/components/features/BoardsNavigation";
 
 
 type BoardLayoutType = {
@@ -25,9 +26,7 @@ const BoardLayout: React.FC<BoardLayoutType> = ({ boardData, children }) => {
         <BoardLayoutHeader boardData={boardData} />
 
         <BoardLayoutContent columns={columns} boardId={boardId} boardUri={uri ?? ""}>
-          <div>
-            all boards (8)
-          </div>
+          <BoardsNavigation boardId={boardId} />
         </BoardLayoutContent>
 
         {children}
