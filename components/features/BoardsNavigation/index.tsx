@@ -6,6 +6,7 @@ import { executeApiReq } from "@/lib/utils/execute-api-req";
 
 import styles from "./BoardsNavigation.module.scss";
 import Board from "@/components/icons/Board";
+import AddNewBoardBtn from "../AddNewBoardBtn";
 
 type BoardsNavigationProps = {
   boardId: string;
@@ -33,10 +34,7 @@ const BoardsNavigation: React.FC<BoardsNavigationProps> = async ({ boardId }) =>
         ))}
       </ul>
 
-      <button className={styles.addBoardBtn}>
-        <Board />
-        <span>+ Create New Board</span>
-      </button>
+      <AddNewBoardBtn />
     </div>
   )
 };
