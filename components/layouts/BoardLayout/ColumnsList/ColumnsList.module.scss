@@ -31,10 +31,10 @@
 
     .circle {
       border-radius: 100%;
+      display: inline-block;
       height: REM(15);
       width: REM(15);
-      display: inline-block;
-      background-color: blue;
+      background-color: var(--circle-bg);
     }
   }
 

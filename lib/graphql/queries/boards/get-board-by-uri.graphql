@@ -10,6 +10,7 @@ query GetOneBoardByUri($uri: String) {
       nodes {
         id
         name
+        columnColor
         tasks {
           count
           nodes {

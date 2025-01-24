@@ -4,7 +4,6 @@ import Link from "next/link";
 import { GetOneBoardByUriQuery } from "@/__generated__/graphql";
 
 import styles from "./ColumnsList.module.scss";
-import { generateRandomRGB } from "@/lib/utils/generate-random-rgb";
 
 type ColumnsListType = {
   columns: GetOneBoardByUriQuery["getOneBoard"]["columns"];
@@ -13,32 +12,28 @@ type ColumnsListType = {
 
 const ColumnsList: React.FC<ColumnsListType> = ({ columns, boardUri }) => (
   <div className={styles.columnsListWrapper}>
-    {(columns?.nodes ?? []).map((column) => {
-      const backgroundColor = generateRandomRGB();
+    {(columns?.nodes ?? []).map((column) => (
+      <div key={column?.id} className={styles.column}>
+        <p className={styles.columnHeader}>
+          <span style={{ ["--circle-bg" as string]: column?.columnColor }} className={styles.circle} />
+          {column?.name} ({column?.tasks?.count})
+        </p>
 
-      return (
-        <div key={column?.id} className={styles.column}>
-          <p className={styles.columnHeader}>
-            <span style={{ backgroundColor }} className={styles.circle} />
-            {column?.name} ({column?.tasks?.count})
-          </p>
+        <ul className={styles.taskList}>
+          {(column?.tasks?.nodes ?? []).map((task) => (
+            <Link key={task?.id} href={`${boardUri}task/${task?.id}`} className={styles.taskLink}>
+              <li className={styles.task}>
+                <p className={styles.title}>{task?.title}</p>
 
-          <ul className={styles.taskList}>
-            {(column?.tasks?.nodes ?? []).map((task) => (
-              <Link key={task?.id} href={`${boardUri}task/${task?.id}`} className={styles.taskLink}>
-                <li className={styles.task}>
-                  <p className={styles.title}>{task?.title}</p>
-
-                  <p className={styles.description}>
-                    {task?.subtasks.completedSubtasks} of {task?.subtasks.count} subtasks
-                  </p>
-                </li>
-              </Link>
-            ))}
-          </ul>
-        </div>
-      );
-    })}
+                <p className={styles.description}>
+                  {task?.subtasks.completedSubtasks} of {task?.subtasks.count} subtasks
+                </p>
+              </li>
+            </Link>
+          ))}
+        </ul>
+      </div>
+    ))}
 
     <div className={styles.addColumn}>
       <Link href="#" className={styles.addColumnLink}>
