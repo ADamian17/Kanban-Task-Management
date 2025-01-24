@@ -1,7 +1,7 @@
-import { AllBoardsDocument } from "@/__generated__/graphql";
-import CreateBoardForm from "@/components/forms/board-forms/CreateBoardForm";
-import { executeApiReq } from "@/lib/utils/execute-api-req";
 import Link from "next/link";
+
+import { AllBoardsDocument } from "@/__generated__/graphql";
+import { executeApiReq } from "@/lib/utils/execute-api-req";
 
 export default async function DashboardPage() {
   const data = await executeApiReq(AllBoardsDocument);
@@ -12,10 +12,6 @@ export default async function DashboardPage() {
 
   return (
     <div style={{ padding: "4rem", margin: "1rem auto", maxWidth: "1110px" }}>
-      <div style={{ paddingBottom: "4rem" }}>
-        <CreateBoardForm />
-      </div>
-
       <h3>My boards | {count}</h3>
 
       <ul

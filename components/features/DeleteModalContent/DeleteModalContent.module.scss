@@ -1,0 +1,24 @@
+.modalContentWrapper {
+  display: grid;
+  row-gap: REM(24);
+
+  .modalContentTitle {
+    @include heading-lg;
+    color: var(--red);
+  }
+
+  .modalContentCopy {
+    @include body-lg;
+    color: var(--medium-grey);
+  }
+
+  .modalBtnsWrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(REM(100), 1fr));
+    gap: REM(16);
+  }
+
+  .deleteBtn {
+    width: 100%;
+  }
+}
