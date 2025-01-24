@@ -1,13 +1,14 @@
 "use client";
 import React from "react";
-import { Field, Form, FormProps } from "react-final-form";
+import { Form, FormProps } from "react-final-form";
 import { useRouter } from "next/navigation";
 import arrayMutators from "final-form-arrays";
 
 import { createBoardAction } from "./create-board-action";
 import Button from "@/components/ui/Button";
-import TextField from "@/components/ui/TextField";
-import { FieldArray } from "react-final-form-arrays";
+import ColumnsField from "../board-forms-components/ColumnsField";
+import FormWrapper from "@/components/ui/FormWrapper";
+import NameField from "../board-forms-components/NameField";
 
 const CreateBoardForm = () => {
   const router = useRouter();
@@ -31,79 +32,19 @@ const CreateBoardForm = () => {
 
   return (
     <Form
+      initialValues={{ columns: [{ name: "" }, { name: "" }] }}
       onSubmit={onSubmit}
       mutators={{ ...arrayMutators }}
       render={({ handleSubmit, submitting }) => (
-        <form onSubmit={handleSubmit} data-autofocus>
-          <div>
-            <Field name="name" validate={(value) => (value ? undefined : "Can't be empty")}>
-              {({ input, meta }) => (
-                <>
-                  <TextField
-                    {...input}
-                    label="Board Name"
-                    placeholder="e.g Web Design"
-                    error={
-                      (((meta?.error && meta?.touched) || meta.submitError) && meta.error) ||
-                      meta?.submitError
-                    }
-                  />
-                </>
-              )}
-            </Field>
+        <FormWrapper onSubmit={handleSubmit}>
+          <NameField />
 
-            <FieldArray name="columns">
-              {({ fields }) => (
-                <div>
-                  {typeof fields?.length !== "undefined" && fields?.length > 0 && (
-                    <p>Board Columns</p>
-                  )}
+          <ColumnsField submitting={submitting} />
 
-                  {fields.map((column, index) => {
-                    return (
-                      <div key={column} style={{ display: "flex", alignItems: "center" }}>
-                        <Field
-                          name={`${column}.name`}
-                          validate={(value) => (value ? undefined : "Can't be empty")}
-                        >
-                          {({ input, meta }) => (
-                            <TextField
-                              {...input}
-                              label="Column Name"
-                              error={meta?.error && meta?.touched && meta.error}
-                            />
-                          )}
-                        </Field>
-
-                        <div
-                          onClick={() => {
-                            // const removedItem = { ...fields.remove(index), _destroy: true };
-                            fields.remove(index);
-                          }}
-                        >
-                          remove
-                        </div>
-                      </div>
-                    );
-                  })}
-
-                  <Button
-                    disabled={submitting}
-                    onClick={() => fields.push({ name: "" })}
-                    type="button"
-                    variant="secondary"
-                  >
-                    Add new column
-                  </Button>
-                </div>
-              )}
-            </FieldArray>
-
-            <Button type="submit" disabled={submitting}>
-              Create New Board
-            </Button>
-          </div>
-        </form>
+          <Button type="submit" disabled={submitting}>
+            Create New Board
+          </Button>
+        </FormWrapper>
       )}
     />
   );

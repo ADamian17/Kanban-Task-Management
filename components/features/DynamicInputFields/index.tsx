@@ -14,6 +14,7 @@ type DynamicInputFieldsProps<T> = {
   label: string;
   onClickPlaceholder: T;
   onRemove?: (opt: T) => void;
+  placeholder?: string;
   submitting: boolean;
 };
 
@@ -24,6 +25,7 @@ function DynamicInputFields<T = Record<string, unknown>>({
   label,
   onClickPlaceholder,
   onRemove,
+  placeholder = "e.g. Make coffee",
   submitting,
 }: DynamicInputFieldsProps<T>) {
   return (
@@ -53,7 +55,7 @@ function DynamicInputFields<T = Record<string, unknown>>({
                         meta?.submitError
                       }
                       onRemove={handleOnRemove}
-                      placeholder="e.g. Make coffee"
+                      placeholder={placeholder}
                     />
                   )}
                 </Field>
