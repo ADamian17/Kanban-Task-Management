@@ -1,14 +1,16 @@
 "use client";
-import React, { useCallback, useRef } from "react";
-import { Field, Form, FormProps } from "react-final-form";
-import { FieldArray } from "react-final-form-arrays";
+import React, { useRef } from "react";
+import { Form, FormProps } from "react-final-form";
 import arrayMutators from "final-form-arrays";
 
+import { ColumnInput, GetOneBoardByUriQuery } from "@/__generated__/graphql";
 import { editBoardAction } from "./edit-board-action";
 import { onSuccessEditBoardAction } from "./on-success-edit-board-action";
 import Button from "@/components/ui/Button";
-import TextField from "@/components/ui/TextField";
-import { GetOneBoardByUriQuery } from "@/__generated__/graphql";
+import ColumnsField from "../board-forms-components/ColumnsField";
+import FormWrapper from "@/components/ui/FormWrapper";
+import NameField from "../board-forms-components/NameField";
+import { useRouter } from "next/navigation";
 
 type EditBoardFormProps = {
   boardId: string;
@@ -17,7 +19,8 @@ type EditBoardFormProps = {
 };
 
 const EditBoardForm: React.FC<EditBoardFormProps> = ({ boardName, boardId, columns }) => {
-  const removedColumns = useRef<Array<Record<string, string | boolean>>>([]);
+  const router = useRouter();
+  const removedColumns = useRef<Array<ColumnInput>>([]);
 
   const initialValues = {
     name: boardName ?? "",
@@ -42,15 +45,16 @@ const EditBoardForm: React.FC<EditBoardFormProps> = ({ boardName, boardId, colum
       if (res?.updateBoard?.uri) {
         const onSuccess = onSuccessEditBoardAction.bind(res?.updateBoard?.uri);
         onSuccess(res?.updateBoard?.uri);
+        router.push(res?.updateBoard?.uri);
       }
     } catch (error) {
       console.error(error);
     }
   };
 
-  const onRemoveColumn = useCallback((col: Record<string, string | boolean>) => {
-    removedColumns.current.push({ ...col, _destroy: true });
-  }, []);
+  const onRemoveColumn = (column: ColumnInput) => {
+    removedColumns.current.push({ ...column, _destroy: true });
+  }
 
   return (
     <Form
@@ -58,76 +62,15 @@ const EditBoardForm: React.FC<EditBoardFormProps> = ({ boardName, boardId, colum
       onSubmit={onSubmit}
       mutators={{ ...arrayMutators }}
       render={({ handleSubmit, submitting }) => (
-        <form onSubmit={handleSubmit} data-autofocus>
-          <div>
-            <Field name="name" validate={(value) => (value ? undefined : "Can't be empty")}>
-              {({ input, meta }) => (
-                <>
-                  <TextField
-                    {...input}
-                    label="Board Name"
-                    placeholder="e.g Web Design"
-                    error={
-                      (((meta?.error && meta?.touched) || meta.submitError) && meta.error) ||
-                      meta?.submitError
-                    }
-                  />
-                </>
-              )}
-            </Field>
+        <FormWrapper onSubmit={handleSubmit}>
+          <NameField />
 
-            <FieldArray name="columns">
-              {({ fields }) => (
-                <div>
-                  {typeof fields?.length !== "undefined" && fields?.length > 0 && (
-                    <p>Board Columns</p>
-                  )}
+          <ColumnsField submitting={submitting} onRemove={onRemoveColumn} />
 
-                  {fields.map((column, index) => {
-                    return (
-                      <div key={column} style={{ display: "flex", alignItems: "center" }}>
-                        <Field
-                          name={`${column}.name`}
-                          validate={(value) => (value ? undefined : "Can't be empty")}
-                        >
-                          {({ input, meta }) => (
-                            <TextField
-                              {...input}
-                              label="Column Name"
-                              error={meta?.error && meta?.touched && meta.error}
-                            />
-                          )}
-                        </Field>
-
-                        <div
-                          onClick={() => {
-                            const removedItem = fields.remove(index);
-                            onRemoveColumn(removedItem);
-                          }}
-                        >
-                          remove
-                        </div>
-                      </div>
-                    );
-                  })}
-
-                  <Button
-                    disabled={submitting}
-                    onClick={() => fields.push({ name: "" })}
-                    type="button"
-                    variant="secondary"
-                  >
-                    Add new column
-                  </Button>
-                </div>
-              )}
-            </FieldArray>
-
-            <Button type="submit" disabled={submitting}>
-              Save Changes
-            </Button>
-          </div>
-        </form>
+          <Button type="submit" disabled={submitting}>
+            Save Changes
+          </Button>
+        </FormWrapper>
       )}
     />
   );

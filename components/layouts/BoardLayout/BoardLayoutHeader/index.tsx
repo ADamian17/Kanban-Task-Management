@@ -22,8 +22,8 @@ const BoardLayoutHeader: React.FC<BoardLayoutHeaderType> = ({ boardData }) => {
 
   const imgSrc = themeColor === "light" ? "/assets/kanban-desktop-light.svg" : "/assets/kanban-desktop-dark.svg";
   const menuItems = [
-    { label: "Edit board", uri: `${uri}/edit` },
-    { label: "delete board", uri: `${uri}/delete`, isDelete: true },
+    { label: "Edit board", uri: `${uri}edit` },
+    { label: "delete board", uri: `${uri}delete`, isDelete: true },
   ];
 
   return (
