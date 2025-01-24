@@ -1,12 +1,11 @@
 "use client";
 import React from "react";
 
-import Button from "@/components/ui/Button";
-import Modal from "@/components/ui/Modal";
+import { deleteTaskAction } from "./delete-task-action";
+import { revalidateBoardAction } from "@/lib/utils/revalidate-board-Action";
 import { useRouter } from "next/navigation";
-
-import styles from "./DeleteTaskContainer.module.scss";
-import DeleteTaskForm from "@/components/forms/task-forms/DeleteTaskForm";
+import DeleteModalContent from "@/components/features/DeleteModalContent";
+import Modal from "@/components/ui/Modal";
 
 type DeleteTaskContainerType = {
   taskId: string;
@@ -23,24 +22,35 @@ const DeleteTaskContainer: React.FC<DeleteTaskContainerType> = ({
 
   const handleClose = () => router.push(`/${boardUri}/task/${taskId}`);
 
+  const handleDelete = async () => {
+    try {
+      const deleteTask = deleteTaskAction.bind({ id: taskId });
+      const res = await deleteTask({ id: taskId });
+
+      if (typeof res === "object" && "error" in res) {
+        return console.error(res?.error);
+      }
+
+      if (res?.deleteTask?.success) {
+        const pathname = `/${boardUri}`;
+        const revalidateBoard = revalidateBoardAction.bind(pathname);
+        revalidateBoard(pathname);
+
+        router.push(pathname);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Modal show={true} onClose={handleClose}>
-      <div className={styles.modalContentWrapper}>
-        <p className={styles.modalContentTitle}>Delete this task?</p>
-
-        <p className={styles.modalContentCopy}>
-          Are you sure you want to delete the &apos;{taskTitle}&apos; task and its subtasks? This
-          action cannot be reversed.
-        </p>
-
-        <div className={styles.modalBtnsWrapper}>
-          <DeleteTaskForm pathname={`/${boardUri}`} taskId={taskId} />
-
-          <Button onClick={handleClose} variant="secondary">
-            Cancel
-          </Button>
-        </div>
-      </div>
+      <DeleteModalContent
+        headline="Delete this task?"
+        onCancel={handleClose}
+        onDelete={handleDelete}
+        subcopy={`Are you sure you want to delete the '${taskTitle}' task and its subtasks? This action cannot be reversed.`}
+      />
     </Modal>
   );
 };
