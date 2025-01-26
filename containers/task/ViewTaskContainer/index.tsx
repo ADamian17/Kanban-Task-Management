@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 import { GetTaskQuery } from "@/__generated__/graphql";
 import CurrentTaskStatus from "@/components/features/CurrentTaskStatus";
-import KebabDropdown from "@/components/ui/Dropdowns/KebabDropdown";
+import KebabDropdown, { KebabDropdownItem } from "@/components/ui/Dropdowns/KebabDropdown";
 import Modal from "@/components/ui/Modal";
 import SubtaskList from "@/components/features/SubtaskList";
 
@@ -24,9 +24,9 @@ const ViewTaskContainer: React.FC<ViewTaskPageProps> = ({
 }) => {
   const router = useRouter();
   const pathname = `/${boardUri}/task/${taskData?.id}`;
-  const menuItems = [
-    { label: "Edit task", uri: `${pathname}/edit` },
-    { label: "delete task", uri: `${pathname}/delete`, isDelete: true },
+  const menuItems: KebabDropdownItem[] = [
+    { label: "Edit task", uri: `${pathname}/edit`, type: "link" },
+    { label: "delete task", uri: `${pathname}/delete`, isDelete: true, type: "link" },
   ];
 
   const handleClose = () => router.push(`/${boardUri}/`);

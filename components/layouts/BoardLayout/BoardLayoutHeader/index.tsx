@@ -4,11 +4,12 @@ import Link from "next/link";
 
 import { GetOneBoardByUriQuery } from "@/__generated__/graphql";
 import AddNewTaskBtn from "@/components/features/AddNewTaskBtn";
-import KebabDropdown from "@/components/ui/Dropdowns/KebabDropdown";
+import KebabDropdown, { KebabDropdownItem } from "@/components/ui/Dropdowns/KebabDropdown";
 import useSidebarStore from "@/store/use-sidebar-store";
 import useThemeStore from "@/store/use-theme-store";
 
 import styles from "./BoardLayoutHeader.module.scss";
+import { logoutAction } from "@/lib/utils/logout-action";
 
 type BoardLayoutHeaderType = {
   boardData: GetOneBoardByUriQuery["getOneBoard"];
@@ -21,9 +22,10 @@ const BoardLayoutHeader: React.FC<BoardLayoutHeaderType> = ({ boardData }) => {
   const isColumnsEmpty = columns.count <= 0;
 
   const imgSrc = themeColor === "light" ? "/assets/kanban-desktop-light.svg" : "/assets/kanban-desktop-dark.svg";
-  const menuItems = [
-    { label: "Edit board", uri: `${uri}edit` },
-    { label: "delete board", uri: `${uri}delete`, isDelete: true },
+  const menuItems: KebabDropdownItem[] = [
+    { label: "Edit board", uri: `${uri}edit`, type: "link" },
+    { label: "delete board", uri: `${uri}delete`, isDelete: true, type: "link" },
+    { label: "logout", type: "button", onClick: () => logoutAction() },
   ];
 
   return (

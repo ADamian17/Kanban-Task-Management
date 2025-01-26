@@ -1,5 +1,5 @@
 "use client";
-import { ComponentRef, useRef } from "react";
+import { ComponentRef, MouseEventHandler, useRef } from "react";
 import Link from "next/link";
 
 import Dropdown from "../Dropdown";
@@ -9,11 +9,21 @@ import DropdownButton from "../Dropdown/dropdown-components/Dropdown.button";
 import DropdownMenu from "../Dropdown/dropdown-components/Dropdown.menu";
 import ThreeDots from "@/components/icons/ThreeDots";
 
-type KebabDropdownItem = {
-  label: string;
-  isDelete?: boolean;
+type KebabDropdownItemButton = {
+  onClick: MouseEventHandler<HTMLButtonElement>;
+  type: "button";
+}
+
+type KebabDropdownItemLink = {
+  type: "link";
   uri: string;
-};
+}
+
+export type KebabDropdownItem = {
+  isDelete?: boolean;
+  label: string;
+  type: "button" | "link";
+} & (KebabDropdownItemButton | KebabDropdownItemLink);
 
 type KebabDropdownProps = {
   className?: string;
@@ -34,12 +44,18 @@ const KebabDropdown = ({ menuItems }: KebabDropdownProps) => {
           {menuItems &&
             menuItems.map((menuItem, idx) => (
               <li key={menuItem.label + "-" + idx}>
-                <Link
-                  className={`${styles.menuItem} ${menuItem.isDelete && styles.redTxt}`}
-                  href={menuItem.uri}
-                >
-                  {menuItem?.label}
-                </Link>
+                {menuItem.type === "button" ? (
+                  <button className={`${styles.menuItem} ${menuItem.isDelete && styles.redTxt}`} onClick={menuItem.onClick}>
+                    {menuItem?.label}
+                  </button>
+                ) : (
+                  <Link
+                    className={`${styles.menuItem} ${menuItem.isDelete && styles.redTxt}`}
+                    href={menuItem.uri}
+                  >
+                    {menuItem?.label}
+                  </Link>
+                )}
               </li>
             ))}
         </ul>
