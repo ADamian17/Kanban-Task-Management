@@ -1,15 +1,23 @@
 .modalWrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: grid;
+  height: 100%;
+  left: 0;
+  overflow-y: auto;
+  padding: REM(24);
+  place-items: center;
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
   z-index: 10;
-  display: grid;
-  place-items: center;
-  padding: REM(16);
-  overflow-y: auto;
+
+  &.top {
+    place-items: start center;
+
+    .modal {
+      margin-top: REM(80);
+    }
+  }
 
   .modal {
     background-color: var(--default-accent-bg);

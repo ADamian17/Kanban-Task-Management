@@ -9,9 +9,12 @@ type ModalType = {
   onClose?: () => void;
   show: boolean;
   title?: string;
+  position?: "center" | "top";
+  modalClassName?: string;
+  className?: string;
 };
 
-const Modal: React.FC<ModalType> = ({ show, children, onClose, title }) => {
+const Modal: React.FC<ModalType> = ({ show, children, onClose, title, position = "center", className, modalClassName }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const handleModalClose: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -25,11 +28,11 @@ const Modal: React.FC<ModalType> = ({ show, children, onClose, title }) => {
       {show && (
         <div
           ref={wrapperRef}
-          className={styles.modalWrapper}
+          className={`${styles.modalWrapper} ${styles[position]} ${className}`}
           onClick={handleModalClose}
           id="modal-wrapper"
         >
-          <div className={styles.modal}>
+          <div className={`${styles.modal} ${modalClassName}`}>
             {!isNil(title) && <p className={styles.title}>{title}</p>}
 
             {children}

@@ -3,19 +3,21 @@ import React from "react";
 import Link from "next/link";
 
 import { GetOneBoardByUriQuery } from "@/__generated__/graphql";
+import { logoutAction } from "@/lib/utils/logout-action";
 import AddNewTaskBtn from "@/components/features/AddNewTaskBtn";
+import BoardName from "./BoardName";
 import KebabDropdown, { KebabDropdownItem } from "@/components/ui/Dropdowns/KebabDropdown";
 import useSidebarStore from "@/store/use-sidebar-store";
 import useThemeStore from "@/store/use-theme-store";
 
 import styles from "./BoardLayoutHeader.module.scss";
-import { logoutAction } from "@/lib/utils/logout-action";
 
 type BoardLayoutHeaderType = {
   boardData: GetOneBoardByUriQuery["getOneBoard"];
+  children: React.ReactNode;
 };
 
-const BoardLayoutHeader: React.FC<BoardLayoutHeaderType> = ({ boardData }) => {
+const BoardLayoutHeader: React.FC<BoardLayoutHeaderType> = ({ boardData, children }) => {
   const { isOpen } = useSidebarStore(state => state)
   const { themeColor } = useThemeStore(state => state)
   const { uri, name, columns } = boardData;
@@ -41,9 +43,9 @@ const BoardLayoutHeader: React.FC<BoardLayoutHeaderType> = ({ boardData }) => {
       </div>
 
       <div className={styles.nameAndActionsWrapper}>
-        <div>
-          <p className={styles.boardName}>{name}</p>
-        </div>
+        <BoardName boardName={name ?? ''}>
+          {children}
+        </BoardName>
 
         <div className={styles.actionsWrapper}>
           <AddNewTaskBtn isColumnsEmpty={isColumnsEmpty} boardUri={uri ?? ""} columns={columns} />

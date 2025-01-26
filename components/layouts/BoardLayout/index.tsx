@@ -23,7 +23,9 @@ const BoardLayout: React.FC<BoardLayoutType> = ({ boardData, children }) => {
     <>
       <HandleTheme />
       <main className={styles.boardLayoutMain}>
-        <BoardLayoutHeader boardData={boardData} />
+        <BoardLayoutHeader boardData={boardData}>
+          <BoardsNavigation boardId={boardId} />
+        </BoardLayoutHeader>
 
         <BoardLayoutContent columns={columns} boardId={boardId} boardUri={uri ?? ""}>
           <BoardsNavigation boardId={boardId} />

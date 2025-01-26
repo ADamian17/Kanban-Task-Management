@@ -1,8 +1,4 @@
 .header {
-  --logo-w: REM(24);
-  --logo-h: REM(24);
-  --header-h: REM(64);
-
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
@@ -10,12 +6,6 @@
   column-gap: REM(16);
   background-color: var(--default-accent-bg);
   padding: 0 REM(16);
-
-  .boardName {
-    @include heading-lg;
-    color: var(--default-text-color);
-    text-transform: capitalize;
-  }
 
   .actionsWrapper {
     margin-left: auto;
@@ -87,10 +77,6 @@
 
     &.sidebarIsOpen {
       grid-template-columns: REM(266) 1fr;
-    }
-
-    .boardName {
-      @include heading-xl;
     }
   }
 }
