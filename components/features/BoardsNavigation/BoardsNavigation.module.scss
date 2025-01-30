@@ -40,6 +40,11 @@
       &.active {
         background-color: var(--main-purple);
         color: var(--white);
+
+        &:hover {
+          background-color: var(--main-purple);
+          color: var(--white);
+        }
       }
 
       &:hover {

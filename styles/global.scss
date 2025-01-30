@@ -17,3 +17,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100dvh;
 }
+
+a {
+  color: var(--main-purple);
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--main-purple-hover);
+    text-decoration: underline;
+  }
+}

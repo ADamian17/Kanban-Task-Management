@@ -2,13 +2,12 @@ import React from "react";
 import dynamic from 'next/dynamic'
 
 import { GetOneBoardByUriQuery } from "@/__generated__/graphql";
-const BoardLayoutHeader = dynamic(() => import("./BoardLayoutHeader"))
+import BoardsNavigation from "@/components/features/BoardsNavigation";
 const BoardLayoutContent = dynamic(() => import("./BoardLayoutContent"))
+const BoardLayoutHeader = dynamic(() => import("./BoardLayoutHeader"))
 
 
 import styles from "./BoardLayout.module.scss";
-import HandleTheme from "@/components/features/HandleTheme";
-import BoardsNavigation from "@/components/features/BoardsNavigation";
 
 
 type BoardLayoutType = {
@@ -21,7 +20,6 @@ const BoardLayout: React.FC<BoardLayoutType> = ({ boardData, children }) => {
 
   return (
     <>
-      <HandleTheme />
       <main className={styles.boardLayoutMain}>
         <BoardLayoutHeader boardData={boardData}>
           <BoardsNavigation boardId={boardId} />

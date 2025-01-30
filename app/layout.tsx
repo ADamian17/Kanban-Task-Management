@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import HandleTheme from "@/components/features/HandleTheme";
+import HandleUserInactivity from "@/components/features/HandleUserInactivity";
 
 import "@/styles/global.scss";
 
@@ -16,7 +18,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${plusJakartaSans.variable}`}>{children}</body>
+      <body className={`${plusJakartaSans.variable}`}>
+        <HandleTheme />
+        <HandleUserInactivity />
+        {children}
+      </body>
     </html>
   );
 }

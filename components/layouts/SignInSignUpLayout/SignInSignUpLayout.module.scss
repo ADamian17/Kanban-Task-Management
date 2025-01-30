@@ -1,0 +1,40 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+
+  .bg {
+    display: none;
+  }
+
+  .formWrapper {
+    justify-self: center;
+    padding: REM(80) REM(24);
+    max-width: REM(400);
+    width: 100%;
+  }
+
+  .copyWrapper {
+    margin-top: REM(24);
+    text-align: center;
+    color: var(--medium-grey);
+  }
+
+  .title {
+    color: var(--default-text-color);
+    margin-bottom: REM(30);
+  }
+
+  @include media-query("lg") {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    min-height: 100vh;
+
+    .bg {
+      background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background-position: center;
+      background-size: cover;
+      display: inline-block;
+    }
+  }
+}
