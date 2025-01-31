@@ -1,0 +1,14 @@
+.newColumnCta {
+  @include heading-xl;
+  background-color: transparent;
+  border: none;
+  color: var(--medium-grey);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  width: REM(280);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--main-purple);
+  }
+}

@@ -45,7 +45,7 @@ const BoardLayoutContent: React.FC<BoardLayoutWrapperType> = ({ boardUri, boardI
       {columns.count <= 0 ? (
         <EmptyBoard boardId={boardId} />
       ) : (
-        <ColumnsList columns={columns} boardUri={boardUri} />
+        <ColumnsList columns={columns} boardUri={boardUri} boardId={boardId} />
       )}
 
       <button className={styles.sidebarTriggerWrapper}>

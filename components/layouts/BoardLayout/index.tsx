@@ -19,19 +19,17 @@ const BoardLayout: React.FC<BoardLayoutType> = ({ boardData, children }) => {
   const { columns, id: boardId, uri } = boardData;
 
   return (
-    <>
-      <main className={styles.boardLayoutMain}>
-        <BoardLayoutHeader boardData={boardData}>
-          <BoardsNavigation boardId={boardId} />
-        </BoardLayoutHeader>
+    <main className={styles.boardLayoutMain}>
+      <BoardLayoutHeader boardData={boardData}>
+        <BoardsNavigation boardId={boardId} />
+      </BoardLayoutHeader>
 
-        <BoardLayoutContent columns={columns} boardId={boardId} boardUri={uri ?? ""}>
-          <BoardsNavigation boardId={boardId} />
-        </BoardLayoutContent>
+      <BoardLayoutContent columns={columns} boardId={boardId} boardUri={uri ?? ""}>
+        <BoardsNavigation boardId={boardId} />
+      </BoardLayoutContent>
 
-        {children}
-      </main>
-    </>
+      {children}
+    </main>
   );
 };
 

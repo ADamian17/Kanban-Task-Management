@@ -95,17 +95,5 @@
     border-radius: REM(6);
     background: linear-gradient(180deg, rgba(43, 44, 55, 0.25) 0%, rgba(43, 44, 55, 0.13) 100%);
     text-align: center;
-
-    .addColumnLink {
-      @include heading-xl;
-      color: var(--medium-grey);
-      text-decoration: none;
-      transition: color 0.2s ease;
-      width: REM(280);
-
-      &:hover {
-        color: var(--main-purple);
-      }
-    }
   }
 }

@@ -2,15 +2,17 @@ import React from "react";
 import Link from "next/link";
 
 import { GetOneBoardByUriQuery } from "@/__generated__/graphql";
+import NewColumnCta from "@/components/layouts/BoardLayout/ColumnsList/NewColumnCta";
 
 import styles from "./ColumnsList.module.scss";
 
 type ColumnsListType = {
   columns: GetOneBoardByUriQuery["getOneBoard"]["columns"];
   boardUri: string;
+  boardId: string;
 };
 
-const ColumnsList: React.FC<ColumnsListType> = ({ columns, boardUri }) => (
+const ColumnsList: React.FC<ColumnsListType> = ({ boardUri, boardId, columns }) => (
   <div className={styles.columnsListWrapper}>
     {(columns?.nodes ?? []).map((column) => (
       <div key={column?.id} className={styles.column}>
@@ -36,9 +38,7 @@ const ColumnsList: React.FC<ColumnsListType> = ({ columns, boardUri }) => (
     ))}
 
     <div className={styles.addColumn}>
-      <Link href="#" className={styles.addColumnLink}>
-        + New Column
-      </Link>
+      <NewColumnCta boardId={boardId} />
     </div>
   </div>
 );

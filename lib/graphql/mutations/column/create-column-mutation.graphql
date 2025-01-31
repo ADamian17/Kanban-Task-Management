@@ -1,0 +1,6 @@
+mutation CreateColumn($name: String!, $boardId: ID!) {
+  createColumn(input: { name: $name, boardId: $boardId }) {
+    id
+    name
+  }
+}
