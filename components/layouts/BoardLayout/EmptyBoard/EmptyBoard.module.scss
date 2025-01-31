@@ -1,0 +1,21 @@
+.wrapper {
+  display: grid;
+  height: calc(100dvh - REM(80));
+  place-content: center;
+  row-gap: REM(32);
+
+  .headline {
+    @include heading-lg;
+    color: var(--medium-grey);
+    text-align: center;
+  }
+
+  button.btn {
+    justify-self: center;
+    max-width: REM(174);
+  }
+
+  @include media-query("lg") {
+    height: calc(100dvh - REM(96));
+  }
+}
