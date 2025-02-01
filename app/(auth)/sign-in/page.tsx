@@ -1,7 +1,7 @@
 import React from "react";
 
 import SignInSignUpLayout from "@/components/layouts/SignInSignUpLayout";
-import SignInForm from "@/components/forms/SignInForm";
+import SignInForm from "@/components/forms/auth-forms/SignInForm";
 
 const SignInPage = () => (
   <SignInSignUpLayout
