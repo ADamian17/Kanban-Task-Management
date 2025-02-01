@@ -7,6 +7,11 @@
     display: none;
   }
 
+  .title {
+    color: var(--default-text-color);
+    margin-bottom: REM(30);
+  }
+
   .formWrapper {
     justify-self: center;
     padding: REM(80) REM(24);
@@ -20,9 +25,10 @@
     color: var(--medium-grey);
   }
 
-  .title {
-    color: var(--default-text-color);
-    margin-bottom: REM(30);
+  .subcopy {
+    margin-top: REM(14);
+    color: var(--medium-grey);
+    text-align: center;
   }
 
   @include media-query("lg") {

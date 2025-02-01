@@ -38,7 +38,7 @@ const ColumnsList: React.FC<ColumnsListType> = ({ boardUri, boardId, columns }) 
     ))}
 
     <div className={styles.addColumn}>
-      <NewColumnCta boardId={boardId} />
+      <NewColumnCta boardId={boardId} pathname={boardUri} />
     </div>
   </div>
 );

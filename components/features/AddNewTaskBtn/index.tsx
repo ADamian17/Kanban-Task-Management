@@ -35,7 +35,7 @@ const AddNewTaskBtn: React.FC<AddNewTaskBtnType> = ({ boardUri, isColumnsEmpty, 
       </Button>
 
       <Modal show={show} onClose={handleClose} title="Add New Task">
-        <CreateTaskForm pathname={`/${boardUri}`} boardColumnsData={columns} />
+        <CreateTaskForm pathname={boardUri} boardColumnsData={columns} />
       </Modal>
     </>
   );

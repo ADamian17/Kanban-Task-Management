@@ -4,15 +4,14 @@ import { Form, FormProps } from "react-final-form";
 import arrayMutators from "final-form-arrays";
 
 import { createTaskAction } from "./create-task-action";
+import { GetTaskQuery } from "@/__generated__/graphql";
 import { revalidateBoardAction } from "./revalidate-board-action";
 import Button from "@/components/ui/Button";
+import DescriptionField from "../task-form-components/DescriptionField";
+import FormWrapper from "@/components/ui/FormWrapper";
 import StatusField from "../task-form-components/StatusField";
 import SubtasksField from "../task-form-components/SubtasksField";
-import DescriptionField from "../task-form-components/DescriptionField";
 import TitleField from "../task-form-components/TitleField";
-import { GetTaskQuery } from "@/__generated__/graphql";
-import { useRouter } from "next/navigation";
-import FormWrapper from "@/components/ui/FormWrapper";
 
 type CreateTaskFormValues = {
   title: string;
@@ -26,8 +25,6 @@ type CreateTaskFormProps = {
 };
 
 const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ pathname, boardColumnsData }) => {
-  const router = useRouter();
-
   const onSubmit: FormProps<CreateTaskFormValues>["onSubmit"] = async (values) => {
     try {
       const formattedValues = {
@@ -45,7 +42,6 @@ const CreateTaskForm: React.FC<CreateTaskFormProps> = ({ pathname, boardColumnsD
       if (res?.createTask?.id) {
         const revalidateBoard = revalidateBoardAction.bind(pathname);
         revalidateBoard(pathname);
-        router.push(pathname);
       }
     } catch (error) {
       console.error(error);

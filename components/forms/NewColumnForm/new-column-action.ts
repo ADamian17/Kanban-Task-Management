@@ -1,18 +1,26 @@
 "use server";
 
 import {
-  CreateBoardDocument,
-  CreateBoardMutation,
-  CreateBoardMutationVariables,
+  CreateColumnDocument,
+  CreateColumnMutation,
+  CreateColumnMutationVariables,
 } from "@/__generated__/graphql";
 import { executeApiReq } from "@/lib/utils/execute-api-req";
 
-export const createBoardAction = async ({
+export const newColumnAction = async ({
+  boardId,
   name,
-  columns,
-}: CreateBoardMutationVariables): Promise<CreateBoardMutation | { error: string } | undefined> => {
+  tasks,
+}: CreateColumnMutationVariables): Promise<
+  CreateColumnMutation | { error: string } | undefined
+> => {
   try {
-    const res = await executeApiReq(CreateBoardDocument, { name, columns });
+    const res = await executeApiReq(CreateColumnDocument, {
+      boardId,
+      name,
+      tasks,
+    });
+
     return res;
   } catch (error) {
     if (error instanceof Error) {

@@ -32,5 +32,6 @@
     @include heading-lg;
     color: var(--default-text-color);
     margin-bottom: REM(24);
+    text-align: start;
   }
 }

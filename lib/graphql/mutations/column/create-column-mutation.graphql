@@ -1,5 +1,5 @@
-mutation CreateColumn($name: String!, $boardId: ID!) {
-  createColumn(input: { name: $name, boardId: $boardId }) {
+mutation CreateColumn($name: String!, $boardId: ID!, $tasks: [TaskInput!]) {
+  createColumn(input: { name: $name, boardId: $boardId, tasksAttributes: $tasks }) {
     id
     name
   }

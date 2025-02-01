@@ -43,7 +43,7 @@ const BoardLayoutContent: React.FC<BoardLayoutWrapperType> = ({ boardUri, boardI
       </aside>
 
       {columns.count <= 0 ? (
-        <EmptyBoard boardId={boardId} />
+        <EmptyBoard boardId={boardId} pathname={boardUri} />
       ) : (
         <ColumnsList columns={columns} boardUri={boardUri} boardId={boardId} />
       )}

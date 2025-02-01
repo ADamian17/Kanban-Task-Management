@@ -4,12 +4,14 @@ import React, { useState } from "react";
 import Modal from "@/components/ui/Modal";
 
 import styles from "./NewColumnCta.module.scss";
+import NewColumnForm from "@/components/forms/NewColumnForm";
 
 type NewColumnCtaProps = {
   boardId: string;
+  pathname: string;
 };
 
-const NewColumnCta: React.FC<NewColumnCtaProps> = ({ boardId }) => {
+const NewColumnCta: React.FC<NewColumnCtaProps> = ({ boardId, pathname }) => {
   const [show, setShow] = useState(false);
 
   const handleOpen = () => {
@@ -25,7 +27,7 @@ const NewColumnCta: React.FC<NewColumnCtaProps> = ({ boardId }) => {
       <button onClick={handleOpen} className={styles.newColumnCta}>+ New Column</button>
 
       <Modal show={show} onClose={handleClose} title="Add New Column">
-        new column form {boardId}
+        <NewColumnForm boardId={boardId} pathname={pathname} />
       </Modal>
     </>
   );

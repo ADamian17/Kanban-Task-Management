@@ -5,12 +5,14 @@ import Button from "@/components/ui/Button";
 import Modal from "@/components/ui/Modal";
 
 import styles from './EmptyBoard.module.scss';
+import NewColumnForm from "@/components/forms/NewColumnForm";
 
 type EmptyBoardType = {
   boardId: string;
+  pathname: string;
 };
 
-const EmptyBoard: React.FC<EmptyBoardType> = ({ boardId }) => {
+const EmptyBoard: React.FC<EmptyBoardType> = ({ boardId, pathname }) => {
   const [show, setShow] = useState(false);
 
   const handleOpen = () => {
@@ -28,7 +30,7 @@ const EmptyBoard: React.FC<EmptyBoardType> = ({ boardId }) => {
       <Button onClick={handleOpen} className={styles.btn}>+ Add New Column</Button>
 
       <Modal show={show} onClose={handleClose} title="Add New Column">
-        new column form {boardId}
+        <NewColumnForm boardId={boardId} pathname={pathname} />
       </Modal>
     </div>
   );

@@ -19,7 +19,7 @@
     grid-row: 2;
     grid-column: 1 / -1;
 
-    &:focus, 
+    &:focus,
     &:active {
       border-color: var(--main-purple);
       outline: 1px solid var(--main-purple);
@@ -28,8 +28,9 @@
 
   .label {
     @include body-md;
-    color: var(--medium-grey, #828FA3);
+    color: var(--medium-grey, #828fa3);
     grid-row: 1;
+    text-align: start;
   }
 
   .errorMsg {

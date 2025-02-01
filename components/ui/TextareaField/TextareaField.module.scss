@@ -1,5 +1,5 @@
 .textareaWrapper {
-   border: none;
+  border: none;
   display: grid;
   row-gap: REM(8);
   align-items: center;
@@ -25,7 +25,7 @@
     padding: REM(8) REM(16);
     resize: vertical;
 
-    &:focus, 
+    &:focus,
     &:active {
       border-color: var(--main-purple);
       outline: 1px solid var(--main-purple);
@@ -34,8 +34,9 @@
 
   .label {
     @include body-md;
-    color: var(--medium-grey, #828FA3);
+    color: var(--medium-grey, #828fa3);
     grid-row: 1;
+    text-align: start;
   }
 
   .errorMsg {

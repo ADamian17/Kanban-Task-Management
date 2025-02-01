@@ -9,11 +9,12 @@ import Button from "@/components/ui/Button";
 import ColumnsField from "../board-forms-components/ColumnsField";
 import FormWrapper from "@/components/ui/FormWrapper";
 import NameField from "../board-forms-components/NameField";
+import { CreateBoardMutationVariables } from "@/__generated__/graphql";
 
 const CreateBoardForm = () => {
   const router = useRouter();
 
-  const onSubmit: FormProps["onSubmit"] = async (values) => {
+  const onSubmit: FormProps<CreateBoardMutationVariables>["onSubmit"] = async (values) => {
     try {
       const createBoard = createBoardAction.bind(values);
       const res = await createBoard(values);

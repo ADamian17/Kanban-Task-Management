@@ -1,9 +1,10 @@
 .selectWrapper {
   display: grid;
   row-gap: REM(8);
-  
+
   .label {
     @include body-md;
-    color: var(--medium-grey, #828FA3);
+    color: var(--medium-grey, #828fa3);
+    text-align: start;
   }
 }
