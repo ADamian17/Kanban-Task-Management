@@ -1,6 +1,7 @@
 import React from "react";
 
 import SignInSignUpLayout from "@/components/layouts/SignInSignUpLayout";
+import SignUpForm from "@/components/forms/auth-forms/SignUpForm";
 
 const SignUpPage = () => (
   <SignInSignUpLayout
@@ -11,7 +12,7 @@ const SignUpPage = () => (
       path: "/sign-in",
     }}
   >
-    sign up
+    <SignUpForm />
   </SignInSignUpLayout>
 );
 

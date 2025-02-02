@@ -14,7 +14,7 @@
 
   .formWrapper {
     justify-self: center;
-    padding: REM(80) REM(24);
+    padding: REM(80) 0;
     max-width: REM(400);
     width: 100%;
   }
@@ -33,7 +33,7 @@
 
   @include media-query("lg") {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     min-height: 100vh;
 
     .bg {
@@ -42,5 +42,9 @@
       background-size: cover;
       display: inline-block;
     }
+  }
+
+  @include media-query("xl") {
+    grid-template-columns: 2fr 1fr;
   }
 }
