@@ -1,0 +1,16 @@
+.logo {
+  display: inline-flex;
+  height: REM(24);
+  width: REM(24);
+
+  img {
+    height: 100%;
+    width: 100%;
+    display: block;
+  }
+
+  @include media-query("md") {
+    width: REM(152.53);
+    height: REM(25.22);
+  }
+}

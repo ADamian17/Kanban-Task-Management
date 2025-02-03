@@ -1,0 +1,28 @@
+.header {
+  align-items: center;
+  background-color: var(--default-accent-bg);
+  border-bottom: 1px solid var(--default-line-color);
+  column-gap: REM(16);
+  display: flex;
+  height: REM(64);
+  padding: 0 REM(16);
+
+  .actionsWrapper {
+    align-items: center;
+    column-gap: REM(16);
+    display: grid;
+    grid-template-columns: REM(164) min-content;
+    margin-left: auto;
+  }
+
+  @include media-query("md") {
+    height: REM(80);
+    padding: 0 REM(26);
+    gap: 0;
+  }
+
+  @include media-query("lg") {
+    height: REM(96);
+    padding: 0 REM(34);
+  }
+}
