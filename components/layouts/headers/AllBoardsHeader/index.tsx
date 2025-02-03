@@ -8,6 +8,7 @@ import Logo from '../Logo'
 import Modal from '@/components/ui/Modal'
 
 import styles from './AllBoardsHeader.module.scss'
+import { logoutAction } from '@/lib/utils/logout-action'
 
 const AllBoardsHeader = () => {
   const [show, setShow] = useState(false);
@@ -23,7 +24,7 @@ const AllBoardsHeader = () => {
       <div className={styles.actionsWrapper}>
         <Button onClick={() => setShow(true)}>+ Add new board</Button>
 
-        <KebabDropdown menuItems={[]} />
+        <KebabDropdown menuItems={[{ label: "logout", type: "button", onClick: () => logoutAction() }]} />
         <Modal show={show} onClose={handleClose} title="Add New Board">
           <CreateBoardForm />
         </Modal>

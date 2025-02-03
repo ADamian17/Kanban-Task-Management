@@ -6,6 +6,7 @@
     "dev": "concurrently -k -p \"[{name}]\" -n \"next,codegen\" -c \"cyan,green\" \"npm run dev:next\" \"npm run gen:watch\"",
     "dev:next": "next dev --turbopack",
     "build": "next build",
+    "prebuild": "npm run gen:types",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",

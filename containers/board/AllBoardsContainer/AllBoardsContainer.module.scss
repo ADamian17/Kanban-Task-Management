@@ -1,0 +1,55 @@
+.allBoardWrapper {
+  margin: 0 auto;
+  max-width: REM(1110);
+  padding-top: REM(76);
+  padding: REM(80) REM(24) 0;
+
+  .headline {
+    @include heading-sm;
+    align-items: center;
+    color: var(--medium-grey);
+    column-gap: REM(12);
+    display: flex;
+    letter-spacing: REM(2.4);
+    margin-bottom: REM(25);
+    text-transform: uppercase;
+  }
+
+  .boardsList {
+    display: grid;
+    gap: REM(16);
+    grid-template-columns: repeat(auto-fill, minmax(REM(300), 1fr));
+    list-style: none;
+
+    .board {
+      background-color: var(--default-accent-bg);
+      border-radius: REM(8);
+
+      .boardNameWrapper {
+        padding: REM(16);
+        border-bottom: 1px solid var(--default-line-color);
+
+        .boardName {
+          @include heading-md;
+          color: var(--default-text-color);
+          margin-bottom: REM(8);
+          text-decoration: none;
+          text-transform: capitalize;
+          transition: color 0.2s ease;
+          word-break: break-word;
+
+          &:hover {
+            color: var(--main-purple);
+          }
+        }
+      }
+
+      .boardNameContent {
+        @include body-md;
+        color: var(--medium-grey);
+        padding: REM(16);
+        word-break: break-word;
+      }
+    }
+  }
+}

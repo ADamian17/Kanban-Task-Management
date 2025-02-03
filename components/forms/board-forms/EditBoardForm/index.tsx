@@ -29,10 +29,11 @@ const EditBoardForm: React.FC<EditBoardFormProps> = ({ boardName, boardId, colum
 
   const onSubmit: FormProps["onSubmit"] = async (values) => {
     try {
+      const columns = values?.columns ?? []
       const editBoardData = {
         ...values,
         id: boardId,
-        columns: [...values.columns, ...removedColumns.current],
+        columns: [...columns, ...removedColumns.current],
       };
 
       const editBoard = editBoardAction.bind(editBoardData);

@@ -1,7 +1,6 @@
-import Link from "next/link";
-
 import { AllBoardsDocument } from "@/__generated__/graphql";
 import { executeApiReq } from "@/lib/utils/execute-api-req";
+import AllBoardsContainer from "@/containers/board/AllBoardsContainer";
 import AllBoardsHeader from "@/components/layouts/headers/AllBoardsHeader";
 
 export default async function DashboardPage() {
@@ -9,35 +8,11 @@ export default async function DashboardPage() {
 
   if (!data?.getAllBoards?.nodes) return null;
 
-  const { count, nodes: allBoards } = data.getAllBoards;
-
   return (
-    <>
+    <main>
       <AllBoardsHeader />
 
-      <div style={{ padding: "4rem", margin: "1rem auto", maxWidth: "1110px" }}>
-        <h3>My boards | {count}</h3>
-
-        <ul
-          style={{
-            listStyle: "none",
-            padding: 0,
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-            gap: "1rem",
-            marginTop: 12,
-          }}
-        >
-          {allBoards.map((board) => (
-            <Link key={board?.id} href={board?.uri ?? ""}>
-              <li>
-                <h4>{board?.name}</h4>
-                <p>columns: {board?.columns.count}</p>
-              </li>
-            </Link>
-          ))}
-        </ul>
-      </div>
-    </>
+      <AllBoardsContainer boardData={data?.getAllBoards} />
+    </main>
   );
 }
